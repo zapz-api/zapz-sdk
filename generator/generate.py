@@ -584,6 +584,11 @@ def main() -> None:
     if "--web" in sys.argv:
         targets.append(Path(sys.argv[sys.argv.index("--web") + 1]))
     gen_map(spec, targets)
+    if "--web" in sys.argv:
+        # the docs offer the Postman collection for download from the site
+        web_public = Path(sys.argv[sys.argv.index("--web") + 1]).resolve().parents[3] / "public"
+        if web_public.is_dir():
+            (web_public / "zapz.postman_collection.json").write_text((ROOT / "postman" / "zapz.postman_collection.json").read_text())
     print(f"generated {len(spec.ops)} operations, {len(spec.schemas)} schemas")
 
 
