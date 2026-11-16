@@ -13,3 +13,5 @@ csharp/**/obj/
 n8n/node_modules/
 n8n/dist/
 ruby/*.gem
+mcp/node_modules/
+mcp/dist/

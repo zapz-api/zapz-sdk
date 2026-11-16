@@ -18,6 +18,7 @@ Extras:
 
 - [`postman/`](postman): coleção Postman/Insomnia com todas as rotas.
 - [`n8n/`](n8n): nós do n8n (ações + gatilho por webhook assinado).
+- [`mcp/`](mcp): servidor MCP para assistentes de IA (stdio e HTTP).
 
 ## Como funciona
 
@@ -42,6 +43,7 @@ export ZAPZ_API_KEY=sk_test_... ZAPZ_BASE_URL=http://localhost:3056
 (cd php && composer dump-autoload && php tests/smoke.php)
 (cd go && go test ./...)
 (cd n8n && npm run build && npm test)
+(cd mcp && npm run build && npm test)
 # Java, .NET e Ruby (via Docker, rede do host para alcançar a API local)
 docker run --rm --network host -v "$PWD/java":/w -w /w -e ZAPZ_API_KEY -e ZAPZ_BASE_URL eclipse-temurin:17-jdk \
   sh -c 'mkdir -p /tmp/o && javac -d /tmp/o $(find src -name "*.java") && java -cp /tmp/o com.zapz.Smoke'

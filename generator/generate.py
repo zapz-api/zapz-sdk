@@ -577,9 +577,10 @@ def main() -> None:
     gen_java(spec, ROOT)
     gen_csharp(spec, ROOT)
     gen_ruby(spec, ROOT)
-    from gen_extras import gen_n8n, gen_postman
+    from gen_extras import gen_mcp, gen_n8n, gen_postman
     gen_postman(spec, ROOT)
     gen_n8n(spec, ROOT)
+    gen_mcp(spec, ROOT)
     targets = [ROOT / "sdk-map.json"]
     if "--web" in sys.argv:
         targets.append(Path(sys.argv[sys.argv.index("--web") + 1]))
