@@ -534,6 +534,8 @@ def gen_php(spec: Spec) -> None:
 
 def gen_map(spec: Spec, targets: list[Path]) -> None:
     """endpoint -> SDK method, used by the docs to render SDK samples."""
+    sys.path.insert(0, str(Path(__file__).parent))
+    from gen_go import go_docs_info, go_name, go_query_type, go_type
     out = {}
     for op in spec.ops:
         key = op["method"] + " /v1" + re.sub(r"{\w+}", "{}", op["path"])
@@ -546,8 +548,15 @@ def gen_map(spec: Spec, targets: list[Path]) -> None:
             "body": spec.body(op) is not None,
             "bodyRequired": spec.body_has_required(op),
             "query": [q["name"] for q in op["query"]],
+            "go": op["name"][:1].upper() + op["name"][1:],
+            "goResource": op["tag"],
+            "goBody": spec.type_names[op["body_schema"]] if op["body_schema"] else ("map" if op["body_inline"] is not None else None),
+            "goQuery": {"type": go_query_type(op, op["tag"]), "fields": {q["name"]: {"name": go_name(q["name"]), "type": go_type(spec, q["schema"], True)} for q in op["query"]}} if op["query"] else None,
+            "java": op["name"],
+            "cs": op["name"][:1].upper() + op["name"][1:] + "Async",
+            "rb": snake(op["name"]),
         }
-    text = json.dumps(out, indent=2, ensure_ascii=False) + "\n"
+    text = json.dumps({"ops": out, "goTypes": go_docs_info(spec)}, indent=2, ensure_ascii=False) + "\n"
     for t in targets:
         t.write_text(text)
 

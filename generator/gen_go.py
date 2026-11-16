@@ -26,7 +26,9 @@ def go_type(spec, s: dict | None, optional: bool) -> str:
         return "[]" + go_type(spec, s.get("items"), False)
     if typ == "object":
         return "map[string]any"
-    if "enum" in s or typ == "string":
+    if "enum" in s and all(isinstance(e, int) and not isinstance(e, bool) for e in s["enum"]):
+        typ = "integer"
+    if typ == "string" or ("enum" in s and typ not in ("integer", "number")):
         t = "string"
     elif typ == "integer":
         t = "int"
@@ -152,3 +154,27 @@ def gen_go(spec, root: Path) -> None:
     import shutil, subprocess
     if shutil.which("gofmt"):
         subprocess.run(["gofmt", "-w", str(out / "types_gen.go"), str(out / "services_gen.go")], check=False)
+
+
+def go_query_type(op, tag: str) -> str:
+    name = op["name"][:1].upper() + op["name"][1:]
+    return f"{name}{tag}Query" if name in ("List", "Get") else f"{name}Query"
+
+
+def go_docs_info(spec) -> dict:
+    """Types and field names the docs need to render Go literals."""
+    from generate import ref_name
+    types = {}
+    for name, s in spec.schemas.items():
+        req = set(s.get("required") or [])
+        fields = {}
+        for k, v in (s.get("properties") or {}).items():
+            opt = k not in req
+            t = go_type(spec, v, opt)
+            item = None
+            if v.get("type") == "array" and "$ref" in (v.get("items") or {}):
+                item = spec.type_names[ref_name(v["items"]["$ref"])]
+            ref = spec.type_names[ref_name(v["$ref"])] if "$ref" in v else None
+            fields[k] = {"name": go_name(k), "type": t, **({"item": item} if item else {}), **({"ref": ref} if ref else {})}
+        types[spec.type_names[name]] = fields
+    return types

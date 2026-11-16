@@ -476,7 +476,7 @@ type UpdateGroupParams struct {
 	// true = only admins edit group info
 	Locked *bool `json:"locked,omitempty"`
 	// Disappearing messages: 0 (off), 86400 (24h), 604800 (7d) or 7776000 (90d)
-	EphemeralSeconds string `json:"ephemeralSeconds,omitempty"`
+	EphemeralSeconds *int `json:"ephemeralSeconds,omitempty"`
 	// Image (JPEG, PNG or WebP) for the group picture
 	PictureURL string `json:"pictureUrl,omitempty"`
 }

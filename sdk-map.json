@@ -1,792 +1,2404 @@
 {
-  "GET /v1/instances": {
-    "resource": "instances",
-    "js": "list",
-    "py": "list",
-    "php": "list",
-    "params": [],
-    "body": false,
-    "bodyRequired": false,
-    "query": [
-      "externalId",
-      "status"
-    ]
-  },
-  "POST /v1/instances": {
-    "resource": "instances",
-    "js": "create",
-    "py": "create",
-    "php": "create",
-    "params": [],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "GET /v1/instances/{}": {
-    "resource": "instances",
-    "js": "get",
-    "py": "get",
-    "php": "get",
-    "params": [
-      "instanceId"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": []
-  },
-  "PATCH /v1/instances/{}": {
-    "resource": "instances",
-    "js": "update",
-    "py": "update",
-    "php": "update",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": false,
-    "query": []
-  },
-  "DELETE /v1/instances/{}": {
-    "resource": "instances",
-    "js": "delete",
-    "py": "delete",
-    "php": "delete",
-    "params": [
-      "instanceId"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": []
-  },
-  "GET /v1/instances/{}/status": {
-    "resource": "instances",
-    "js": "status",
-    "py": "status",
-    "php": "status",
-    "params": [
-      "instanceId"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": []
-  },
-  "GET /v1/instances/{}/qr": {
-    "resource": "instances",
-    "js": "qr",
-    "py": "qr",
-    "php": "qr",
-    "params": [
-      "instanceId"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": []
-  },
-  "POST /v1/instances/{}/pairing-code": {
-    "resource": "instances",
-    "js": "requestPairingCode",
-    "py": "request_pairing_code",
-    "php": "requestPairingCode",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/session/clear": {
-    "resource": "instances",
-    "js": "clearSession",
-    "py": "clear_session",
-    "php": "clearSession",
-    "params": [
-      "instanceId"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": []
-  },
-  "GET /v1/instances/{}/contacts": {
-    "resource": "contacts",
-    "js": "list",
-    "py": "list",
-    "php": "list",
-    "params": [
-      "instanceId"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": []
-  },
-  "PATCH /v1/instances/{}/contacts/{}": {
-    "resource": "contacts",
-    "js": "update",
-    "py": "update",
-    "php": "update",
-    "params": [
-      "instanceId",
-      "jid"
-    ],
-    "body": true,
-    "bodyRequired": false,
-    "query": []
-  },
-  "DELETE /v1/instances/{}/contacts/{}": {
-    "resource": "contacts",
-    "js": "delete",
-    "py": "delete",
-    "php": "delete",
-    "params": [
-      "instanceId",
-      "jid"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": []
-  },
-  "POST /v1/instances/{}/contacts/check-phones": {
-    "resource": "contacts",
-    "js": "checkPhones",
-    "py": "check_phones",
-    "php": "checkPhones",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "GET /v1/instances/{}/contacts/{}/profile-picture": {
-    "resource": "contacts",
-    "js": "profilePicture",
-    "py": "profile_picture",
-    "php": "profilePicture",
-    "params": [
-      "instanceId",
-      "jid"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": []
-  },
-  "GET /v1/instances/{}/contacts/{}/status": {
-    "resource": "contacts",
-    "js": "about",
-    "py": "about",
-    "php": "about",
-    "params": [
-      "instanceId",
-      "jid"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": []
-  },
-  "GET /v1/webhooks": {
-    "resource": "webhooks",
-    "js": "list",
-    "py": "list",
-    "php": "list",
-    "params": [],
-    "body": false,
-    "bodyRequired": false,
-    "query": []
-  },
-  "POST /v1/webhooks": {
-    "resource": "webhooks",
-    "js": "create",
-    "py": "create",
-    "php": "create",
-    "params": [],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "PATCH /v1/webhooks/{}": {
-    "resource": "webhooks",
-    "js": "update",
-    "py": "update",
-    "php": "update",
-    "params": [
-      "webhookId"
-    ],
-    "body": true,
-    "bodyRequired": false,
-    "query": []
-  },
-  "DELETE /v1/webhooks/{}": {
-    "resource": "webhooks",
-    "js": "delete",
-    "py": "delete",
-    "php": "delete",
-    "params": [
-      "webhookId"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": []
-  },
-  "GET /v1/webhooks/{}/logs": {
-    "resource": "webhooks",
-    "js": "deliveries",
-    "py": "deliveries",
-    "php": "deliveries",
-    "params": [
-      "webhookId"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": []
-  },
-  "POST /v1/webhooks/{}/test": {
-    "resource": "webhooks",
-    "js": "test",
-    "py": "test",
-    "php": "test",
-    "params": [
-      "webhookId"
-    ],
-    "body": true,
-    "bodyRequired": false,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/text": {
-    "resource": "messages",
-    "js": "sendText",
-    "py": "send_text",
-    "php": "sendText",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/media": {
-    "resource": "messages",
-    "js": "sendMedia",
-    "py": "send_media",
-    "php": "sendMedia",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/list": {
-    "resource": "messages",
-    "js": "sendList",
-    "py": "send_list",
-    "php": "sendList",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/interactive": {
-    "resource": "messages",
-    "js": "sendInteractive",
-    "py": "send_interactive",
-    "php": "sendInteractive",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/sticker": {
-    "resource": "messages",
-    "js": "sendSticker",
-    "py": "send_sticker",
-    "php": "sendSticker",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/location": {
-    "resource": "messages",
-    "js": "sendLocation",
-    "py": "send_location",
-    "php": "sendLocation",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/contact": {
-    "resource": "messages",
-    "js": "sendContact",
-    "py": "send_contact",
-    "php": "sendContact",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/reaction": {
-    "resource": "messages",
-    "js": "sendReaction",
-    "py": "send_reaction",
-    "php": "sendReaction",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/poll": {
-    "resource": "messages",
-    "js": "sendPoll",
-    "py": "send_poll",
-    "php": "sendPoll",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/pix": {
-    "resource": "messages",
-    "js": "sendPix",
-    "py": "send_pix",
-    "php": "sendPix",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/payment": {
-    "resource": "messages",
-    "js": "sendPayment",
-    "py": "send_payment",
-    "php": "sendPayment",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/carousel": {
-    "resource": "messages",
-    "js": "sendCarousel",
-    "py": "send_carousel",
-    "php": "sendCarousel",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/album": {
-    "resource": "messages",
-    "js": "sendAlbum",
-    "py": "send_album",
-    "php": "sendAlbum",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/event": {
-    "resource": "messages",
-    "js": "sendEvent",
-    "py": "send_event",
-    "php": "sendEvent",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/group-invite": {
-    "resource": "messages",
-    "js": "sendGroupInvite",
-    "py": "send_group_invite",
-    "php": "sendGroupInvite",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/request-phone": {
-    "resource": "messages",
-    "js": "sendRequestPhone",
-    "py": "send_request_phone",
-    "php": "sendRequestPhone",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/share-phone": {
-    "resource": "messages",
-    "js": "sendSharePhone",
-    "py": "send_share_phone",
-    "php": "sendSharePhone",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/product": {
-    "resource": "messages",
-    "js": "sendProduct",
-    "py": "send_product",
-    "php": "sendProduct",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/order": {
-    "resource": "messages",
-    "js": "sendOrder",
-    "py": "send_order",
-    "php": "sendOrder",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/catalog": {
-    "resource": "messages",
-    "js": "sendCatalog",
-    "py": "send_catalog",
-    "php": "sendCatalog",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/forward": {
-    "resource": "messages",
-    "js": "forward",
-    "py": "forward",
-    "php": "forward",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/pin": {
-    "resource": "messages",
-    "js": "pin",
-    "py": "pin",
-    "php": "pin",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/send/status": {
-    "resource": "messages",
-    "js": "sendStatus",
-    "py": "send_status",
-    "php": "sendStatus",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "GET /v1/instances/{}/messages": {
-    "resource": "messages",
-    "js": "list",
-    "py": "list",
-    "php": "list",
-    "params": [
-      "instanceId"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": [
-      "limit"
-    ]
-  },
-  "GET /v1/instances/{}/messages/{}": {
-    "resource": "messages",
-    "js": "get",
-    "py": "get",
-    "php": "get",
-    "params": [
-      "instanceId",
-      "messageId"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": []
-  },
-  "PATCH /v1/instances/{}/messages/{}": {
-    "resource": "messages",
-    "js": "edit",
-    "py": "edit",
-    "php": "edit",
-    "params": [
-      "instanceId",
-      "messageId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "DELETE /v1/instances/{}/messages/{}": {
-    "resource": "messages",
-    "js": "delete",
-    "py": "delete",
-    "php": "delete",
-    "params": [
-      "instanceId",
-      "messageId"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": []
-  },
-  "POST /v1/instances/{}/messages/read": {
-    "resource": "messages",
-    "js": "markRead",
-    "py": "mark_read",
-    "php": "markRead",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "POST /v1/instances/{}/presence": {
-    "resource": "messages",
-    "js": "sendPresence",
-    "py": "send_presence",
-    "php": "sendPresence",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "GET /v1/instances/{}/health": {
-    "resource": "instances",
-    "js": "health",
-    "py": "health",
-    "php": "health",
-    "params": [
-      "instanceId"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": []
-  },
-  "POST /v1/instances/{}/resume": {
-    "resource": "instances",
-    "js": "resume",
-    "py": "resume",
-    "php": "resume",
-    "params": [
-      "instanceId"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": []
-  },
-  "POST /v1/sandbox/inbound": {
-    "resource": "sandbox",
-    "js": "inbound",
-    "py": "inbound",
-    "php": "inbound",
-    "params": [],
-    "body": true,
-    "bodyRequired": false,
-    "query": []
-  },
-  "POST /v1/sandbox/events": {
-    "resource": "sandbox",
-    "js": "event",
-    "py": "event",
-    "php": "event",
-    "params": [],
-    "body": true,
-    "bodyRequired": false,
-    "query": []
-  },
-  "POST /v1/sandbox/messages/{}/status": {
-    "resource": "sandbox",
-    "js": "setMessageStatus",
-    "py": "set_message_status",
-    "php": "setMessageStatus",
-    "params": [
-      "messageId"
-    ],
-    "body": true,
-    "bodyRequired": false,
-    "query": []
-  },
-  "GET /v1/instances/{}/groups": {
-    "resource": "groups",
-    "js": "list",
-    "py": "list",
-    "php": "list",
-    "params": [
-      "instanceId"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": [
-      "participants"
-    ]
-  },
-  "POST /v1/instances/{}/groups": {
-    "resource": "groups",
-    "js": "create",
-    "py": "create",
-    "php": "create",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "GET /v1/instances/{}/groups/invite-info": {
-    "resource": "groups",
-    "js": "inviteInfo",
-    "py": "invite_info",
-    "php": "inviteInfo",
-    "params": [
-      "instanceId"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": [
-      "code"
-    ]
-  },
-  "POST /v1/instances/{}/groups/join": {
-    "resource": "groups",
-    "js": "join",
-    "py": "join",
-    "php": "join",
-    "params": [
-      "instanceId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "GET /v1/instances/{}/groups/{}": {
-    "resource": "groups",
-    "js": "get",
-    "py": "get",
-    "php": "get",
-    "params": [
-      "instanceId",
-      "groupId"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": []
-  },
-  "PATCH /v1/instances/{}/groups/{}": {
-    "resource": "groups",
-    "js": "update",
-    "py": "update",
-    "php": "update",
-    "params": [
-      "instanceId",
-      "groupId"
-    ],
-    "body": true,
-    "bodyRequired": false,
-    "query": []
-  },
-  "POST /v1/instances/{}/groups/{}/participants": {
-    "resource": "groups",
-    "js": "updateParticipants",
-    "py": "update_participants",
-    "php": "updateParticipants",
-    "params": [
-      "instanceId",
-      "groupId"
-    ],
-    "body": true,
-    "bodyRequired": true,
-    "query": []
-  },
-  "GET /v1/instances/{}/groups/{}/invite": {
-    "resource": "groups",
-    "js": "inviteLink",
-    "py": "invite_link",
-    "php": "inviteLink",
-    "params": [
-      "instanceId",
-      "groupId"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": []
-  },
-  "POST /v1/instances/{}/groups/{}/invite/revoke": {
-    "resource": "groups",
-    "js": "revokeInvite",
-    "py": "revoke_invite",
-    "php": "revokeInvite",
-    "params": [
-      "instanceId",
-      "groupId"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": []
-  },
-  "POST /v1/instances/{}/groups/{}/leave": {
-    "resource": "groups",
-    "js": "leave",
-    "py": "leave",
-    "php": "leave",
-    "params": [
-      "instanceId",
-      "groupId"
-    ],
-    "body": false,
-    "bodyRequired": false,
-    "query": []
+  "ops": {
+    "GET /v1/instances": {
+      "resource": "instances",
+      "js": "list",
+      "py": "list",
+      "php": "list",
+      "params": [],
+      "body": false,
+      "bodyRequired": false,
+      "query": [
+        "externalId",
+        "status"
+      ],
+      "go": "List",
+      "goResource": "Instances",
+      "goBody": null,
+      "goQuery": {
+        "type": "ListInstancesQuery",
+        "fields": {
+          "externalId": {
+            "name": "ExternalID",
+            "type": "string"
+          },
+          "status": {
+            "name": "Status",
+            "type": "string"
+          }
+        }
+      },
+      "java": "list",
+      "cs": "ListAsync",
+      "rb": "list"
+    },
+    "POST /v1/instances": {
+      "resource": "instances",
+      "js": "create",
+      "py": "create",
+      "php": "create",
+      "params": [],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "Create",
+      "goResource": "Instances",
+      "goBody": "CreateInstanceParams",
+      "goQuery": null,
+      "java": "create",
+      "cs": "CreateAsync",
+      "rb": "create"
+    },
+    "GET /v1/instances/{}": {
+      "resource": "instances",
+      "js": "get",
+      "py": "get",
+      "php": "get",
+      "params": [
+        "instanceId"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [],
+      "go": "Get",
+      "goResource": "Instances",
+      "goBody": null,
+      "goQuery": null,
+      "java": "get",
+      "cs": "GetAsync",
+      "rb": "get"
+    },
+    "PATCH /v1/instances/{}": {
+      "resource": "instances",
+      "js": "update",
+      "py": "update",
+      "php": "update",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": false,
+      "query": [],
+      "go": "Update",
+      "goResource": "Instances",
+      "goBody": "UpdateInstanceParams",
+      "goQuery": null,
+      "java": "update",
+      "cs": "UpdateAsync",
+      "rb": "update"
+    },
+    "DELETE /v1/instances/{}": {
+      "resource": "instances",
+      "js": "delete",
+      "py": "delete",
+      "php": "delete",
+      "params": [
+        "instanceId"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [],
+      "go": "Delete",
+      "goResource": "Instances",
+      "goBody": null,
+      "goQuery": null,
+      "java": "delete",
+      "cs": "DeleteAsync",
+      "rb": "delete"
+    },
+    "GET /v1/instances/{}/status": {
+      "resource": "instances",
+      "js": "status",
+      "py": "status",
+      "php": "status",
+      "params": [
+        "instanceId"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [],
+      "go": "Status",
+      "goResource": "Instances",
+      "goBody": null,
+      "goQuery": null,
+      "java": "status",
+      "cs": "StatusAsync",
+      "rb": "status"
+    },
+    "GET /v1/instances/{}/qr": {
+      "resource": "instances",
+      "js": "qr",
+      "py": "qr",
+      "php": "qr",
+      "params": [
+        "instanceId"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [],
+      "go": "Qr",
+      "goResource": "Instances",
+      "goBody": null,
+      "goQuery": null,
+      "java": "qr",
+      "cs": "QrAsync",
+      "rb": "qr"
+    },
+    "POST /v1/instances/{}/pairing-code": {
+      "resource": "instances",
+      "js": "requestPairingCode",
+      "py": "request_pairing_code",
+      "php": "requestPairingCode",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "RequestPairingCode",
+      "goResource": "Instances",
+      "goBody": "PairingCodeParams",
+      "goQuery": null,
+      "java": "requestPairingCode",
+      "cs": "RequestPairingCodeAsync",
+      "rb": "request_pairing_code"
+    },
+    "POST /v1/instances/{}/session/clear": {
+      "resource": "instances",
+      "js": "clearSession",
+      "py": "clear_session",
+      "php": "clearSession",
+      "params": [
+        "instanceId"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [],
+      "go": "ClearSession",
+      "goResource": "Instances",
+      "goBody": null,
+      "goQuery": null,
+      "java": "clearSession",
+      "cs": "ClearSessionAsync",
+      "rb": "clear_session"
+    },
+    "GET /v1/instances/{}/contacts": {
+      "resource": "contacts",
+      "js": "list",
+      "py": "list",
+      "php": "list",
+      "params": [
+        "instanceId"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [],
+      "go": "List",
+      "goResource": "Contacts",
+      "goBody": null,
+      "goQuery": null,
+      "java": "list",
+      "cs": "ListAsync",
+      "rb": "list"
+    },
+    "PATCH /v1/instances/{}/contacts/{}": {
+      "resource": "contacts",
+      "js": "update",
+      "py": "update",
+      "php": "update",
+      "params": [
+        "instanceId",
+        "jid"
+      ],
+      "body": true,
+      "bodyRequired": false,
+      "query": [],
+      "go": "Update",
+      "goResource": "Contacts",
+      "goBody": "map",
+      "goQuery": null,
+      "java": "update",
+      "cs": "UpdateAsync",
+      "rb": "update"
+    },
+    "DELETE /v1/instances/{}/contacts/{}": {
+      "resource": "contacts",
+      "js": "delete",
+      "py": "delete",
+      "php": "delete",
+      "params": [
+        "instanceId",
+        "jid"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [],
+      "go": "Delete",
+      "goResource": "Contacts",
+      "goBody": null,
+      "goQuery": null,
+      "java": "delete",
+      "cs": "DeleteAsync",
+      "rb": "delete"
+    },
+    "POST /v1/instances/{}/contacts/check-phones": {
+      "resource": "contacts",
+      "js": "checkPhones",
+      "py": "check_phones",
+      "php": "checkPhones",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "CheckPhones",
+      "goResource": "Contacts",
+      "goBody": "map",
+      "goQuery": null,
+      "java": "checkPhones",
+      "cs": "CheckPhonesAsync",
+      "rb": "check_phones"
+    },
+    "GET /v1/instances/{}/contacts/{}/profile-picture": {
+      "resource": "contacts",
+      "js": "profilePicture",
+      "py": "profile_picture",
+      "php": "profilePicture",
+      "params": [
+        "instanceId",
+        "jid"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [],
+      "go": "ProfilePicture",
+      "goResource": "Contacts",
+      "goBody": null,
+      "goQuery": null,
+      "java": "profilePicture",
+      "cs": "ProfilePictureAsync",
+      "rb": "profile_picture"
+    },
+    "GET /v1/instances/{}/contacts/{}/status": {
+      "resource": "contacts",
+      "js": "about",
+      "py": "about",
+      "php": "about",
+      "params": [
+        "instanceId",
+        "jid"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [],
+      "go": "About",
+      "goResource": "Contacts",
+      "goBody": null,
+      "goQuery": null,
+      "java": "about",
+      "cs": "AboutAsync",
+      "rb": "about"
+    },
+    "GET /v1/webhooks": {
+      "resource": "webhooks",
+      "js": "list",
+      "py": "list",
+      "php": "list",
+      "params": [],
+      "body": false,
+      "bodyRequired": false,
+      "query": [],
+      "go": "List",
+      "goResource": "Webhooks",
+      "goBody": null,
+      "goQuery": null,
+      "java": "list",
+      "cs": "ListAsync",
+      "rb": "list"
+    },
+    "POST /v1/webhooks": {
+      "resource": "webhooks",
+      "js": "create",
+      "py": "create",
+      "php": "create",
+      "params": [],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "Create",
+      "goResource": "Webhooks",
+      "goBody": "CreateWebhookParams",
+      "goQuery": null,
+      "java": "create",
+      "cs": "CreateAsync",
+      "rb": "create"
+    },
+    "PATCH /v1/webhooks/{}": {
+      "resource": "webhooks",
+      "js": "update",
+      "py": "update",
+      "php": "update",
+      "params": [
+        "webhookId"
+      ],
+      "body": true,
+      "bodyRequired": false,
+      "query": [],
+      "go": "Update",
+      "goResource": "Webhooks",
+      "goBody": "map",
+      "goQuery": null,
+      "java": "update",
+      "cs": "UpdateAsync",
+      "rb": "update"
+    },
+    "DELETE /v1/webhooks/{}": {
+      "resource": "webhooks",
+      "js": "delete",
+      "py": "delete",
+      "php": "delete",
+      "params": [
+        "webhookId"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [],
+      "go": "Delete",
+      "goResource": "Webhooks",
+      "goBody": null,
+      "goQuery": null,
+      "java": "delete",
+      "cs": "DeleteAsync",
+      "rb": "delete"
+    },
+    "GET /v1/webhooks/{}/logs": {
+      "resource": "webhooks",
+      "js": "deliveries",
+      "py": "deliveries",
+      "php": "deliveries",
+      "params": [
+        "webhookId"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [],
+      "go": "Deliveries",
+      "goResource": "Webhooks",
+      "goBody": null,
+      "goQuery": null,
+      "java": "deliveries",
+      "cs": "DeliveriesAsync",
+      "rb": "deliveries"
+    },
+    "POST /v1/webhooks/{}/test": {
+      "resource": "webhooks",
+      "js": "test",
+      "py": "test",
+      "php": "test",
+      "params": [
+        "webhookId"
+      ],
+      "body": true,
+      "bodyRequired": false,
+      "query": [],
+      "go": "Test",
+      "goResource": "Webhooks",
+      "goBody": "map",
+      "goQuery": null,
+      "java": "test",
+      "cs": "TestAsync",
+      "rb": "test"
+    },
+    "POST /v1/instances/{}/send/text": {
+      "resource": "messages",
+      "js": "sendText",
+      "py": "send_text",
+      "php": "sendText",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendText",
+      "goResource": "Messages",
+      "goBody": "SendTextParams",
+      "goQuery": null,
+      "java": "sendText",
+      "cs": "SendTextAsync",
+      "rb": "send_text"
+    },
+    "POST /v1/instances/{}/send/media": {
+      "resource": "messages",
+      "js": "sendMedia",
+      "py": "send_media",
+      "php": "sendMedia",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendMedia",
+      "goResource": "Messages",
+      "goBody": "SendMediaParams",
+      "goQuery": null,
+      "java": "sendMedia",
+      "cs": "SendMediaAsync",
+      "rb": "send_media"
+    },
+    "POST /v1/instances/{}/send/list": {
+      "resource": "messages",
+      "js": "sendList",
+      "py": "send_list",
+      "php": "sendList",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendList",
+      "goResource": "Messages",
+      "goBody": "SendListParams",
+      "goQuery": null,
+      "java": "sendList",
+      "cs": "SendListAsync",
+      "rb": "send_list"
+    },
+    "POST /v1/instances/{}/send/interactive": {
+      "resource": "messages",
+      "js": "sendInteractive",
+      "py": "send_interactive",
+      "php": "sendInteractive",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendInteractive",
+      "goResource": "Messages",
+      "goBody": "SendInteractiveParams",
+      "goQuery": null,
+      "java": "sendInteractive",
+      "cs": "SendInteractiveAsync",
+      "rb": "send_interactive"
+    },
+    "POST /v1/instances/{}/send/sticker": {
+      "resource": "messages",
+      "js": "sendSticker",
+      "py": "send_sticker",
+      "php": "sendSticker",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendSticker",
+      "goResource": "Messages",
+      "goBody": "SendStickerParams",
+      "goQuery": null,
+      "java": "sendSticker",
+      "cs": "SendStickerAsync",
+      "rb": "send_sticker"
+    },
+    "POST /v1/instances/{}/send/location": {
+      "resource": "messages",
+      "js": "sendLocation",
+      "py": "send_location",
+      "php": "sendLocation",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendLocation",
+      "goResource": "Messages",
+      "goBody": "SendLocationParams",
+      "goQuery": null,
+      "java": "sendLocation",
+      "cs": "SendLocationAsync",
+      "rb": "send_location"
+    },
+    "POST /v1/instances/{}/send/contact": {
+      "resource": "messages",
+      "js": "sendContact",
+      "py": "send_contact",
+      "php": "sendContact",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendContact",
+      "goResource": "Messages",
+      "goBody": "SendContactParams",
+      "goQuery": null,
+      "java": "sendContact",
+      "cs": "SendContactAsync",
+      "rb": "send_contact"
+    },
+    "POST /v1/instances/{}/send/reaction": {
+      "resource": "messages",
+      "js": "sendReaction",
+      "py": "send_reaction",
+      "php": "sendReaction",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendReaction",
+      "goResource": "Messages",
+      "goBody": "SendReactionParams",
+      "goQuery": null,
+      "java": "sendReaction",
+      "cs": "SendReactionAsync",
+      "rb": "send_reaction"
+    },
+    "POST /v1/instances/{}/send/poll": {
+      "resource": "messages",
+      "js": "sendPoll",
+      "py": "send_poll",
+      "php": "sendPoll",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendPoll",
+      "goResource": "Messages",
+      "goBody": "SendPollParams",
+      "goQuery": null,
+      "java": "sendPoll",
+      "cs": "SendPollAsync",
+      "rb": "send_poll"
+    },
+    "POST /v1/instances/{}/send/pix": {
+      "resource": "messages",
+      "js": "sendPix",
+      "py": "send_pix",
+      "php": "sendPix",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendPix",
+      "goResource": "Messages",
+      "goBody": "SendPixParams",
+      "goQuery": null,
+      "java": "sendPix",
+      "cs": "SendPixAsync",
+      "rb": "send_pix"
+    },
+    "POST /v1/instances/{}/send/payment": {
+      "resource": "messages",
+      "js": "sendPayment",
+      "py": "send_payment",
+      "php": "sendPayment",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendPayment",
+      "goResource": "Messages",
+      "goBody": "SendPaymentParams",
+      "goQuery": null,
+      "java": "sendPayment",
+      "cs": "SendPaymentAsync",
+      "rb": "send_payment"
+    },
+    "POST /v1/instances/{}/send/carousel": {
+      "resource": "messages",
+      "js": "sendCarousel",
+      "py": "send_carousel",
+      "php": "sendCarousel",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendCarousel",
+      "goResource": "Messages",
+      "goBody": "SendCarouselParams",
+      "goQuery": null,
+      "java": "sendCarousel",
+      "cs": "SendCarouselAsync",
+      "rb": "send_carousel"
+    },
+    "POST /v1/instances/{}/send/album": {
+      "resource": "messages",
+      "js": "sendAlbum",
+      "py": "send_album",
+      "php": "sendAlbum",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendAlbum",
+      "goResource": "Messages",
+      "goBody": "SendAlbumParams",
+      "goQuery": null,
+      "java": "sendAlbum",
+      "cs": "SendAlbumAsync",
+      "rb": "send_album"
+    },
+    "POST /v1/instances/{}/send/event": {
+      "resource": "messages",
+      "js": "sendEvent",
+      "py": "send_event",
+      "php": "sendEvent",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendEvent",
+      "goResource": "Messages",
+      "goBody": "SendEventParams",
+      "goQuery": null,
+      "java": "sendEvent",
+      "cs": "SendEventAsync",
+      "rb": "send_event"
+    },
+    "POST /v1/instances/{}/send/group-invite": {
+      "resource": "messages",
+      "js": "sendGroupInvite",
+      "py": "send_group_invite",
+      "php": "sendGroupInvite",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendGroupInvite",
+      "goResource": "Messages",
+      "goBody": "SendGroupInviteParams",
+      "goQuery": null,
+      "java": "sendGroupInvite",
+      "cs": "SendGroupInviteAsync",
+      "rb": "send_group_invite"
+    },
+    "POST /v1/instances/{}/send/request-phone": {
+      "resource": "messages",
+      "js": "sendRequestPhone",
+      "py": "send_request_phone",
+      "php": "sendRequestPhone",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendRequestPhone",
+      "goResource": "Messages",
+      "goBody": "SendRequestPhoneParams",
+      "goQuery": null,
+      "java": "sendRequestPhone",
+      "cs": "SendRequestPhoneAsync",
+      "rb": "send_request_phone"
+    },
+    "POST /v1/instances/{}/send/share-phone": {
+      "resource": "messages",
+      "js": "sendSharePhone",
+      "py": "send_share_phone",
+      "php": "sendSharePhone",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendSharePhone",
+      "goResource": "Messages",
+      "goBody": "SendSharePhoneParams",
+      "goQuery": null,
+      "java": "sendSharePhone",
+      "cs": "SendSharePhoneAsync",
+      "rb": "send_share_phone"
+    },
+    "POST /v1/instances/{}/send/product": {
+      "resource": "messages",
+      "js": "sendProduct",
+      "py": "send_product",
+      "php": "sendProduct",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendProduct",
+      "goResource": "Messages",
+      "goBody": "SendProductParams",
+      "goQuery": null,
+      "java": "sendProduct",
+      "cs": "SendProductAsync",
+      "rb": "send_product"
+    },
+    "POST /v1/instances/{}/send/order": {
+      "resource": "messages",
+      "js": "sendOrder",
+      "py": "send_order",
+      "php": "sendOrder",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendOrder",
+      "goResource": "Messages",
+      "goBody": "SendOrderParams",
+      "goQuery": null,
+      "java": "sendOrder",
+      "cs": "SendOrderAsync",
+      "rb": "send_order"
+    },
+    "POST /v1/instances/{}/send/catalog": {
+      "resource": "messages",
+      "js": "sendCatalog",
+      "py": "send_catalog",
+      "php": "sendCatalog",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendCatalog",
+      "goResource": "Messages",
+      "goBody": "SendCatalogParams",
+      "goQuery": null,
+      "java": "sendCatalog",
+      "cs": "SendCatalogAsync",
+      "rb": "send_catalog"
+    },
+    "POST /v1/instances/{}/send/forward": {
+      "resource": "messages",
+      "js": "forward",
+      "py": "forward",
+      "php": "forward",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "Forward",
+      "goResource": "Messages",
+      "goBody": "SendForwardParams",
+      "goQuery": null,
+      "java": "forward",
+      "cs": "ForwardAsync",
+      "rb": "forward"
+    },
+    "POST /v1/instances/{}/send/pin": {
+      "resource": "messages",
+      "js": "pin",
+      "py": "pin",
+      "php": "pin",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "Pin",
+      "goResource": "Messages",
+      "goBody": "SendPinParams",
+      "goQuery": null,
+      "java": "pin",
+      "cs": "PinAsync",
+      "rb": "pin"
+    },
+    "POST /v1/instances/{}/send/status": {
+      "resource": "messages",
+      "js": "sendStatus",
+      "py": "send_status",
+      "php": "sendStatus",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendStatus",
+      "goResource": "Messages",
+      "goBody": "SendStatusParams",
+      "goQuery": null,
+      "java": "sendStatus",
+      "cs": "SendStatusAsync",
+      "rb": "send_status"
+    },
+    "GET /v1/instances/{}/messages": {
+      "resource": "messages",
+      "js": "list",
+      "py": "list",
+      "php": "list",
+      "params": [
+        "instanceId"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [
+        "limit"
+      ],
+      "go": "List",
+      "goResource": "Messages",
+      "goBody": null,
+      "goQuery": {
+        "type": "ListMessagesQuery",
+        "fields": {
+          "limit": {
+            "name": "Limit",
+            "type": "*int"
+          }
+        }
+      },
+      "java": "list",
+      "cs": "ListAsync",
+      "rb": "list"
+    },
+    "GET /v1/instances/{}/messages/{}": {
+      "resource": "messages",
+      "js": "get",
+      "py": "get",
+      "php": "get",
+      "params": [
+        "instanceId",
+        "messageId"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [],
+      "go": "Get",
+      "goResource": "Messages",
+      "goBody": null,
+      "goQuery": null,
+      "java": "get",
+      "cs": "GetAsync",
+      "rb": "get"
+    },
+    "PATCH /v1/instances/{}/messages/{}": {
+      "resource": "messages",
+      "js": "edit",
+      "py": "edit",
+      "php": "edit",
+      "params": [
+        "instanceId",
+        "messageId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "Edit",
+      "goResource": "Messages",
+      "goBody": "EditMessageParams",
+      "goQuery": null,
+      "java": "edit",
+      "cs": "EditAsync",
+      "rb": "edit"
+    },
+    "DELETE /v1/instances/{}/messages/{}": {
+      "resource": "messages",
+      "js": "delete",
+      "py": "delete",
+      "php": "delete",
+      "params": [
+        "instanceId",
+        "messageId"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [],
+      "go": "Delete",
+      "goResource": "Messages",
+      "goBody": null,
+      "goQuery": null,
+      "java": "delete",
+      "cs": "DeleteAsync",
+      "rb": "delete"
+    },
+    "POST /v1/instances/{}/messages/read": {
+      "resource": "messages",
+      "js": "markRead",
+      "py": "mark_read",
+      "php": "markRead",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "MarkRead",
+      "goResource": "Messages",
+      "goBody": "MarkReadParams",
+      "goQuery": null,
+      "java": "markRead",
+      "cs": "MarkReadAsync",
+      "rb": "mark_read"
+    },
+    "POST /v1/instances/{}/presence": {
+      "resource": "messages",
+      "js": "sendPresence",
+      "py": "send_presence",
+      "php": "sendPresence",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "SendPresence",
+      "goResource": "Messages",
+      "goBody": "PresenceParams",
+      "goQuery": null,
+      "java": "sendPresence",
+      "cs": "SendPresenceAsync",
+      "rb": "send_presence"
+    },
+    "GET /v1/instances/{}/health": {
+      "resource": "instances",
+      "js": "health",
+      "py": "health",
+      "php": "health",
+      "params": [
+        "instanceId"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [],
+      "go": "Health",
+      "goResource": "Instances",
+      "goBody": null,
+      "goQuery": null,
+      "java": "health",
+      "cs": "HealthAsync",
+      "rb": "health"
+    },
+    "POST /v1/instances/{}/resume": {
+      "resource": "instances",
+      "js": "resume",
+      "py": "resume",
+      "php": "resume",
+      "params": [
+        "instanceId"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [],
+      "go": "Resume",
+      "goResource": "Instances",
+      "goBody": null,
+      "goQuery": null,
+      "java": "resume",
+      "cs": "ResumeAsync",
+      "rb": "resume"
+    },
+    "POST /v1/sandbox/inbound": {
+      "resource": "sandbox",
+      "js": "inbound",
+      "py": "inbound",
+      "php": "inbound",
+      "params": [],
+      "body": true,
+      "bodyRequired": false,
+      "query": [],
+      "go": "Inbound",
+      "goResource": "Sandbox",
+      "goBody": "map",
+      "goQuery": null,
+      "java": "inbound",
+      "cs": "InboundAsync",
+      "rb": "inbound"
+    },
+    "POST /v1/sandbox/events": {
+      "resource": "sandbox",
+      "js": "event",
+      "py": "event",
+      "php": "event",
+      "params": [],
+      "body": true,
+      "bodyRequired": false,
+      "query": [],
+      "go": "Event",
+      "goResource": "Sandbox",
+      "goBody": "map",
+      "goQuery": null,
+      "java": "event",
+      "cs": "EventAsync",
+      "rb": "event"
+    },
+    "POST /v1/sandbox/messages/{}/status": {
+      "resource": "sandbox",
+      "js": "setMessageStatus",
+      "py": "set_message_status",
+      "php": "setMessageStatus",
+      "params": [
+        "messageId"
+      ],
+      "body": true,
+      "bodyRequired": false,
+      "query": [],
+      "go": "SetMessageStatus",
+      "goResource": "Sandbox",
+      "goBody": "map",
+      "goQuery": null,
+      "java": "setMessageStatus",
+      "cs": "SetMessageStatusAsync",
+      "rb": "set_message_status"
+    },
+    "GET /v1/instances/{}/groups": {
+      "resource": "groups",
+      "js": "list",
+      "py": "list",
+      "php": "list",
+      "params": [
+        "instanceId"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [
+        "participants"
+      ],
+      "go": "List",
+      "goResource": "Groups",
+      "goBody": null,
+      "goQuery": {
+        "type": "ListGroupsQuery",
+        "fields": {
+          "participants": {
+            "name": "Participants",
+            "type": "*bool"
+          }
+        }
+      },
+      "java": "list",
+      "cs": "ListAsync",
+      "rb": "list"
+    },
+    "POST /v1/instances/{}/groups": {
+      "resource": "groups",
+      "js": "create",
+      "py": "create",
+      "php": "create",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "Create",
+      "goResource": "Groups",
+      "goBody": "CreateGroupParams",
+      "goQuery": null,
+      "java": "create",
+      "cs": "CreateAsync",
+      "rb": "create"
+    },
+    "GET /v1/instances/{}/groups/invite-info": {
+      "resource": "groups",
+      "js": "inviteInfo",
+      "py": "invite_info",
+      "php": "inviteInfo",
+      "params": [
+        "instanceId"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [
+        "code"
+      ],
+      "go": "InviteInfo",
+      "goResource": "Groups",
+      "goBody": null,
+      "goQuery": {
+        "type": "InviteInfoQuery",
+        "fields": {
+          "code": {
+            "name": "Code",
+            "type": "string"
+          }
+        }
+      },
+      "java": "inviteInfo",
+      "cs": "InviteInfoAsync",
+      "rb": "invite_info"
+    },
+    "POST /v1/instances/{}/groups/join": {
+      "resource": "groups",
+      "js": "join",
+      "py": "join",
+      "php": "join",
+      "params": [
+        "instanceId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "Join",
+      "goResource": "Groups",
+      "goBody": "JoinGroupParams",
+      "goQuery": null,
+      "java": "join",
+      "cs": "JoinAsync",
+      "rb": "join"
+    },
+    "GET /v1/instances/{}/groups/{}": {
+      "resource": "groups",
+      "js": "get",
+      "py": "get",
+      "php": "get",
+      "params": [
+        "instanceId",
+        "groupId"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [],
+      "go": "Get",
+      "goResource": "Groups",
+      "goBody": null,
+      "goQuery": null,
+      "java": "get",
+      "cs": "GetAsync",
+      "rb": "get"
+    },
+    "PATCH /v1/instances/{}/groups/{}": {
+      "resource": "groups",
+      "js": "update",
+      "py": "update",
+      "php": "update",
+      "params": [
+        "instanceId",
+        "groupId"
+      ],
+      "body": true,
+      "bodyRequired": false,
+      "query": [],
+      "go": "Update",
+      "goResource": "Groups",
+      "goBody": "UpdateGroupParams",
+      "goQuery": null,
+      "java": "update",
+      "cs": "UpdateAsync",
+      "rb": "update"
+    },
+    "POST /v1/instances/{}/groups/{}/participants": {
+      "resource": "groups",
+      "js": "updateParticipants",
+      "py": "update_participants",
+      "php": "updateParticipants",
+      "params": [
+        "instanceId",
+        "groupId"
+      ],
+      "body": true,
+      "bodyRequired": true,
+      "query": [],
+      "go": "UpdateParticipants",
+      "goResource": "Groups",
+      "goBody": "GroupParticipantsParams",
+      "goQuery": null,
+      "java": "updateParticipants",
+      "cs": "UpdateParticipantsAsync",
+      "rb": "update_participants"
+    },
+    "GET /v1/instances/{}/groups/{}/invite": {
+      "resource": "groups",
+      "js": "inviteLink",
+      "py": "invite_link",
+      "php": "inviteLink",
+      "params": [
+        "instanceId",
+        "groupId"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [],
+      "go": "InviteLink",
+      "goResource": "Groups",
+      "goBody": null,
+      "goQuery": null,
+      "java": "inviteLink",
+      "cs": "InviteLinkAsync",
+      "rb": "invite_link"
+    },
+    "POST /v1/instances/{}/groups/{}/invite/revoke": {
+      "resource": "groups",
+      "js": "revokeInvite",
+      "py": "revoke_invite",
+      "php": "revokeInvite",
+      "params": [
+        "instanceId",
+        "groupId"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [],
+      "go": "RevokeInvite",
+      "goResource": "Groups",
+      "goBody": null,
+      "goQuery": null,
+      "java": "revokeInvite",
+      "cs": "RevokeInviteAsync",
+      "rb": "revoke_invite"
+    },
+    "POST /v1/instances/{}/groups/{}/leave": {
+      "resource": "groups",
+      "js": "leave",
+      "py": "leave",
+      "php": "leave",
+      "params": [
+        "instanceId",
+        "groupId"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [],
+      "go": "Leave",
+      "goResource": "Groups",
+      "goBody": null,
+      "goQuery": null,
+      "java": "leave",
+      "cs": "LeaveAsync",
+      "rb": "leave"
+    }
+  },
+  "goTypes": {
+    "CreateInstanceParams": {
+      "name": {
+        "name": "Name",
+        "type": "string"
+      },
+      "externalId": {
+        "name": "ExternalID",
+        "type": "string"
+      },
+      "metadata": {
+        "name": "Metadata",
+        "type": "map[string]any"
+      }
+    },
+    "UpdateInstanceParams": {
+      "name": {
+        "name": "Name",
+        "type": "string"
+      },
+      "metadata": {
+        "name": "Metadata",
+        "type": "map[string]any"
+      }
+    },
+    "PairingCodeParams": {
+      "phone": {
+        "name": "Phone",
+        "type": "string"
+      }
+    },
+    "CreateWebhookParams": {
+      "instance_id": {
+        "name": "InstanceID",
+        "type": "*string"
+      },
+      "url": {
+        "name": "URL",
+        "type": "string"
+      },
+      "events": {
+        "name": "Events",
+        "type": "[]string"
+      },
+      "secret": {
+        "name": "Secret",
+        "type": "string"
+      }
+    },
+    "SendTextParams": {
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "text": {
+        "name": "Text",
+        "type": "string"
+      },
+      "linkPreview": {
+        "name": "LinkPreview",
+        "type": "*bool"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "SendMediaParams": {
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "mediaType": {
+        "name": "MediaType",
+        "type": "string"
+      },
+      "mediaUrl": {
+        "name": "MediaURL",
+        "type": "string"
+      },
+      "caption": {
+        "name": "Caption",
+        "type": "string"
+      },
+      "fileName": {
+        "name": "FileName",
+        "type": "string"
+      },
+      "viewOnce": {
+        "name": "ViewOnce",
+        "type": "*bool"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "ListRow": {
+      "rowId": {
+        "name": "RowID",
+        "type": "string"
+      },
+      "title": {
+        "name": "Title",
+        "type": "string"
+      },
+      "description": {
+        "name": "Description",
+        "type": "string"
+      }
+    },
+    "ListSection": {
+      "title": {
+        "name": "Title",
+        "type": "string"
+      },
+      "rows": {
+        "name": "Rows",
+        "type": "[]ListRow",
+        "item": "ListRow"
+      }
+    },
+    "SendListParams": {
+      "text": {
+        "name": "Text",
+        "type": "string"
+      },
+      "buttonText": {
+        "name": "ButtonText",
+        "type": "string"
+      },
+      "title": {
+        "name": "Title",
+        "type": "string"
+      },
+      "footer": {
+        "name": "Footer",
+        "type": "string"
+      },
+      "sections": {
+        "name": "Sections",
+        "type": "[]ListSection",
+        "item": "ListSection"
+      },
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "InteractiveButton": {
+      "type": {
+        "name": "Type",
+        "type": "string"
+      },
+      "displayText": {
+        "name": "DisplayText",
+        "type": "string"
+      },
+      "id": {
+        "name": "ID",
+        "type": "string"
+      },
+      "url": {
+        "name": "URL",
+        "type": "string"
+      },
+      "phoneNumber": {
+        "name": "PhoneNumber",
+        "type": "string"
+      },
+      "copyCode": {
+        "name": "CopyCode",
+        "type": "string"
+      }
+    },
+    "MediaRef": {
+      "url": {
+        "name": "URL",
+        "type": "string"
+      }
+    },
+    "SendInteractiveParams": {
+      "text": {
+        "name": "Text",
+        "type": "string"
+      },
+      "title": {
+        "name": "Title",
+        "type": "string"
+      },
+      "subtitle": {
+        "name": "Subtitle",
+        "type": "string"
+      },
+      "footer": {
+        "name": "Footer",
+        "type": "string"
+      },
+      "buttons": {
+        "name": "Buttons",
+        "type": "[]InteractiveButton",
+        "item": "InteractiveButton"
+      },
+      "image": {
+        "name": "Image",
+        "type": "*MediaRef",
+        "ref": "MediaRef"
+      },
+      "video": {
+        "name": "Video",
+        "type": "*MediaRef",
+        "ref": "MediaRef"
+      },
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "SendStickerParams": {
+      "stickerUrl": {
+        "name": "StickerURL",
+        "type": "string"
+      },
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "SendLocationParams": {
+      "latitude": {
+        "name": "Latitude",
+        "type": "float64"
+      },
+      "longitude": {
+        "name": "Longitude",
+        "type": "float64"
+      },
+      "name": {
+        "name": "Name",
+        "type": "string"
+      },
+      "address": {
+        "name": "Address",
+        "type": "string"
+      },
+      "live": {
+        "name": "Live",
+        "type": "*bool"
+      },
+      "caption": {
+        "name": "Caption",
+        "type": "string"
+      },
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "SendContactParams": {
+      "displayName": {
+        "name": "DisplayName",
+        "type": "string"
+      },
+      "vcard": {
+        "name": "Vcard",
+        "type": "string"
+      },
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "SendReactionParams": {
+      "messageId": {
+        "name": "MessageID",
+        "type": "string"
+      },
+      "emoji": {
+        "name": "Emoji",
+        "type": "string"
+      },
+      "fromMe": {
+        "name": "FromMe",
+        "type": "*bool"
+      },
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "SendPollParams": {
+      "name": {
+        "name": "Name",
+        "type": "string"
+      },
+      "options": {
+        "name": "Options",
+        "type": "[]string"
+      },
+      "selectableCount": {
+        "name": "SelectableCount",
+        "type": "*float64"
+      },
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "SendPixParams": {
+      "text": {
+        "name": "Text",
+        "type": "string"
+      },
+      "title": {
+        "name": "Title",
+        "type": "string"
+      },
+      "footer": {
+        "name": "Footer",
+        "type": "string"
+      },
+      "merchantName": {
+        "name": "MerchantName",
+        "type": "string"
+      },
+      "key": {
+        "name": "Key",
+        "type": "string"
+      },
+      "keyType": {
+        "name": "KeyType",
+        "type": "string"
+      },
+      "amount": {
+        "name": "Amount",
+        "type": "*float64"
+      },
+      "description": {
+        "name": "Description",
+        "type": "string"
+      },
+      "referenceId": {
+        "name": "ReferenceID",
+        "type": "string"
+      },
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "PaymentItem": {
+      "id": {
+        "name": "ID",
+        "type": "string"
+      },
+      "name": {
+        "name": "Name",
+        "type": "string"
+      },
+      "amount": {
+        "name": "Amount",
+        "type": "float64"
+      },
+      "quantity": {
+        "name": "Quantity",
+        "type": "*float64"
+      }
+    },
+    "SendPaymentParams": {
+      "text": {
+        "name": "Text",
+        "type": "string"
+      },
+      "currency": {
+        "name": "Currency",
+        "type": "string"
+      },
+      "referenceId": {
+        "name": "ReferenceID",
+        "type": "string"
+      },
+      "items": {
+        "name": "Items",
+        "type": "[]PaymentItem",
+        "item": "PaymentItem"
+      },
+      "note": {
+        "name": "Note",
+        "type": "string"
+      },
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "CarouselCard": {
+      "imageUrl": {
+        "name": "ImageURL",
+        "type": "string"
+      },
+      "videoUrl": {
+        "name": "VideoURL",
+        "type": "string"
+      },
+      "title": {
+        "name": "Title",
+        "type": "string"
+      },
+      "body": {
+        "name": "Body",
+        "type": "string"
+      },
+      "footer": {
+        "name": "Footer",
+        "type": "string"
+      },
+      "buttons": {
+        "name": "Buttons",
+        "type": "[]InteractiveButton",
+        "item": "InteractiveButton"
+      }
+    },
+    "SendCarouselParams": {
+      "text": {
+        "name": "Text",
+        "type": "string"
+      },
+      "title": {
+        "name": "Title",
+        "type": "string"
+      },
+      "subtitle": {
+        "name": "Subtitle",
+        "type": "string"
+      },
+      "footer": {
+        "name": "Footer",
+        "type": "string"
+      },
+      "cards": {
+        "name": "Cards",
+        "type": "[]CarouselCard",
+        "item": "CarouselCard"
+      },
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "AlbumItem": {
+      "type": {
+        "name": "Type",
+        "type": "string"
+      },
+      "url": {
+        "name": "URL",
+        "type": "string"
+      },
+      "caption": {
+        "name": "Caption",
+        "type": "string"
+      }
+    },
+    "SendAlbumParams": {
+      "items": {
+        "name": "Items",
+        "type": "[]AlbumItem",
+        "item": "AlbumItem"
+      },
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "EventLocation": {
+      "latitude": {
+        "name": "Latitude",
+        "type": "float64"
+      },
+      "longitude": {
+        "name": "Longitude",
+        "type": "float64"
+      },
+      "name": {
+        "name": "Name",
+        "type": "string"
+      }
+    },
+    "SendEventParams": {
+      "name": {
+        "name": "Name",
+        "type": "string"
+      },
+      "description": {
+        "name": "Description",
+        "type": "string"
+      },
+      "startTime": {
+        "name": "StartTime",
+        "type": "string"
+      },
+      "endTime": {
+        "name": "EndTime",
+        "type": "string"
+      },
+      "location": {
+        "name": "Location",
+        "type": "*EventLocation",
+        "ref": "EventLocation"
+      },
+      "call": {
+        "name": "Call",
+        "type": "string"
+      },
+      "extraGuestsAllowed": {
+        "name": "ExtraGuestsAllowed",
+        "type": "*bool"
+      },
+      "canceled": {
+        "name": "Canceled",
+        "type": "*bool"
+      },
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "SendGroupInviteParams": {
+      "groupJid": {
+        "name": "GroupJID",
+        "type": "string"
+      },
+      "inviteCode": {
+        "name": "InviteCode",
+        "type": "string"
+      },
+      "groupName": {
+        "name": "GroupName",
+        "type": "string"
+      },
+      "caption": {
+        "name": "Caption",
+        "type": "string"
+      },
+      "expiration": {
+        "name": "Expiration",
+        "type": "*float64"
+      },
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "SendRequestPhoneParams": {
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "SendSharePhoneParams": {
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "SendProductParams": {
+      "imageUrl": {
+        "name": "ImageURL",
+        "type": "string"
+      },
+      "productId": {
+        "name": "ProductID",
+        "type": "string"
+      },
+      "title": {
+        "name": "Title",
+        "type": "string"
+      },
+      "description": {
+        "name": "Description",
+        "type": "string"
+      },
+      "price": {
+        "name": "Price",
+        "type": "float64"
+      },
+      "salePrice": {
+        "name": "SalePrice",
+        "type": "*float64"
+      },
+      "currency": {
+        "name": "Currency",
+        "type": "string"
+      },
+      "retailerId": {
+        "name": "RetailerID",
+        "type": "string"
+      },
+      "url": {
+        "name": "URL",
+        "type": "string"
+      },
+      "businessOwnerJid": {
+        "name": "BusinessOwnerJID",
+        "type": "string"
+      },
+      "text": {
+        "name": "Text",
+        "type": "string"
+      },
+      "footer": {
+        "name": "Footer",
+        "type": "string"
+      },
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "SendOrderParams": {
+      "orderId": {
+        "name": "OrderID",
+        "type": "string"
+      },
+      "token": {
+        "name": "Token",
+        "type": "string"
+      },
+      "sellerJid": {
+        "name": "SellerJID",
+        "type": "string"
+      },
+      "title": {
+        "name": "Title",
+        "type": "string"
+      },
+      "text": {
+        "name": "Text",
+        "type": "string"
+      },
+      "itemCount": {
+        "name": "ItemCount",
+        "type": "*float64"
+      },
+      "total": {
+        "name": "Total",
+        "type": "*float64"
+      },
+      "currency": {
+        "name": "Currency",
+        "type": "string"
+      },
+      "status": {
+        "name": "Status",
+        "type": "string"
+      },
+      "thumbnailUrl": {
+        "name": "ThumbnailURL",
+        "type": "string"
+      },
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "CollectionRef": {
+      "bizJid": {
+        "name": "BizJID",
+        "type": "string"
+      },
+      "id": {
+        "name": "ID",
+        "type": "string"
+      },
+      "version": {
+        "name": "Version",
+        "type": "*float64"
+      }
+    },
+    "SendCatalogParams": {
+      "text": {
+        "name": "Text",
+        "type": "string"
+      },
+      "title": {
+        "name": "Title",
+        "type": "string"
+      },
+      "subtitle": {
+        "name": "Subtitle",
+        "type": "string"
+      },
+      "footer": {
+        "name": "Footer",
+        "type": "string"
+      },
+      "imageUrl": {
+        "name": "ImageURL",
+        "type": "string"
+      },
+      "shopId": {
+        "name": "ShopID",
+        "type": "string"
+      },
+      "surface": {
+        "name": "Surface",
+        "type": "*float64"
+      },
+      "collection": {
+        "name": "Collection",
+        "type": "*CollectionRef",
+        "ref": "CollectionRef"
+      },
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "SendForwardParams": {
+      "messageId": {
+        "name": "MessageID",
+        "type": "string"
+      },
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "SendPinParams": {
+      "messageId": {
+        "name": "MessageID",
+        "type": "string"
+      },
+      "duration": {
+        "name": "Duration",
+        "type": "string"
+      },
+      "unpin": {
+        "name": "Unpin",
+        "type": "*bool"
+      },
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      },
+      "replyTo": {
+        "name": "ReplyTo",
+        "type": "string"
+      },
+      "mentions": {
+        "name": "Mentions",
+        "type": "[]string"
+      }
+    },
+    "SendStatusParams": {
+      "type": {
+        "name": "Type",
+        "type": "string"
+      },
+      "text": {
+        "name": "Text",
+        "type": "string"
+      },
+      "url": {
+        "name": "URL",
+        "type": "string"
+      },
+      "caption": {
+        "name": "Caption",
+        "type": "string"
+      },
+      "backgroundColor": {
+        "name": "BackgroundColor",
+        "type": "string"
+      },
+      "font": {
+        "name": "Font",
+        "type": "*float64"
+      },
+      "audience": {
+        "name": "Audience",
+        "type": "[]string"
+      },
+      "clientMessageId": {
+        "name": "ClientMessageID",
+        "type": "string"
+      }
+    },
+    "EditMessageParams": {
+      "text": {
+        "name": "Text",
+        "type": "string"
+      }
+    },
+    "MarkReadParams": {
+      "chatId": {
+        "name": "ChatID",
+        "type": "string"
+      },
+      "messageIds": {
+        "name": "MessageIDs",
+        "type": "[]string"
+      },
+      "participant": {
+        "name": "Participant",
+        "type": "string"
+      }
+    },
+    "PresenceParams": {
+      "to": {
+        "name": "To",
+        "type": "string"
+      },
+      "presence": {
+        "name": "Presence",
+        "type": "string"
+      }
+    },
+    "CreateGroupParams": {
+      "subject": {
+        "name": "Subject",
+        "type": "string"
+      },
+      "participants": {
+        "name": "Participants",
+        "type": "[]string"
+      }
+    },
+    "JoinGroupParams": {
+      "code": {
+        "name": "Code",
+        "type": "string"
+      }
+    },
+    "UpdateGroupParams": {
+      "subject": {
+        "name": "Subject",
+        "type": "string"
+      },
+      "description": {
+        "name": "Description",
+        "type": "*string"
+      },
+      "announce": {
+        "name": "Announce",
+        "type": "*bool"
+      },
+      "locked": {
+        "name": "Locked",
+        "type": "*bool"
+      },
+      "ephemeralSeconds": {
+        "name": "EphemeralSeconds",
+        "type": "*int"
+      },
+      "pictureUrl": {
+        "name": "PictureURL",
+        "type": "string"
+      }
+    },
+    "GroupParticipantsParams": {
+      "action": {
+        "name": "Action",
+        "type": "string"
+      },
+      "participants": {
+        "name": "Participants",
+        "type": "[]string"
+      }
+    }
   }
 }
