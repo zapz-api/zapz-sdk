@@ -168,6 +168,10 @@ class MessagesResource:
         """List sent messages (``GET /v1/instances/{id}/messages``)."""
         return self._client.request("GET", f"/instances/{_q(instance_id)}/messages", query={"limit": limit}, timeout=timeout)
 
+    def list_received(self, instance_id: str, *, limit: Optional[int] = None, before: Optional[str] = None, since: Optional[str] = None, chat: Optional[str] = None, q: Optional[str] = None, timeout: Optional[float] = None) -> Any:
+        """List received messages (newest first) (``GET /v1/instances/{id}/messages/received``)."""
+        return self._client.request("GET", f"/instances/{_q(instance_id)}/messages/received", query={"limit": limit, "before": before, "since": since, "chat": chat, "q": q}, timeout=timeout)
+
     def get(self, instance_id: str, message_id: str, *, timeout: Optional[float] = None) -> "Message":
         """Get a message and its status (``GET /v1/instances/{id}/messages/{messageId}``)."""
         return self._client.request("GET", f"/instances/{_q(instance_id)}/messages/{_q(message_id)}", timeout=timeout)

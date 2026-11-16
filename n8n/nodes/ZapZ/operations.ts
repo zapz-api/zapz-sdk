@@ -939,6 +939,29 @@ export const OPERATIONS: ZapZOperation[] = [
   },
   {
     "resource": "messages",
+    "operation": "listReceived",
+    "name": "List received messages (newest first)",
+    "method": "GET",
+    "path": "/instances/{id}/messages/received",
+    "pathParams": [
+      {
+        "name": "id",
+        "arg": "instanceId"
+      }
+    ],
+    "query": [
+      "limit",
+      "before",
+      "since",
+      "chat",
+      "q"
+    ],
+    "body": false,
+    "bodyExample": null,
+    "autoClientMessageId": false
+  },
+  {
+    "resource": "messages",
     "operation": "get",
     "name": "Get a message and its status",
     "method": "GET",

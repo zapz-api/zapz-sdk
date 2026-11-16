@@ -1154,6 +1154,54 @@
           }
         },
         {
+          "name": "List received messages (newest first)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/messages/received?limit=&before=&since=&chat=&q=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "messages",
+                "received"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "before",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "since",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "chat",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "q",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "List received messages (newest first)"
+          }
+        },
+        {
           "name": "Get a message and its status",
           "request": {
             "method": "GET",

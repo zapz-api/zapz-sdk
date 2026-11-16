@@ -876,6 +876,55 @@
       "cs": "ListAsync",
       "rb": "list"
     },
+    "GET /v1/instances/{}/messages/received": {
+      "resource": "messages",
+      "js": "listReceived",
+      "py": "list_received",
+      "php": "listReceived",
+      "params": [
+        "instanceId"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [
+        "limit",
+        "before",
+        "since",
+        "chat",
+        "q"
+      ],
+      "go": "ListReceived",
+      "goResource": "Messages",
+      "goBody": null,
+      "goQuery": {
+        "type": "ListReceivedQuery",
+        "fields": {
+          "limit": {
+            "name": "Limit",
+            "type": "*int"
+          },
+          "before": {
+            "name": "Before",
+            "type": "string"
+          },
+          "since": {
+            "name": "Since",
+            "type": "string"
+          },
+          "chat": {
+            "name": "Chat",
+            "type": "string"
+          },
+          "q": {
+            "name": "Q",
+            "type": "string"
+          }
+        }
+      },
+      "java": "listReceived",
+      "cs": "ListReceivedAsync",
+      "rb": "list_received"
+    },
     "GET /v1/instances/{}/messages/{}": {
       "resource": "messages",
       "js": "get",

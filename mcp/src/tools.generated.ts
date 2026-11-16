@@ -3273,6 +3273,70 @@ export const TOOLS: ToolDef[] = [
     }
   },
   {
+    "name": "messages_list_received",
+    "description": "List received messages (newest first). (GET /v1/instances/{id}/messages/received)",
+    "method": "GET",
+    "path": "/instances/{id}/messages/received",
+    "pathParams": [
+      {
+        "name": "id",
+        "arg": "instance_id"
+      }
+    ],
+    "query": [
+      "limit",
+      "before",
+      "since",
+      "chat",
+      "q"
+    ],
+    "bodyKeys": null,
+    "autoClientMessageId": false,
+    "annotations": {
+      "title": "List received messages (newest first)",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    },
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "instance_id": {
+          "type": "string",
+          "description": "Instance id (from instances_list)"
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "before": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Pagination cursor: pass nextBefore from the previous page"
+        },
+        "since": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Only messages received at or after this time"
+        },
+        "chat": {
+          "type": "string",
+          "description": "Only this conversation: phone number (digits) or group JID (…@g.us)"
+        },
+        "q": {
+          "type": "string",
+          "description": "Text search in the message content"
+        }
+      },
+      "required": [
+        "instance_id"
+      ],
+      "additionalProperties": false
+    }
+  },
+  {
     "name": "messages_get",
     "description": "Get a message and its status. (GET /v1/instances/{id}/messages/{messageId})",
     "method": "GET",

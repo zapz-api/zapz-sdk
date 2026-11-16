@@ -423,6 +423,46 @@ func (q *ListMessagesQuery) values() url.Values {
 	return v
 }
 
+// ListReceived: List received messages (newest first) (GET /v1/instances/{id}/messages/received).
+func (s *MessagesService) ListReceived(ctx context.Context, instanceId string, query *ListReceivedQuery) (any, error) {
+	var q url.Values
+	if query != nil {
+		q = query.values()
+	}
+	var out any
+	err := s.c.do(ctx, "GET", "/instances/"+url.PathEscape(instanceId)+"/messages/received", q, nil, &out)
+	return out, err
+}
+
+// ListReceivedQuery holds the optional query parameters of ListReceived.
+type ListReceivedQuery struct {
+	Limit  *int
+	Before string
+	Since  string
+	Chat   string
+	Q      string
+}
+
+func (q *ListReceivedQuery) values() url.Values {
+	v := url.Values{}
+	if q.Limit != nil {
+		v.Set("limit", fmtAny(*q.Limit))
+	}
+	if q.Before != "" {
+		v.Set("before", q.Before)
+	}
+	if q.Since != "" {
+		v.Set("since", q.Since)
+	}
+	if q.Chat != "" {
+		v.Set("chat", q.Chat)
+	}
+	if q.Q != "" {
+		v.Set("q", q.Q)
+	}
+	return v
+}
+
 // Get: Get a message and its status (GET /v1/instances/{id}/messages/{messageId}).
 func (s *MessagesService) Get(ctx context.Context, instanceId string, messageId string) (*Message, error) {
 	out := new(Message)

@@ -233,6 +233,18 @@ public final class MessagesResource {
     }
 
     /**
+     * List received messages (newest first) (GET /v1/instances/{id}/messages/received).
+     * <p>Query: limit, before, since, chat, q</p>
+     */
+    public Object listReceived(String instanceId, Map<String, Object> query) {
+        return client.request("GET", "/instances/" + ZapZ.encode(instanceId) + "/messages/received", null, query, false);
+    }
+
+    public Object listReceived(String instanceId) {
+        return listReceived(instanceId, null);
+    }
+
+    /**
      * Get a message and its status (GET /v1/instances/{id}/messages/{messageId}).
      */
     @SuppressWarnings("unchecked")

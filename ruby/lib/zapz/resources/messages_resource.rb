@@ -326,6 +326,11 @@ module ZapZ
       @client.request(:get, "/instances/#{ZapZ.escape(instance_id)}/messages", body: nil, query: {limit: limit}, auto_client_message_id: false)
     end
 
+    # List received messages (newest first) (+GET /v1/instances/{id}/messages/received+).
+    def list_received(instance_id, limit: nil, before: nil, since: nil, chat: nil, q: nil)
+      @client.request(:get, "/instances/#{ZapZ.escape(instance_id)}/messages/received", body: nil, query: {limit: limit, before: before, since: since, chat: chat, q: q}, auto_client_message_id: false)
+    end
+
     # Get a message and its status (+GET /v1/instances/{id}/messages/{messageId}+).
     def get(instance_id, message_id)
       @client.request(:get, "/instances/#{ZapZ.escape(instance_id)}/messages/#{ZapZ.escape(message_id)}", body: nil, query: nil, auto_client_message_id: false)

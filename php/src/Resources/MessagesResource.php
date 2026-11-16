@@ -328,6 +328,19 @@ final class MessagesResource
     }
 
     /**
+     * List received messages (newest first) (`GET /v1/instances/{id}/messages/received`)
+     *
+     * @param string $instanceId
+     * @param array{limit?: int, before?: string, since?: string, chat?: string, q?: string} $query
+     * @param array{timeout?: float} $options
+     * @return array<string, mixed>|list<mixed>
+     */
+    public function listReceived(string $instanceId, array $query = [], array $options = []): array
+    {
+        return $this->client->request('GET', '/instances/' . rawurlencode($instanceId) . '/messages/received', null, $query, $options, false);
+    }
+
+    /**
      * Get a message and its status (`GET /v1/instances/{id}/messages/{messageId}`)
      *
      * @param string $instanceId

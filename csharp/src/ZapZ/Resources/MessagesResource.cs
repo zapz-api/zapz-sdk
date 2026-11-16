@@ -133,6 +133,10 @@ public sealed class MessagesResource
     public Task<JsonElement> ListAsync(string instanceId, IDictionary<string, object?>? query = null, CancellationToken cancellationToken = default)
         => _client.RequestAsync("GET", "/instances/" + ZapZClient.Encode(instanceId) + "/messages", null, query, false, cancellationToken);
 
+    /// <summary>List received messages (newest first) (GET /v1/instances/{id}/messages/received).</summary>
+    public Task<JsonElement> ListReceivedAsync(string instanceId, IDictionary<string, object?>? query = null, CancellationToken cancellationToken = default)
+        => _client.RequestAsync("GET", "/instances/" + ZapZClient.Encode(instanceId) + "/messages/received", null, query, false, cancellationToken);
+
     /// <summary>Get a message and its status (GET /v1/instances/{id}/messages/{messageId}).</summary>
     public Task<JsonElement> GetAsync(string instanceId, string messageId, CancellationToken cancellationToken = default)
         => _client.RequestAsync("GET", "/instances/" + ZapZClient.Encode(instanceId) + "/messages/" + ZapZClient.Encode(messageId), null, null, false, cancellationToken);

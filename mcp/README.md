@@ -2,7 +2,7 @@
 
 Servidor MCP (Model Context Protocol) da ZapZ: deixa assistentes de IA (Claude, Cursor, ChatGPT e outros clientes MCP) enviarem mensagens de WhatsApp e gerenciarem instâncias, contatos, grupos e webhooks.
 
-- 65 ferramentas geradas de `openapi.json` (`instances_list`, `messages_send_text`, `groups_update_participants`…), com JSON Schema dos parâmetros e anotações (`readOnlyHint`, `destructiveHint`) para o cliente pedir confirmação antes do que altera ou apaga.
+- 66 ferramentas geradas de `openapi.json` (`instances_list`, `messages_send_text`, `groups_update_participants`…), com JSON Schema dos parâmetros e anotações (`readOnlyHint`, `destructiveHint`) para o cliente pedir confirmação antes do que altera ou apaga.
 - `clientMessageId` gerado em cada envio: repetir uma chamada nunca manda a mensagem duas vezes.
 - `--read-only`: só as ferramentas de leitura.
 - Com chave `sk_test_` tudo roda no sandbox.

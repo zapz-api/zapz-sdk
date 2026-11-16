@@ -46,6 +46,7 @@ METHODS = {
     "forwardMessage": "forward",
     "pinMessage": "pin",
     "listMessages": "list",
+    "listReceivedMessages": "listReceived",
     "getMessage": "get",
     "editMessage": "edit",
     "deleteMessage": "delete",

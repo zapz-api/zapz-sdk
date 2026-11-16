@@ -223,6 +223,11 @@ export class MessagesResource {
     return this.client.request({ method: 'GET', path: `/instances/${encodeURIComponent(instanceId)}/messages`, query }, options);
   }
 
+  /** List received messages (newest first) (`GET /v1/instances/{id}/messages/received`) */
+  listReceived(instanceId: string, query?: { limit?: number; before?: string; since?: string; chat?: string; q?: string }, options?: RequestOptions): Promise<any> {
+    return this.client.request({ method: 'GET', path: `/instances/${encodeURIComponent(instanceId)}/messages/received`, query }, options);
+  }
+
   /** Get a message and its status (`GET /v1/instances/{id}/messages/{messageId}`) */
   get(instanceId: string, messageId: string, options?: RequestOptions): Promise<Message> {
     return this.client.request({ method: 'GET', path: `/instances/${encodeURIComponent(instanceId)}/messages/${encodeURIComponent(messageId)}` }, options);

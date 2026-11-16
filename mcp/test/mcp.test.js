@@ -20,7 +20,7 @@ async function stdioClient(extraArgs = []) {
 test('stdio: lists tools with schemas and annotations', { skip: !live && 'set ZAPZ_API_KEY' }, async () => {
   const client = await stdioClient();
   const { tools } = await client.listTools();
-  assert.equal(tools.length, 65);
+  assert.equal(tools.length, 66);
   const send = tools.find((t) => t.name === 'messages_send_text');
   assert.deepEqual(send.inputSchema.required.sort(), ['instance_id', 'text', 'to']);
   assert.equal(tools.find((t) => t.name === 'instances_delete').annotations.destructiveHint, true);
@@ -66,7 +66,7 @@ test('http: key per request, 401 without it', { skip: !live && 'set ZAPZ_API_KEY
       requestInit: { headers: { Authorization: `Bearer ${process.env.ZAPZ_API_KEY}` } },
     }));
     const { tools } = await client.listTools();
-    assert.equal(tools.length, 65);
+    assert.equal(tools.length, 66);
     const list = await client.callTool({ name: 'instances_list', arguments: {} });
     assert.ok(!list.isError, text(list));
     await client.close();
