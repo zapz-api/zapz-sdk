@@ -11,6 +11,8 @@ const MAX_RESULT_CHARS = 60_000;
 export interface ZapZMcpOptions {
   apiKey: string;
   baseUrl?: string;
+  /** Used instead of baseUrl for sk_test_ keys (separate sandbox deployment). */
+  sandboxBaseUrl?: string;
   /** Expose only read-only tools (no sends, no changes). */
   readOnly?: boolean;
   fetch?: typeof fetch;
@@ -30,7 +32,8 @@ function visibleTools(readOnly: boolean): ToolDef[] {
 
 /** One MCP server bound to one API key. */
 export function createZapZServer(opts: ZapZMcpOptions): Server {
-  const baseUrl = (opts.baseUrl || DEFAULT_BASE_URL).replace(/\/+$/, '').replace(/\/v1$/, '');
+  const sandbox = opts.apiKey.startsWith('sk_test_');
+  const baseUrl = ((sandbox && opts.sandboxBaseUrl) || opts.baseUrl || DEFAULT_BASE_URL).replace(/\/+$/, '').replace(/\/v1$/, '');
   const doFetch = opts.fetch ?? fetch;
   const tools = visibleTools(!!opts.readOnly);
   const byName = new Map(tools.map((t) => [t.name, t]));

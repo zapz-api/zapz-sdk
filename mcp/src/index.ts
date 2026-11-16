@@ -19,12 +19,15 @@ if (flag('--help') || flag('-h')) {
 
 Options / environment:
   --read-only   | ZAPZ_MCP_READ_ONLY=true   only tools that read (no sends or changes)
-  --base-url U  | ZAPZ_BASE_URL             API URL (sandbox URL with sk_test_ keys)
+  --base-url U  | ZAPZ_BASE_URL             API URL
+  --sandbox-base-url U | ZAPZ_SANDBOX_BASE_URL  API URL for sk_test_ keys, when the sandbox runs apart
 `);
   process.exit(0);
 }
 
 const baseUrl = value('--base-url') ?? process.env.ZAPZ_BASE_URL;
+// separate sandbox deployment: sk_test_ keys go here (otherwise to baseUrl)
+const sandboxBaseUrl = value('--sandbox-base-url') ?? process.env.ZAPZ_SANDBOX_BASE_URL;
 const readOnly = flag('--read-only') || /^(1|true|yes)$/i.test(process.env.ZAPZ_MCP_READ_ONLY ?? '');
 
 if (flag('--http')) {
@@ -51,7 +54,7 @@ if (flag('--http')) {
       res.writeHead(405, { Allow: 'POST' }).end();
       return;
     }
-    const server = createZapZServer({ apiKey, baseUrl, readOnly });
+    const server = createZapZServer({ apiKey, baseUrl, sandboxBaseUrl, readOnly });
     const transport = new StreamableHTTPServerTransport({ sessionIdGenerator: undefined, enableJsonResponse: true });
     res.on('close', () => {
       void transport.close();
@@ -71,6 +74,6 @@ if (flag('--http')) {
     process.stderr.write('zapz-mcp: set ZAPZ_API_KEY (sk_live_... or sk_test_...)\n');
     process.exit(1);
   }
-  const server = createZapZServer({ apiKey, baseUrl, readOnly });
+  const server = createZapZServer({ apiKey, baseUrl, sandboxBaseUrl, readOnly });
   await server.connect(new StdioServerTransport());
 }
