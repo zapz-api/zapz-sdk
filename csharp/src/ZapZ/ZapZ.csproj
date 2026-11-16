@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>ZapZ</RootNamespace>
+    <PackageId>ZapZ</PackageId>
+    <Version>0.1.0</Version>
+    <Description>Official .NET SDK for the ZapZ WhatsApp API</Description>
+    <PackageTags>whatsapp;api;zapz;sdk</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>CS1591;CS1573</NoWarn>
+  </PropertyGroup>
+</Project>

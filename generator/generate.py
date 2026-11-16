@@ -113,8 +113,30 @@ def ref_name(ref: str) -> str:
     return ref.split("/")[-1]
 
 
+def inline_empty_schemas(data: dict) -> dict:
+    """Entities without described fields (Instance, WebhookSubscription...) become plain objects,
+    so the SDKs type them as maps instead of empty classes nobody can read fields from."""
+    schemas = data.get("components", {}).get("schemas", {})
+    empty = {n for n, sc in schemas.items() if sc.get("type") == "object" and not sc.get("properties")}
+
+    def walk(v):
+        if isinstance(v, dict):
+            if "$ref" in v and v["$ref"].split("/")[-1] in empty:
+                return {"type": "object"}
+            return {k: walk(x) for k, x in v.items()}
+        if isinstance(v, list):
+            return [walk(x) for x in v]
+        return v
+
+    data = walk(data)
+    for n in empty:
+        data["components"]["schemas"].pop(n, None)
+    return data
+
+
 class Spec:
     def __init__(self, data: dict):
+        data = inline_empty_schemas(data)
         self.data = data
         self.schemas: dict = data.get("components", {}).get("schemas", {})
         self.ops = self._ops()
@@ -210,7 +232,7 @@ def ts_type(spec: Spec, s: dict | None) -> str:
         if s.get("properties"):
             t = ts_inline_object(spec, s)
         else:
-            t = "Record<string, unknown>"
+            t = "Record<string, any>"
     elif s.get("type") in ("integer", "number"):
         t = "number"
     elif s.get("type") == "boolean":
@@ -539,6 +561,16 @@ def main() -> None:
     gen_ts(spec)
     gen_py(spec)
     gen_php(spec)
+    sys.path.insert(0, str(Path(__file__).parent))
+    from gen_go import gen_go
+    gen_go(spec, ROOT)
+    from gen_jvm import gen_csharp, gen_java, gen_ruby
+    gen_java(spec, ROOT)
+    gen_csharp(spec, ROOT)
+    gen_ruby(spec, ROOT)
+    from gen_extras import gen_n8n, gen_postman
+    gen_postman(spec, ROOT)
+    gen_n8n(spec, ROOT)
     targets = [ROOT / "sdk-map.json"]
     if "--web" in sys.argv:
         targets.append(Path(sys.argv[sys.argv.index("--web") + 1]))

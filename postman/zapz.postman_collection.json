@@ -1,0 +1,2020 @@
+{
+  "info": {
+    "name": "ZapZ API",
+    "description": "WhatsApp API com proteção anti-bloqueio. Preencha as variáveis da coleção: baseUrl, apiKey e instanceId. Gerado de openapi.json.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{apiKey}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.zapz.com"
+    },
+    {
+      "key": "apiKey",
+      "value": "sk_test_..."
+    },
+    {
+      "key": "instanceId",
+      "value": ""
+    },
+    {
+      "key": "messageId",
+      "value": ""
+    },
+    {
+      "key": "groupId",
+      "value": ""
+    },
+    {
+      "key": "jid",
+      "value": ""
+    },
+    {
+      "key": "webhookId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Instances",
+      "item": [
+        {
+          "name": "List instances",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances?externalId=&status=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances"
+              ],
+              "query": [
+                {
+                  "key": "externalId",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "status",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "List instances"
+          }
+        },
+        {
+          "name": "Create an instance",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances"
+              ]
+            },
+            "description": "Create an instance",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Atendimento\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get an instance",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}"
+              ]
+            },
+            "description": "Get an instance"
+          }
+        },
+        {
+          "name": "Rename or update an instance",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}"
+              ]
+            },
+            "description": "Rename or update an instance",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete an instance",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}"
+              ]
+            },
+            "description": "Delete an instance"
+          }
+        },
+        {
+          "name": "Connection status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "status"
+              ]
+            },
+            "description": "Connection status"
+          }
+        },
+        {
+          "name": "QR code to pair the phone",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/qr",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "qr"
+              ]
+            },
+            "description": "QR code to pair the phone"
+          }
+        },
+        {
+          "name": "Pair with a code instead of QR",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/pairing-code",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "pairing-code"
+              ]
+            },
+            "description": "Pair with a code instead of QR",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\": \"5511999999999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Log out and clear the session",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/session/clear",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "session",
+                "clear"
+              ]
+            },
+            "description": "Log out and clear the session"
+          }
+        },
+        {
+          "name": "Sending health and anti-ban state",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "health"
+              ]
+            },
+            "description": "Sending health and anti-ban state"
+          }
+        },
+        {
+          "name": "Reconnect the session",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/resume",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "resume"
+              ]
+            },
+            "description": "Reconnect the session"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Messages",
+      "item": [
+        {
+          "name": "Send text",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/text",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "text"
+              ]
+            },
+            "description": "Send text",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"to\": \"5511999999999\",\n  \"text\": \"Olá! Mensagem enviada pela ZapZ.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Send image, video, audio or document",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/media",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "media"
+              ]
+            },
+            "description": "Send image, video, audio or document",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"to\": \"5511999999999\",\n  \"mediaType\": \"image\",\n  \"mediaUrl\": \"https://exemplo.com/imagem.jpg\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Send a list menu",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/list",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "list"
+              ]
+            },
+            "description": "Send a list menu",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Olá! Mensagem enviada pela ZapZ.\",\n  \"buttonText\": \"Ver opções\",\n  \"sections\": [\n    {\n      \"rows\": []\n    }\n  ],\n  \"to\": \"5511999999999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Send buttons",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/interactive",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "interactive"
+              ]
+            },
+            "description": "Send buttons",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Olá! Mensagem enviada pela ZapZ.\",\n  \"buttons\": [\n    {\n      \"type\": \"quick_reply\",\n      \"displayText\": \"Abrir\"\n    }\n  ],\n  \"to\": \"5511999999999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Send a sticker",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/sticker",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "sticker"
+              ]
+            },
+            "description": "Send a sticker",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"stickerUrl\": \"https://exemplo.com/sticker.webp\",\n  \"to\": \"5511999999999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Send a location",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/location",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "location"
+              ]
+            },
+            "description": "Send a location",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"latitude\": 0,\n  \"longitude\": 0,\n  \"to\": \"5511999999999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Send a contact card",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/contact",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "contact"
+              ]
+            },
+            "description": "Send a contact card",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"displayName\": \"displayName\",\n  \"vcard\": \"vcard\",\n  \"to\": \"5511999999999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "React to a message",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/reaction",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "reaction"
+              ]
+            },
+            "description": "React to a message",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"messageId\": \"MESSAGE_ID\",\n  \"emoji\": \"👍\",\n  \"to\": \"5511999999999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Send a poll",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/poll",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "poll"
+              ]
+            },
+            "description": "Send a poll",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Atendimento\",\n  \"options\": [\n    \"option\"\n  ],\n  \"to\": \"5511999999999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Send a Pix charge",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/pix",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "pix"
+              ]
+            },
+            "description": "Send a Pix charge",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"merchantName\": \"merchantName\",\n  \"key\": \"key\",\n  \"keyType\": \"CPF\",\n  \"to\": \"5511999999999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Send a payment request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/payment",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "payment"
+              ]
+            },
+            "description": "Send a payment request",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"referenceId\": \"referenceId\",\n  \"items\": [\n    {\n      \"name\": \"Atendimento\",\n      \"amount\": 0\n    }\n  ],\n  \"to\": \"5511999999999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Send a carousel",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/carousel",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "carousel"
+              ]
+            },
+            "description": "Send a carousel",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Olá! Mensagem enviada pela ZapZ.\",\n  \"cards\": [\n    {\n      \"title\": \"Título\",\n      \"body\": \"body\",\n      \"buttons\": []\n    }\n  ],\n  \"to\": \"5511999999999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Send an album",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/album",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "album"
+              ]
+            },
+            "description": "Send an album",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    {\n      \"type\": \"image\",\n      \"url\": \"https://exemplo.com/webhook\"\n    }\n  ],\n  \"to\": \"5511999999999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Send an event invite",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/event",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "event"
+              ]
+            },
+            "description": "Send an event invite",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Atendimento\",\n  \"startTime\": \"startTime\",\n  \"to\": \"5511999999999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Send a group invite card",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/group-invite",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "group-invite"
+              ]
+            },
+            "description": "Send a group invite card",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"groupJid\": \"5511999999999@s.whatsapp.net\",\n  \"inviteCode\": \"inviteCode\",\n  \"groupName\": \"groupName\",\n  \"to\": \"5511999999999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Ask for the phone number",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/request-phone",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "request-phone"
+              ]
+            },
+            "description": "Ask for the phone number",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"to\": \"5511999999999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Share your phone number",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/share-phone",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "share-phone"
+              ]
+            },
+            "description": "Share your phone number",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"to\": \"5511999999999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Send a catalog product",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/product",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "product"
+              ]
+            },
+            "description": "Send a catalog product",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"imageUrl\": \"https://exemplo.com/imagem.jpg\",\n  \"productId\": \"productId\",\n  \"title\": \"Título\",\n  \"price\": 0,\n  \"businessOwnerJid\": \"5511999999999@s.whatsapp.net\",\n  \"to\": \"5511999999999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Send an order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/order",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "order"
+              ]
+            },
+            "description": "Send an order",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"orderId\",\n  \"token\": \"token\",\n  \"sellerJid\": \"5511999999999@s.whatsapp.net\",\n  \"to\": \"5511999999999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Send the catalog link",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/catalog",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "catalog"
+              ]
+            },
+            "description": "Send the catalog link",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"to\": \"5511999999999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Forward a message",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/forward",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "forward"
+              ]
+            },
+            "description": "Forward a message",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"messageId\": \"MESSAGE_ID\",\n  \"to\": \"5511999999999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Pin or unpin a message",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/pin",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "pin"
+              ]
+            },
+            "description": "Pin or unpin a message",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"messageId\": \"MESSAGE_ID\",\n  \"to\": \"5511999999999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Post a status (story)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/send/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "send",
+                "status"
+              ]
+            },
+            "description": "Post a status (story)",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"text\",\n  \"audience\": [\n    \"audience\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "List sent messages",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/messages?limit=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "messages"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "List sent messages"
+          }
+        },
+        {
+          "name": "Get a message and its status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/messages/{{messageId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "messages",
+                "{{messageId}}"
+              ]
+            },
+            "description": "Get a message and its status"
+          }
+        },
+        {
+          "name": "Edit a sent message",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/messages/{{messageId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "messages",
+                "{{messageId}}"
+              ]
+            },
+            "description": "Edit a sent message",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Olá! Mensagem enviada pela ZapZ.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete a message for everyone",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/messages/{{messageId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "messages",
+                "{{messageId}}"
+              ]
+            },
+            "description": "Delete a message for everyone"
+          }
+        },
+        {
+          "name": "Mark messages as read",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/messages/read",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "messages",
+                "read"
+              ]
+            },
+            "description": "Mark messages as read",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"chatId\": \"chatId\",\n  \"messageIds\": [\n    \"MESSAGE_ID\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Typing / recording / online",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/presence",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "presence"
+              ]
+            },
+            "description": "Typing / recording / online",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"to\": \"5511999999999\",\n  \"presence\": \"composing\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Contacts",
+      "item": [
+        {
+          "name": "List contacts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/contacts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "contacts"
+              ]
+            },
+            "description": "List contacts"
+          }
+        },
+        {
+          "name": "Update a contact",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/contacts/{{jid}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "contacts",
+                "{{jid}}"
+              ]
+            },
+            "description": "Update a contact",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete a contact",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/contacts/{{jid}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "contacts",
+                "{{jid}}"
+              ]
+            },
+            "description": "Delete a contact"
+          }
+        },
+        {
+          "name": "Check which numbers have WhatsApp",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/contacts/check-phones",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "contacts",
+                "check-phones"
+              ]
+            },
+            "description": "Check which numbers have WhatsApp",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phones\": [\n    \"5511999999999\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Profile picture URL",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/contacts/{{jid}}/profile-picture",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "contacts",
+                "{{jid}}",
+                "profile-picture"
+              ]
+            },
+            "description": "Profile picture URL"
+          }
+        },
+        {
+          "name": "Contact \"about\" text",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/contacts/{{jid}}/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "contacts",
+                "{{jid}}",
+                "status"
+              ]
+            },
+            "description": "Contact \"about\" text"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Groups",
+      "item": [
+        {
+          "name": "List groups",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/groups?participants=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "groups"
+              ],
+              "query": [
+                {
+                  "key": "participants",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "List groups"
+          }
+        },
+        {
+          "name": "Create a group",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/groups",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "groups"
+              ]
+            },
+            "description": "Create a group",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Grupo de clientes\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Preview a group from an invite code",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/groups/invite-info?code=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "groups",
+                "invite-info"
+              ],
+              "query": [
+                {
+                  "key": "code",
+                  "value": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "description": "Preview a group from an invite code"
+          }
+        },
+        {
+          "name": "Join with an invite code",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/groups/join",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "groups",
+                "join"
+              ]
+            },
+            "description": "Join with an invite code",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"CODIGO_DO_CONVITE\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get a group",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/groups/{{groupId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "groups",
+                "{{groupId}}"
+              ]
+            },
+            "description": "Get a group"
+          }
+        },
+        {
+          "name": "Update subject, description, picture or settings",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/groups/{{groupId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "groups",
+                "{{groupId}}"
+              ]
+            },
+            "description": "Update subject, description, picture or settings",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Add, remove, promote or demote",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/groups/{{groupId}}/participants",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "groups",
+                "{{groupId}}",
+                "participants"
+              ]
+            },
+            "description": "Add, remove, promote or demote",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"add\",\n  \"participants\": [\n    \"participant\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Invite link",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/groups/{{groupId}}/invite",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "groups",
+                "{{groupId}}",
+                "invite"
+              ]
+            },
+            "description": "Invite link"
+          }
+        },
+        {
+          "name": "Revoke the invite link",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/groups/{{groupId}}/invite/revoke",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "groups",
+                "{{groupId}}",
+                "invite",
+                "revoke"
+              ]
+            },
+            "description": "Revoke the invite link"
+          }
+        },
+        {
+          "name": "Leave the group",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/groups/{{groupId}}/leave",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "groups",
+                "{{groupId}}",
+                "leave"
+              ]
+            },
+            "description": "Leave the group"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "item": [
+        {
+          "name": "List webhooks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/webhooks",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "webhooks"
+              ]
+            },
+            "description": "List webhooks"
+          }
+        },
+        {
+          "name": "Create a webhook",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/webhooks",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "webhooks"
+              ]
+            },
+            "description": "Create a webhook",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://exemplo.com/webhook\",\n  \"events\": [\n    \"event\"\n  ],\n  \"secret\": \"um-segredo-com-16-chars\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Update a webhook",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/webhooks/{{webhookId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "webhooks",
+                "{{webhookId}}"
+              ]
+            },
+            "description": "Update a webhook",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete a webhook",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/webhooks/{{webhookId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "webhooks",
+                "{{webhookId}}"
+              ]
+            },
+            "description": "Delete a webhook"
+          }
+        },
+        {
+          "name": "Recent deliveries",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/webhooks/{{webhookId}}/logs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "webhooks",
+                "{{webhookId}}",
+                "logs"
+              ]
+            },
+            "description": "Recent deliveries"
+          }
+        },
+        {
+          "name": "Send a test event",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/webhooks/{{webhookId}}/test",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "webhooks",
+                "{{webhookId}}",
+                "test"
+              ]
+            },
+            "description": "Send a test event",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sandbox",
+      "item": [
+        {
+          "name": "Simulate a received message",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/sandbox/inbound",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "sandbox",
+                "inbound"
+              ]
+            },
+            "description": "Simulate a received message",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Fire any webhook event",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/sandbox/events",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "sandbox",
+                "events"
+              ]
+            },
+            "description": "Fire any webhook event",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Move a test message to a status",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/sandbox/messages/{{messageId}}/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "sandbox",
+                "messages",
+                "{{messageId}}",
+                "status"
+              ]
+            },
+            "description": "Move a test message to a status",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

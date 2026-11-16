@@ -7,9 +7,7 @@ import type {
   CreateInstanceParams,
   CreateWebhookParams,
   EditMessageParams,
-  ForceStatusParams,
   GroupParticipantsParams,
-  Instance,
   JoinGroupParams,
   MarkReadParams,
   PairingCodeParams,
@@ -37,12 +35,8 @@ import type {
   SendStatusParams,
   SendStickerParams,
   SendTextParams,
-  SimulateEventParams,
-  SimulateInboundParams,
   UpdateGroupParams,
   UpdateInstanceParams,
-  WebhookDeliveryLog,
-  WebhookSubscription,
 } from './types';
 
 /** Instances */
@@ -55,17 +49,17 @@ export class InstancesResource {
   }
 
   /** Create an instance (`POST /v1/instances`) */
-  create(params: CreateInstanceParams, options?: RequestOptions): Promise<Instance> {
+  create(params: CreateInstanceParams, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'POST', path: `/instances`, body: params }, options);
   }
 
   /** Get an instance (`GET /v1/instances/{id}`) */
-  get(instanceId: string, options?: RequestOptions): Promise<Instance> {
+  get(instanceId: string, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'GET', path: `/instances/${encodeURIComponent(instanceId)}` }, options);
   }
 
   /** Rename or update an instance (`PATCH /v1/instances/{id}`) */
-  update(instanceId: string, params?: UpdateInstanceParams, options?: RequestOptions): Promise<Instance> {
+  update(instanceId: string, params?: UpdateInstanceParams, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'PATCH', path: `/instances/${encodeURIComponent(instanceId)}`, body: params }, options);
   }
 
@@ -75,7 +69,7 @@ export class InstancesResource {
   }
 
   /** Connection status (`GET /v1/instances/{id}/status`) */
-  status(instanceId: string, options?: RequestOptions): Promise<Record<string, unknown>> {
+  status(instanceId: string, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'GET', path: `/instances/${encodeURIComponent(instanceId)}/status` }, options);
   }
 
@@ -260,7 +254,7 @@ export class ContactsResource {
   constructor(private readonly client: ZapZCore) {}
 
   /** List contacts (`GET /v1/instances/{id}/contacts`) */
-  list(instanceId: string, options?: RequestOptions): Promise<Record<string, unknown>> {
+  list(instanceId: string, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'GET', path: `/instances/${encodeURIComponent(instanceId)}/contacts` }, options);
   }
 
@@ -270,12 +264,12 @@ export class ContactsResource {
     notify?: string;
     imgUrl?: string;
     status?: string;
-  }, options?: RequestOptions): Promise<Record<string, unknown>> {
+  }, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'PATCH', path: `/instances/${encodeURIComponent(instanceId)}/contacts/${encodeURIComponent(jid)}`, body: params }, options);
   }
 
   /** Delete a contact (`DELETE /v1/instances/{id}/contacts/{jid}`) */
-  delete(instanceId: string, jid: string, options?: RequestOptions): Promise<Record<string, unknown>> {
+  delete(instanceId: string, jid: string, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'DELETE', path: `/instances/${encodeURIComponent(instanceId)}/contacts/${encodeURIComponent(jid)}` }, options);
   }
 
@@ -283,17 +277,17 @@ export class ContactsResource {
   checkPhones(instanceId: string, params: {
     /** Numbers with country code, digits only */
     phones: Array<string>;
-  }, options?: RequestOptions): Promise<Record<string, unknown>> {
+  }, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'POST', path: `/instances/${encodeURIComponent(instanceId)}/contacts/check-phones`, body: params }, options);
   }
 
   /** Profile picture URL (`GET /v1/instances/{id}/contacts/{jid}/profile-picture`) */
-  profilePicture(instanceId: string, jid: string, options?: RequestOptions): Promise<Record<string, unknown>> {
+  profilePicture(instanceId: string, jid: string, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'GET', path: `/instances/${encodeURIComponent(instanceId)}/contacts/${encodeURIComponent(jid)}/profile-picture` }, options);
   }
 
   /** Contact "about" text (`GET /v1/instances/{id}/contacts/{jid}/status`) */
-  about(instanceId: string, jid: string, options?: RequestOptions): Promise<Record<string, unknown>> {
+  about(instanceId: string, jid: string, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'GET', path: `/instances/${encodeURIComponent(instanceId)}/contacts/${encodeURIComponent(jid)}/status` }, options);
   }
 }
@@ -303,52 +297,52 @@ export class GroupsResource {
   constructor(private readonly client: ZapZCore) {}
 
   /** List groups (`GET /v1/instances/{id}/groups`) */
-  list(instanceId: string, query?: { participants?: boolean }, options?: RequestOptions): Promise<Record<string, unknown>> {
+  list(instanceId: string, query?: { participants?: boolean }, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'GET', path: `/instances/${encodeURIComponent(instanceId)}/groups`, query }, options);
   }
 
   /** Create a group (`POST /v1/instances/{id}/groups`) */
-  create(instanceId: string, params: CreateGroupParams, options?: RequestOptions): Promise<Record<string, unknown>> {
+  create(instanceId: string, params: CreateGroupParams, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'POST', path: `/instances/${encodeURIComponent(instanceId)}/groups`, body: params }, options);
   }
 
   /** Preview a group from an invite code (`GET /v1/instances/{id}/groups/invite-info`) */
-  inviteInfo(instanceId: string, query: { code: string }, options?: RequestOptions): Promise<Record<string, unknown>> {
+  inviteInfo(instanceId: string, query: { code: string }, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'GET', path: `/instances/${encodeURIComponent(instanceId)}/groups/invite-info`, query }, options);
   }
 
   /** Join with an invite code (`POST /v1/instances/{id}/groups/join`) */
-  join(instanceId: string, params: JoinGroupParams, options?: RequestOptions): Promise<Record<string, unknown>> {
+  join(instanceId: string, params: JoinGroupParams, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'POST', path: `/instances/${encodeURIComponent(instanceId)}/groups/join`, body: params }, options);
   }
 
   /** Get a group (`GET /v1/instances/{id}/groups/{groupId}`) */
-  get(instanceId: string, groupId: string, options?: RequestOptions): Promise<Record<string, unknown>> {
+  get(instanceId: string, groupId: string, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'GET', path: `/instances/${encodeURIComponent(instanceId)}/groups/${encodeURIComponent(groupId)}` }, options);
   }
 
   /** Update subject, description, picture or settings (`PATCH /v1/instances/{id}/groups/{groupId}`) */
-  update(instanceId: string, groupId: string, params?: UpdateGroupParams, options?: RequestOptions): Promise<Record<string, unknown>> {
+  update(instanceId: string, groupId: string, params?: UpdateGroupParams, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'PATCH', path: `/instances/${encodeURIComponent(instanceId)}/groups/${encodeURIComponent(groupId)}`, body: params }, options);
   }
 
   /** Add, remove, promote or demote (`POST /v1/instances/{id}/groups/{groupId}/participants`) */
-  updateParticipants(instanceId: string, groupId: string, params: GroupParticipantsParams, options?: RequestOptions): Promise<Record<string, unknown>> {
+  updateParticipants(instanceId: string, groupId: string, params: GroupParticipantsParams, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'POST', path: `/instances/${encodeURIComponent(instanceId)}/groups/${encodeURIComponent(groupId)}/participants`, body: params }, options);
   }
 
   /** Invite link (`GET /v1/instances/{id}/groups/{groupId}/invite`) */
-  inviteLink(instanceId: string, groupId: string, options?: RequestOptions): Promise<Record<string, unknown>> {
+  inviteLink(instanceId: string, groupId: string, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'GET', path: `/instances/${encodeURIComponent(instanceId)}/groups/${encodeURIComponent(groupId)}/invite` }, options);
   }
 
   /** Revoke the invite link (`POST /v1/instances/{id}/groups/{groupId}/invite/revoke`) */
-  revokeInvite(instanceId: string, groupId: string, options?: RequestOptions): Promise<Record<string, unknown>> {
+  revokeInvite(instanceId: string, groupId: string, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'POST', path: `/instances/${encodeURIComponent(instanceId)}/groups/${encodeURIComponent(groupId)}/invite/revoke` }, options);
   }
 
   /** Leave the group (`POST /v1/instances/{id}/groups/{groupId}/leave`) */
-  leave(instanceId: string, groupId: string, options?: RequestOptions): Promise<Record<string, unknown>> {
+  leave(instanceId: string, groupId: string, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'POST', path: `/instances/${encodeURIComponent(instanceId)}/groups/${encodeURIComponent(groupId)}/leave` }, options);
   }
 }
@@ -358,12 +352,12 @@ export class WebhooksResource {
   constructor(private readonly client: ZapZCore) {}
 
   /** List webhooks (`GET /v1/webhooks`) */
-  list(options?: RequestOptions): Promise<Array<WebhookSubscription>> {
+  list(options?: RequestOptions): Promise<Array<Record<string, any>>> {
     return this.client.request({ method: 'GET', path: `/webhooks` }, options);
   }
 
   /** Create a webhook (`POST /v1/webhooks`) */
-  create(params: CreateWebhookParams, options?: RequestOptions): Promise<WebhookSubscription> {
+  create(params: CreateWebhookParams, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'POST', path: `/webhooks`, body: params }, options);
   }
 
@@ -375,7 +369,7 @@ export class WebhooksResource {
     /** true also lifts an automatic pause */
     active?: boolean;
     instance_id?: string | null;
-  }, options?: RequestOptions): Promise<WebhookSubscription> {
+  }, options?: RequestOptions): Promise<Record<string, any>> {
     return this.client.request({ method: 'PATCH', path: `/webhooks/${encodeURIComponent(webhookId)}`, body: params }, options);
   }
 
@@ -385,7 +379,7 @@ export class WebhooksResource {
   }
 
   /** Recent deliveries (`GET /v1/webhooks/{id}/logs`) */
-  deliveries(webhookId: string, options?: RequestOptions): Promise<Array<WebhookDeliveryLog>> {
+  deliveries(webhookId: string, options?: RequestOptions): Promise<Array<Record<string, any>>> {
     return this.client.request({ method: 'GET', path: `/webhooks/${encodeURIComponent(webhookId)}/logs` }, options);
   }
 
@@ -403,17 +397,17 @@ export class SandboxResource {
   constructor(private readonly client: ZapZCore) {}
 
   /** Simulate a received message (`POST /v1/sandbox/inbound`) */
-  inbound(params?: SimulateInboundParams, options?: RequestOptions): Promise<any> {
+  inbound(params?: Record<string, any>, options?: RequestOptions): Promise<any> {
     return this.client.request({ method: 'POST', path: `/sandbox/inbound`, body: params }, options);
   }
 
   /** Fire any webhook event (`POST /v1/sandbox/events`) */
-  event(params?: SimulateEventParams, options?: RequestOptions): Promise<any> {
+  event(params?: Record<string, any>, options?: RequestOptions): Promise<any> {
     return this.client.request({ method: 'POST', path: `/sandbox/events`, body: params }, options);
   }
 
   /** Move a test message to a status (`POST /v1/sandbox/messages/{messageId}/status`) */
-  setMessageStatus(messageId: string, params?: ForceStatusParams, options?: RequestOptions): Promise<any> {
+  setMessageStatus(messageId: string, params?: Record<string, any>, options?: RequestOptions): Promise<any> {
     return this.client.request({ method: 'POST', path: `/sandbox/messages/${encodeURIComponent(messageId)}/status`, body: params }, options);
   }
 }

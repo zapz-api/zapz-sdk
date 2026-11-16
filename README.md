@@ -7,8 +7,17 @@ SDKs oficiais da API de WhatsApp da ZapZ.
 | Node.js / TypeScript (18+) | [`node/`](node) | `@zapz/sdk` |
 | Python (3.8+) | [`python/`](python) | `zapz` |
 | PHP (8.1+) | [`php/`](php) | `zapz/zapz-php` |
+| Go (1.21+) | [`go/`](go) | `github.com/zapz/zapz-go` |
+| Java (17+) | [`java/`](java) | `com.zapz:zapz-java` |
+| C# / .NET (8+) | [`csharp/`](csharp) | `ZapZ` (NuGet) |
+| Ruby (3.0+) | [`ruby/`](ruby) | `zapz` (gem) |
 
-Nenhum dos três tem dependência em tempo de execução (fetch nativo, stdlib, ext-curl).
+Nenhum tem dependência em tempo de execução.
+
+Extras:
+
+- [`postman/`](postman): coleção Postman/Insomnia com todas as rotas.
+- [`n8n/`](n8n): nós do n8n (ações + gatilho por webhook assinado).
 
 ## Como funciona
 
@@ -31,6 +40,13 @@ export ZAPZ_API_KEY=sk_test_... ZAPZ_BASE_URL=http://localhost:3056
 (cd node && npm run build && npm test)
 (cd python && python3 -m unittest discover -s tests)
 (cd php && composer dump-autoload && php tests/smoke.php)
+(cd go && go test ./...)
+(cd n8n && npm run build && npm test)
+# Java, .NET e Ruby (via Docker, rede do host para alcançar a API local)
+docker run --rm --network host -v "$PWD/java":/w -w /w -e ZAPZ_API_KEY -e ZAPZ_BASE_URL eclipse-temurin:17-jdk \
+  sh -c 'mkdir -p /tmp/o && javac -d /tmp/o $(find src -name "*.java") && java -cp /tmp/o com.zapz.Smoke'
+docker run --rm --network host -v "$PWD/csharp":/w -w /w -e ZAPZ_API_KEY -e ZAPZ_BASE_URL mcr.microsoft.com/dotnet/sdk:8.0 dotnet run --project tests/Smoke
+docker run --rm --network host -v "$PWD/ruby":/w -w /w -e ZAPZ_API_KEY -e ZAPZ_BASE_URL ruby:3.3-slim ruby -Ilib test/smoke.rb
 ```
 
 Sem `ZAPZ_API_KEY`, só os testes offline (assinatura de webhook) rodam.

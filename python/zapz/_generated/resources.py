@@ -25,15 +25,15 @@ class InstancesResource:
         """List instances (``GET /v1/instances``)."""
         return self._client.request("GET", f"/instances", query={"externalId": external_id, "status": status}, timeout=timeout)
 
-    def create(self, params: "CreateInstanceParams", *, timeout: Optional[float] = None) -> "Instance":
+    def create(self, params: "CreateInstanceParams", *, timeout: Optional[float] = None) -> Dict[str, Any]:
         """Create an instance (``POST /v1/instances``)."""
         return self._client.request("POST", f"/instances", body=params, timeout=timeout)
 
-    def get(self, instance_id: str, *, timeout: Optional[float] = None) -> "Instance":
+    def get(self, instance_id: str, *, timeout: Optional[float] = None) -> Dict[str, Any]:
         """Get an instance (``GET /v1/instances/{id}``)."""
         return self._client.request("GET", f"/instances/{_q(instance_id)}", timeout=timeout)
 
-    def update(self, instance_id: str, params: Optional["UpdateInstanceParams"] = None, *, timeout: Optional[float] = None) -> "Instance":
+    def update(self, instance_id: str, params: Optional["UpdateInstanceParams"] = None, *, timeout: Optional[float] = None) -> Dict[str, Any]:
         """Rename or update an instance (``PATCH /v1/instances/{id}``)."""
         return self._client.request("PATCH", f"/instances/{_q(instance_id)}", body=params, timeout=timeout)
 
@@ -273,15 +273,15 @@ class WebhooksResource:
     def __init__(self, client: "ZapZCore") -> None:
         self._client = client
 
-    def list(self, *, timeout: Optional[float] = None) -> List["WebhookSubscription"]:
+    def list(self, *, timeout: Optional[float] = None) -> List[Dict[str, Any]]:
         """List webhooks (``GET /v1/webhooks``)."""
         return self._client.request("GET", f"/webhooks", timeout=timeout)
 
-    def create(self, params: "CreateWebhookParams", *, timeout: Optional[float] = None) -> "WebhookSubscription":
+    def create(self, params: "CreateWebhookParams", *, timeout: Optional[float] = None) -> Dict[str, Any]:
         """Create a webhook (``POST /v1/webhooks``)."""
         return self._client.request("POST", f"/webhooks", body=params, timeout=timeout)
 
-    def update(self, webhook_id: str, params: Optional[Dict[str, Any]] = None, *, timeout: Optional[float] = None) -> "WebhookSubscription":
+    def update(self, webhook_id: str, params: Optional[Dict[str, Any]] = None, *, timeout: Optional[float] = None) -> Dict[str, Any]:
         """Update a webhook (``PATCH /v1/webhooks/{id}``)."""
         return self._client.request("PATCH", f"/webhooks/{_q(webhook_id)}", body=params, timeout=timeout)
 
@@ -289,7 +289,7 @@ class WebhooksResource:
         """Delete a webhook (``DELETE /v1/webhooks/{id}``)."""
         return self._client.request("DELETE", f"/webhooks/{_q(webhook_id)}", timeout=timeout)
 
-    def deliveries(self, webhook_id: str, *, timeout: Optional[float] = None) -> List["WebhookDeliveryLog"]:
+    def deliveries(self, webhook_id: str, *, timeout: Optional[float] = None) -> List[Dict[str, Any]]:
         """Recent deliveries (``GET /v1/webhooks/{id}/logs``)."""
         return self._client.request("GET", f"/webhooks/{_q(webhook_id)}/logs", timeout=timeout)
 
@@ -304,14 +304,14 @@ class SandboxResource:
     def __init__(self, client: "ZapZCore") -> None:
         self._client = client
 
-    def inbound(self, params: Optional["SimulateInboundParams"] = None, *, timeout: Optional[float] = None) -> Any:
+    def inbound(self, params: Optional[Dict[str, Any]] = None, *, timeout: Optional[float] = None) -> Any:
         """Simulate a received message (``POST /v1/sandbox/inbound``)."""
         return self._client.request("POST", f"/sandbox/inbound", body=params, timeout=timeout)
 
-    def event(self, params: Optional["SimulateEventParams"] = None, *, timeout: Optional[float] = None) -> Any:
+    def event(self, params: Optional[Dict[str, Any]] = None, *, timeout: Optional[float] = None) -> Any:
         """Fire any webhook event (``POST /v1/sandbox/events``)."""
         return self._client.request("POST", f"/sandbox/events", body=params, timeout=timeout)
 
-    def set_message_status(self, message_id: str, params: Optional["ForceStatusParams"] = None, *, timeout: Optional[float] = None) -> Any:
+    def set_message_status(self, message_id: str, params: Optional[Dict[str, Any]] = None, *, timeout: Optional[float] = None) -> Any:
         """Move a test message to a status (``POST /v1/sandbox/messages/{messageId}/status``)."""
         return self._client.request("POST", f"/sandbox/messages/{_q(message_id)}/status", body=params, timeout=timeout)

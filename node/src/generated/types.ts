@@ -5,15 +5,12 @@ export interface CreateInstanceParams {
   /** Your id for this instance (unique per account). Creating again with the same externalId returns the existing instance. */
   externalId?: string;
   /** Free-form JSON object (max 4 KB). */
-  metadata?: Record<string, unknown>;
-}
-
-export interface Instance {
+  metadata?: Record<string, any>;
 }
 
 export interface UpdateInstanceParams {
   name?: string;
-  metadata?: Record<string, unknown>;
+  metadata?: Record<string, any>;
 }
 
 export interface PairingCodeParams {
@@ -26,12 +23,6 @@ export interface CreateWebhookParams {
   url: string;
   events: Array<string>;
   secret: string;
-}
-
-export interface WebhookSubscription {
-}
-
-export interface WebhookDeliveryLog {
 }
 
 export interface SendTextParams {
@@ -461,15 +452,6 @@ export interface PresenceParams {
   to: string;
   /** composing = "digitando…", recording = "gravando áudio…", paused = stop. */
   presence: "composing" | "recording" | "paused";
-}
-
-export interface SimulateInboundParams {
-}
-
-export interface SimulateEventParams {
-}
-
-export interface ForceStatusParams {
 }
 
 export interface CreateGroupParams {

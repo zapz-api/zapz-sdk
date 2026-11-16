@@ -7,3 +7,9 @@ python/dist/
 php/vendor/
 php/composer.lock
 .env
+java/target/
+csharp/**/bin/
+csharp/**/obj/
+n8n/node_modules/
+n8n/dist/
+ruby/*.gem

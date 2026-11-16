@@ -14,10 +14,6 @@ class CreateInstanceParams(_CreateInstanceParamsRequired, total=False):
     metadata: Dict[str, Any]
 
 
-class Instance(TypedDict, total=False):
-    pass
-
-
 class UpdateInstanceParams(TypedDict, total=False):
     name: str
     metadata: Dict[str, Any]
@@ -40,14 +36,6 @@ class _CreateWebhookParamsRequired(TypedDict):
 
 class CreateWebhookParams(_CreateWebhookParamsRequired, total=False):
     instance_id: Optional[str]
-
-
-class WebhookSubscription(TypedDict, total=False):
-    pass
-
-
-class WebhookDeliveryLog(TypedDict, total=False):
-    pass
 
 
 class _SendTextParamsRequired(TypedDict):
@@ -584,18 +572,6 @@ class _PresenceParamsRequired(TypedDict):
 
 
 class PresenceParams(_PresenceParamsRequired, total=False):
-    pass
-
-
-class SimulateInboundParams(TypedDict, total=False):
-    pass
-
-
-class SimulateEventParams(TypedDict, total=False):
-    pass
-
-
-class ForceStatusParams(TypedDict, total=False):
     pass
 
 
