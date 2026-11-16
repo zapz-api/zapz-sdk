@@ -1,0 +1,792 @@
+{
+  "GET /v1/instances": {
+    "resource": "instances",
+    "js": "list",
+    "py": "list",
+    "php": "list",
+    "params": [],
+    "body": false,
+    "bodyRequired": false,
+    "query": [
+      "externalId",
+      "status"
+    ]
+  },
+  "POST /v1/instances": {
+    "resource": "instances",
+    "js": "create",
+    "py": "create",
+    "php": "create",
+    "params": [],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "GET /v1/instances/{}": {
+    "resource": "instances",
+    "js": "get",
+    "py": "get",
+    "php": "get",
+    "params": [
+      "instanceId"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": []
+  },
+  "PATCH /v1/instances/{}": {
+    "resource": "instances",
+    "js": "update",
+    "py": "update",
+    "php": "update",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": false,
+    "query": []
+  },
+  "DELETE /v1/instances/{}": {
+    "resource": "instances",
+    "js": "delete",
+    "py": "delete",
+    "php": "delete",
+    "params": [
+      "instanceId"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": []
+  },
+  "GET /v1/instances/{}/status": {
+    "resource": "instances",
+    "js": "status",
+    "py": "status",
+    "php": "status",
+    "params": [
+      "instanceId"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": []
+  },
+  "GET /v1/instances/{}/qr": {
+    "resource": "instances",
+    "js": "qr",
+    "py": "qr",
+    "php": "qr",
+    "params": [
+      "instanceId"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": []
+  },
+  "POST /v1/instances/{}/pairing-code": {
+    "resource": "instances",
+    "js": "requestPairingCode",
+    "py": "request_pairing_code",
+    "php": "requestPairingCode",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/session/clear": {
+    "resource": "instances",
+    "js": "clearSession",
+    "py": "clear_session",
+    "php": "clearSession",
+    "params": [
+      "instanceId"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": []
+  },
+  "GET /v1/instances/{}/contacts": {
+    "resource": "contacts",
+    "js": "list",
+    "py": "list",
+    "php": "list",
+    "params": [
+      "instanceId"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": []
+  },
+  "PATCH /v1/instances/{}/contacts/{}": {
+    "resource": "contacts",
+    "js": "update",
+    "py": "update",
+    "php": "update",
+    "params": [
+      "instanceId",
+      "jid"
+    ],
+    "body": true,
+    "bodyRequired": false,
+    "query": []
+  },
+  "DELETE /v1/instances/{}/contacts/{}": {
+    "resource": "contacts",
+    "js": "delete",
+    "py": "delete",
+    "php": "delete",
+    "params": [
+      "instanceId",
+      "jid"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": []
+  },
+  "POST /v1/instances/{}/contacts/check-phones": {
+    "resource": "contacts",
+    "js": "checkPhones",
+    "py": "check_phones",
+    "php": "checkPhones",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "GET /v1/instances/{}/contacts/{}/profile-picture": {
+    "resource": "contacts",
+    "js": "profilePicture",
+    "py": "profile_picture",
+    "php": "profilePicture",
+    "params": [
+      "instanceId",
+      "jid"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": []
+  },
+  "GET /v1/instances/{}/contacts/{}/status": {
+    "resource": "contacts",
+    "js": "about",
+    "py": "about",
+    "php": "about",
+    "params": [
+      "instanceId",
+      "jid"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": []
+  },
+  "GET /v1/webhooks": {
+    "resource": "webhooks",
+    "js": "list",
+    "py": "list",
+    "php": "list",
+    "params": [],
+    "body": false,
+    "bodyRequired": false,
+    "query": []
+  },
+  "POST /v1/webhooks": {
+    "resource": "webhooks",
+    "js": "create",
+    "py": "create",
+    "php": "create",
+    "params": [],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "PATCH /v1/webhooks/{}": {
+    "resource": "webhooks",
+    "js": "update",
+    "py": "update",
+    "php": "update",
+    "params": [
+      "webhookId"
+    ],
+    "body": true,
+    "bodyRequired": false,
+    "query": []
+  },
+  "DELETE /v1/webhooks/{}": {
+    "resource": "webhooks",
+    "js": "delete",
+    "py": "delete",
+    "php": "delete",
+    "params": [
+      "webhookId"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": []
+  },
+  "GET /v1/webhooks/{}/logs": {
+    "resource": "webhooks",
+    "js": "deliveries",
+    "py": "deliveries",
+    "php": "deliveries",
+    "params": [
+      "webhookId"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": []
+  },
+  "POST /v1/webhooks/{}/test": {
+    "resource": "webhooks",
+    "js": "test",
+    "py": "test",
+    "php": "test",
+    "params": [
+      "webhookId"
+    ],
+    "body": true,
+    "bodyRequired": false,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/text": {
+    "resource": "messages",
+    "js": "sendText",
+    "py": "send_text",
+    "php": "sendText",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/media": {
+    "resource": "messages",
+    "js": "sendMedia",
+    "py": "send_media",
+    "php": "sendMedia",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/list": {
+    "resource": "messages",
+    "js": "sendList",
+    "py": "send_list",
+    "php": "sendList",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/interactive": {
+    "resource": "messages",
+    "js": "sendInteractive",
+    "py": "send_interactive",
+    "php": "sendInteractive",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/sticker": {
+    "resource": "messages",
+    "js": "sendSticker",
+    "py": "send_sticker",
+    "php": "sendSticker",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/location": {
+    "resource": "messages",
+    "js": "sendLocation",
+    "py": "send_location",
+    "php": "sendLocation",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/contact": {
+    "resource": "messages",
+    "js": "sendContact",
+    "py": "send_contact",
+    "php": "sendContact",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/reaction": {
+    "resource": "messages",
+    "js": "sendReaction",
+    "py": "send_reaction",
+    "php": "sendReaction",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/poll": {
+    "resource": "messages",
+    "js": "sendPoll",
+    "py": "send_poll",
+    "php": "sendPoll",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/pix": {
+    "resource": "messages",
+    "js": "sendPix",
+    "py": "send_pix",
+    "php": "sendPix",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/payment": {
+    "resource": "messages",
+    "js": "sendPayment",
+    "py": "send_payment",
+    "php": "sendPayment",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/carousel": {
+    "resource": "messages",
+    "js": "sendCarousel",
+    "py": "send_carousel",
+    "php": "sendCarousel",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/album": {
+    "resource": "messages",
+    "js": "sendAlbum",
+    "py": "send_album",
+    "php": "sendAlbum",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/event": {
+    "resource": "messages",
+    "js": "sendEvent",
+    "py": "send_event",
+    "php": "sendEvent",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/group-invite": {
+    "resource": "messages",
+    "js": "sendGroupInvite",
+    "py": "send_group_invite",
+    "php": "sendGroupInvite",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/request-phone": {
+    "resource": "messages",
+    "js": "sendRequestPhone",
+    "py": "send_request_phone",
+    "php": "sendRequestPhone",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/share-phone": {
+    "resource": "messages",
+    "js": "sendSharePhone",
+    "py": "send_share_phone",
+    "php": "sendSharePhone",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/product": {
+    "resource": "messages",
+    "js": "sendProduct",
+    "py": "send_product",
+    "php": "sendProduct",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/order": {
+    "resource": "messages",
+    "js": "sendOrder",
+    "py": "send_order",
+    "php": "sendOrder",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/catalog": {
+    "resource": "messages",
+    "js": "sendCatalog",
+    "py": "send_catalog",
+    "php": "sendCatalog",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/forward": {
+    "resource": "messages",
+    "js": "forward",
+    "py": "forward",
+    "php": "forward",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/pin": {
+    "resource": "messages",
+    "js": "pin",
+    "py": "pin",
+    "php": "pin",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/send/status": {
+    "resource": "messages",
+    "js": "sendStatus",
+    "py": "send_status",
+    "php": "sendStatus",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "GET /v1/instances/{}/messages": {
+    "resource": "messages",
+    "js": "list",
+    "py": "list",
+    "php": "list",
+    "params": [
+      "instanceId"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": [
+      "limit"
+    ]
+  },
+  "GET /v1/instances/{}/messages/{}": {
+    "resource": "messages",
+    "js": "get",
+    "py": "get",
+    "php": "get",
+    "params": [
+      "instanceId",
+      "messageId"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": []
+  },
+  "PATCH /v1/instances/{}/messages/{}": {
+    "resource": "messages",
+    "js": "edit",
+    "py": "edit",
+    "php": "edit",
+    "params": [
+      "instanceId",
+      "messageId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "DELETE /v1/instances/{}/messages/{}": {
+    "resource": "messages",
+    "js": "delete",
+    "py": "delete",
+    "php": "delete",
+    "params": [
+      "instanceId",
+      "messageId"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": []
+  },
+  "POST /v1/instances/{}/messages/read": {
+    "resource": "messages",
+    "js": "markRead",
+    "py": "mark_read",
+    "php": "markRead",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "POST /v1/instances/{}/presence": {
+    "resource": "messages",
+    "js": "sendPresence",
+    "py": "send_presence",
+    "php": "sendPresence",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "GET /v1/instances/{}/health": {
+    "resource": "instances",
+    "js": "health",
+    "py": "health",
+    "php": "health",
+    "params": [
+      "instanceId"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": []
+  },
+  "POST /v1/instances/{}/resume": {
+    "resource": "instances",
+    "js": "resume",
+    "py": "resume",
+    "php": "resume",
+    "params": [
+      "instanceId"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": []
+  },
+  "POST /v1/sandbox/inbound": {
+    "resource": "sandbox",
+    "js": "inbound",
+    "py": "inbound",
+    "php": "inbound",
+    "params": [],
+    "body": true,
+    "bodyRequired": false,
+    "query": []
+  },
+  "POST /v1/sandbox/events": {
+    "resource": "sandbox",
+    "js": "event",
+    "py": "event",
+    "php": "event",
+    "params": [],
+    "body": true,
+    "bodyRequired": false,
+    "query": []
+  },
+  "POST /v1/sandbox/messages/{}/status": {
+    "resource": "sandbox",
+    "js": "setMessageStatus",
+    "py": "set_message_status",
+    "php": "setMessageStatus",
+    "params": [
+      "messageId"
+    ],
+    "body": true,
+    "bodyRequired": false,
+    "query": []
+  },
+  "GET /v1/instances/{}/groups": {
+    "resource": "groups",
+    "js": "list",
+    "py": "list",
+    "php": "list",
+    "params": [
+      "instanceId"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": [
+      "participants"
+    ]
+  },
+  "POST /v1/instances/{}/groups": {
+    "resource": "groups",
+    "js": "create",
+    "py": "create",
+    "php": "create",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "GET /v1/instances/{}/groups/invite-info": {
+    "resource": "groups",
+    "js": "inviteInfo",
+    "py": "invite_info",
+    "php": "inviteInfo",
+    "params": [
+      "instanceId"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": [
+      "code"
+    ]
+  },
+  "POST /v1/instances/{}/groups/join": {
+    "resource": "groups",
+    "js": "join",
+    "py": "join",
+    "php": "join",
+    "params": [
+      "instanceId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "GET /v1/instances/{}/groups/{}": {
+    "resource": "groups",
+    "js": "get",
+    "py": "get",
+    "php": "get",
+    "params": [
+      "instanceId",
+      "groupId"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": []
+  },
+  "PATCH /v1/instances/{}/groups/{}": {
+    "resource": "groups",
+    "js": "update",
+    "py": "update",
+    "php": "update",
+    "params": [
+      "instanceId",
+      "groupId"
+    ],
+    "body": true,
+    "bodyRequired": false,
+    "query": []
+  },
+  "POST /v1/instances/{}/groups/{}/participants": {
+    "resource": "groups",
+    "js": "updateParticipants",
+    "py": "update_participants",
+    "php": "updateParticipants",
+    "params": [
+      "instanceId",
+      "groupId"
+    ],
+    "body": true,
+    "bodyRequired": true,
+    "query": []
+  },
+  "GET /v1/instances/{}/groups/{}/invite": {
+    "resource": "groups",
+    "js": "inviteLink",
+    "py": "invite_link",
+    "php": "inviteLink",
+    "params": [
+      "instanceId",
+      "groupId"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": []
+  },
+  "POST /v1/instances/{}/groups/{}/invite/revoke": {
+    "resource": "groups",
+    "js": "revokeInvite",
+    "py": "revoke_invite",
+    "php": "revokeInvite",
+    "params": [
+      "instanceId",
+      "groupId"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": []
+  },
+  "POST /v1/instances/{}/groups/{}/leave": {
+    "resource": "groups",
+    "js": "leave",
+    "py": "leave",
+    "php": "leave",
+    "params": [
+      "instanceId",
+      "groupId"
+    ],
+    "body": false,
+    "bodyRequired": false,
+    "query": []
+  }
+}

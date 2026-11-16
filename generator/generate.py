@@ -7,6 +7,7 @@ verification) lives next to the generated folders and is never touched here.
 Usage:
     python3 generator/generate.py                 # uses ./openapi.json
     python3 generator/generate.py --fetch URL     # downloads the spec first
+    python3 generator/generate.py --web ../zapz-web/src/components/docs/sdkMap.json
 """
 from __future__ import annotations
 
@@ -509,6 +510,26 @@ def gen_php(spec: Spec) -> None:
         (out / f"{cls}.php").write_text(c)
 
 
+def gen_map(spec: Spec, targets: list[Path]) -> None:
+    """endpoint -> SDK method, used by the docs to render SDK samples."""
+    out = {}
+    for op in spec.ops:
+        key = op["method"] + " /v1" + re.sub(r"{\w+}", "{}", op["path"])
+        out[key] = {
+            "resource": op["resource"],
+            "js": op["name"],
+            "py": snake(op["name"]),
+            "php": op["name"],
+            "params": [p["arg"] for p in op["path_params"]],
+            "body": spec.body(op) is not None,
+            "bodyRequired": spec.body_has_required(op),
+            "query": [q["name"] for q in op["query"]],
+        }
+    text = json.dumps(out, indent=2, ensure_ascii=False) + "\n"
+    for t in targets:
+        t.write_text(text)
+
+
 def main() -> None:
     if "--fetch" in sys.argv:
         url = sys.argv[sys.argv.index("--fetch") + 1]
@@ -518,6 +539,10 @@ def main() -> None:
     gen_ts(spec)
     gen_py(spec)
     gen_php(spec)
+    targets = [ROOT / "sdk-map.json"]
+    if "--web" in sys.argv:
+        targets.append(Path(sys.argv[sys.argv.index("--web") + 1]))
+    gen_map(spec, targets)
     print(f"generated {len(spec.ops)} operations, {len(spec.schemas)} schemas")
 
 
