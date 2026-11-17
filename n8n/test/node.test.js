@@ -7,7 +7,7 @@ const { ZapZ } = require('../dist/nodes/ZapZ/ZapZ.node.js');
 const { ZapZTrigger } = require('../dist/nodes/ZapZTrigger/ZapZTrigger.node.js');
 
 const live = !!process.env.ZAPZ_API_KEY;
-const creds = { apiKey: process.env.ZAPZ_API_KEY, baseUrl: process.env.ZAPZ_BASE_URL || 'https://api.zapz.com' };
+const creds = { apiKey: process.env.ZAPZ_API_KEY, baseUrl: process.env.ZAPZ_BASE_URL || 'https://api.zapz.dev' };
 
 function fakeExec(params) {
   return {

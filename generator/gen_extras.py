@@ -89,7 +89,7 @@ def gen_postman(spec, root: Path) -> None:
         },
         "auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{apiKey}}", "type": "string"}]},
         "variable": [
-            {"key": "baseUrl", "value": "https://api.zapz.com"},
+            {"key": "baseUrl", "value": "https://api.zapz.dev"},
             {"key": "apiKey", "value": "sk_test_..."},
             {"key": "instanceId", "value": ""},
             {"key": "messageId", "value": ""},

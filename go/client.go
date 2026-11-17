@@ -25,7 +25,7 @@ import (
 
 const (
 	// DefaultBaseURL is the production API.
-	DefaultBaseURL = "https://api.zapz.com"
+	DefaultBaseURL = "https://api.zapz.dev"
 	// Version of this SDK.
 	Version = "0.1.0"
 )

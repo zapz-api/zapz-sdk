@@ -14,7 +14,7 @@ from urllib.parse import urlencode
 from ._errors import APIConnectionError, ZapZError, error_from_response
 from ._version import VERSION
 
-DEFAULT_BASE_URL = "https://api.zapz.com"
+DEFAULT_BASE_URL = "https://api.zapz.dev"
 
 
 def _backoff(attempt: int) -> float:

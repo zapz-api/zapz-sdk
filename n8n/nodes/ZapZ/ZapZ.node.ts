@@ -110,7 +110,7 @@ export class ZapZ implements INodeType {
     const items = this.getInputData();
     const out: INodeExecutionData[] = [];
     const creds = await this.getCredentials('zapZApi');
-    const baseUrl = String(creds.baseUrl || 'https://api.zapz.com').replace(/\/+$/, '').replace(/\/v1$/, '');
+    const baseUrl = String(creds.baseUrl || 'https://api.zapz.dev').replace(/\/+$/, '').replace(/\/v1$/, '');
 
     for (let i = 0; i < items.length; i++) {
       try {

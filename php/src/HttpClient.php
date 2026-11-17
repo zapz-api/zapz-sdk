@@ -10,7 +10,7 @@ use ZapZ\Exception\ZapZException;
 /** HTTP layer shared by every resource (ext-curl, no other dependency). */
 class HttpClient
 {
-    public const DEFAULT_BASE_URL = 'https://api.zapz.com';
+    public const DEFAULT_BASE_URL = 'https://api.zapz.dev';
     public const VERSION = '0.1.0';
 
     public readonly string $baseUrl;

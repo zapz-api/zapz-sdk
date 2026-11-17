@@ -21,7 +21,7 @@ namespace ZapZ;
 /// </summary>
 public sealed class ZapZClient : IDisposable
 {
-    public const string DefaultBaseUrl = "https://api.zapz.com";
+    public const string DefaultBaseUrl = "https://api.zapz.dev";
     public const string Version = "0.1.0";
 
     private readonly string _apiKey;

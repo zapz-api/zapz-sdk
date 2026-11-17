@@ -12,7 +12,7 @@ require "uri"
 #   zapz.messages.send_text("INSTANCE_ID", { to: "5511999999999", text: "Olá!" })
 module ZapZ
   VERSION = "0.1.0"
-  DEFAULT_BASE_URL = "https://api.zapz.com"
+  DEFAULT_BASE_URL = "https://api.zapz.dev"
 
   def self.escape(value)
     URI.encode_www_form_component(value.to_s).gsub("+", "%20")

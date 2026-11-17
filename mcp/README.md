@@ -42,7 +42,7 @@ Docker: `docker build -t zapz-mcp .` e `docker run -p 3333:3000 -e ZAPZ_BASE_URL
 Conectar a um servidor remoto:
 
 ```bash
-claude mcp add --transport http zapz https://mcp.seudominio.com/mcp --header "Authorization: Bearer sk_live_..."
+claude mcp add --transport http zapz https://mcp.zapz.dev/mcp --header "Authorization: Bearer sk_live_..."
 ```
 
 Chaves com IPs permitidos não funcionam pelo servidor hospedado (a API vê o IP dele); nesse caso rode localmente.

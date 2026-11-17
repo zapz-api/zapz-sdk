@@ -3,7 +3,7 @@ import type { IAuthenticateGeneric, ICredentialTestRequest, ICredentialType, INo
 export class ZapZApi implements ICredentialType {
   name = 'zapZApi';
   displayName = 'ZapZ API';
-  documentationUrl = 'https://api.zapz.com/v1/openapi.json';
+  documentationUrl = 'https://api.zapz.dev/v1/openapi.json';
   properties: INodeProperties[] = [
     {
       displayName: 'API Key',
@@ -18,7 +18,7 @@ export class ZapZApi implements ICredentialType {
       displayName: 'Base URL',
       name: 'baseUrl',
       type: 'string',
-      default: 'https://api.zapz.com',
+      default: 'https://api.zapz.dev',
       description: 'Use the sandbox URL with sk_test_ keys',
     },
   ];

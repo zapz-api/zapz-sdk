@@ -4,7 +4,7 @@ import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprot
 import { TOOLS, type ToolDef } from './tools.generated.js';
 
 export const VERSION = '0.1.0';
-export const DEFAULT_BASE_URL = 'https://api.zapz.com';
+export const DEFAULT_BASE_URL = 'https://api.zapz.dev';
 /** Responses larger than this are cut, so one big list does not flood the model's context. */
 const MAX_RESULT_CHARS = 60_000;
 

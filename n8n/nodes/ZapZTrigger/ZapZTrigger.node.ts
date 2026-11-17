@@ -19,7 +19,7 @@ const EVENTS = [
 
 async function api(ctx: IHookFunctions, method: 'GET' | 'POST' | 'DELETE', path: string, body?: IDataObject) {
   const creds = await ctx.getCredentials('zapZApi');
-  const baseUrl = String(creds.baseUrl || 'https://api.zapz.com').replace(/\/+$/, '').replace(/\/v1$/, '');
+  const baseUrl = String(creds.baseUrl || 'https://api.zapz.dev').replace(/\/+$/, '').replace(/\/v1$/, '');
   return ctx.helpers.httpRequestWithAuthentication.call(ctx, 'zapZApi', { method, url: `${baseUrl}/v1${path}`, body, json: true });
 }
 
