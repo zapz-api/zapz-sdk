@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-zapz",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "n8n nodes for the ZapZ WhatsApp API: send messages, manage instances, groups and webhooks, and trigger workflows on WhatsApp events",
   "license": "MIT",
   "homepage": "https://zapz.dev",
