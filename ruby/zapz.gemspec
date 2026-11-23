@@ -8,5 +8,10 @@ Gem::Specification.new do |s|
   s.license = "MIT"
   s.files = Dir["lib/**/*.rb"] + ["README.md"]
   s.require_paths = ["lib"]
+  s.homepage = "https://zapz.dev"
+  s.metadata = {
+    "source_code_uri" => "https://github.com/zapz-api/zapz-sdk/tree/main/ruby",
+    "bug_tracker_uri" => "https://github.com/zapz-api/zapz-sdk/issues"
+  }
   s.required_ruby_version = ">= 3.0"
 end

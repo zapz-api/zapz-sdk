@@ -1,13 +1,13 @@
-# @zapz/sdk
+# @zapz-api/sdk
 
 SDK oficial da API de WhatsApp da ZapZ para Node.js 18+ e TypeScript. Sem dependências.
 
 ```bash
-npm install @zapz/sdk
+npm install @zapz-api/sdk
 ```
 
 ```ts
-import ZapZ from '@zapz/sdk';
+import ZapZ from '@zapz-api/sdk';
 
 const zapz = new ZapZ({ apiKey: process.env.ZAPZ_API_KEY });
 

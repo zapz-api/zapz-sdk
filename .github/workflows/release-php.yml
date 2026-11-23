@@ -1,0 +1,32 @@
+# Packagist reads composer.json from the root of a repository, so php/ is split into
+# github.com/zapz-api/zapz-php (main + tag vX.Y.Z). Packagist updates through its GitHub hook.
+# Tag: php/vX.Y.Z. Secret PHP_SPLIT_DEPLOY_KEY: private SSH key whose public half is a
+# write deploy key on zapz-api/zapz-php.
+name: Release PHP
+
+on:
+  push:
+    tags: ['php/v*']
+
+jobs:
+  split:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Push php/ to zapz-api/zapz-php
+        env:
+          DEPLOY_KEY: ${{ secrets.PHP_SPLIT_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          version="${GITHUB_REF_NAME#php/v}"
+          mkdir -p ~/.ssh && printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/id_ed25519 && chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git config user.name "zapz-release" && git config user.email "release@zapz.dev"
+          git subtree split --prefix php -b php-split
+          git push --force git@github.com:zapz-api/zapz-php.git php-split:main
+          git tag "v$version" php-split
+          git push git@github.com:zapz-api/zapz-php.git "v$version"

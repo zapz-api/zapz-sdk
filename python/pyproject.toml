@@ -17,6 +17,11 @@ classifiers = [
   "Typing :: Typed",
 ]
 
+[project.urls]
+Homepage = "https://zapz.dev"
+Source = "https://github.com/zapz-api/zapz-sdk"
+Issues = "https://github.com/zapz-api/zapz-sdk/issues"
+
 [tool.setuptools.packages.find]
 include = ["zapz*"]
 

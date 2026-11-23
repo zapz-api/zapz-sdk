@@ -1,0 +1,23 @@
+# Go has no upload: the module is served from this repository. Tag: go/vX.Y.Z
+# This job checks the build and asks the Go proxy to index the new version.
+name: Release Go
+
+on:
+  push:
+    tags: ['go/v*']
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    defaults:
+      run:
+        working-directory: go
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+      - run: go vet ./... && go build ./...
+      - run: GOPROXY=https://proxy.golang.org go list -m "github.com/zapz-api/zapz-sdk/go@${GITHUB_REF_NAME#go/}"

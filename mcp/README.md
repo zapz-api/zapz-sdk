@@ -1,4 +1,4 @@
-# @zapz/mcp
+# @zapz-api/mcp
 
 Servidor MCP (Model Context Protocol) da ZapZ: deixa assistentes de IA (Claude, Cursor, ChatGPT e outros clientes MCP) enviarem mensagens de WhatsApp e gerenciarem instâncias, contatos, grupos e webhooks.
 
@@ -10,7 +10,7 @@ Servidor MCP (Model Context Protocol) da ZapZ: deixa assistentes de IA (Claude, 
 ## Claude Code
 
 ```bash
-claude mcp add zapz -e ZAPZ_API_KEY=sk_live_... -- npx -y @zapz/mcp
+claude mcp add zapz -e ZAPZ_API_KEY=sk_live_... -- npx -y @zapz-api/mcp
 ```
 
 ## Claude Desktop / Cursor
@@ -20,7 +20,7 @@ claude mcp add zapz -e ZAPZ_API_KEY=sk_live_... -- npx -y @zapz/mcp
   "mcpServers": {
     "zapz": {
       "command": "npx",
-      "args": ["-y", "@zapz/mcp"],
+      "args": ["-y", "@zapz-api/mcp"],
       "env": { "ZAPZ_API_KEY": "sk_live_..." }
     }
   }
@@ -30,7 +30,7 @@ claude mcp add zapz -e ZAPZ_API_KEY=sk_live_... -- npx -y @zapz/mcp
 ## HTTP (remoto)
 
 ```bash
-npx @zapz/mcp --http --port 3333
+npx @zapz-api/mcp --http --port 3333
 ```
 
 Endpoint `POST /mcp` (Streamable HTTP, sem sessão). Cada requisição manda a própria chave em `Authorization: Bearer sk_live_...`, então um processo atende várias contas.

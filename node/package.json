@@ -1,15 +1,35 @@
 {
-  "name": "@zapz/sdk",
+  "name": "@zapz-api/sdk",
   "version": "0.1.0",
   "description": "Official Node.js / TypeScript SDK for the ZapZ WhatsApp API",
   "license": "MIT",
+  "homepage": "https://zapz.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zapz-api/zapz-sdk.git",
+    "directory": "node"
+  },
+  "bugs": {
+    "url": "https://github.com/zapz-api/zapz-sdk/issues"
+  },
   "type": "commonjs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist", "README.md"],
-  "engines": { "node": ">=18" },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "sideEffects": false,
-  "keywords": ["whatsapp", "api", "zapz", "sdk", "baileys"],
+  "keywords": [
+    "whatsapp",
+    "api",
+    "zapz",
+    "sdk",
+    "baileys"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "node --test test/*.test.js"
@@ -17,5 +37,9 @@
   "devDependencies": {
     "@types/node": "^20.11.0",
     "typescript": "^5.4.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }

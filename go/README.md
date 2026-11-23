@@ -3,7 +3,7 @@
 SDK oficial da API de WhatsApp da ZapZ para Go 1.21+. Sem dependências.
 
 ```bash
-go get github.com/zapz/zapz-go
+go get github.com/zapz-api/zapz-sdk/go
 ```
 
 ```go

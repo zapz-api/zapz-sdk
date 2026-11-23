@@ -1,0 +1,17 @@
+# Attaches the Postman/Insomnia collection to a GitHub Release. Tag: postman/vX.Y.Z
+name: Release Postman
+
+on:
+  push:
+    tags: ['postman/v*']
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: postman/zapz.postman_collection.json

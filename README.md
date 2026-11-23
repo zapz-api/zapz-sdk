@@ -4,11 +4,11 @@ SDKs oficiais da API de WhatsApp da ZapZ.
 
 | Linguagem | Pasta | Pacote (planejado) |
 |---|---|---|
-| Node.js / TypeScript (18+) | [`node/`](node) | `@zapz/sdk` |
+| Node.js / TypeScript (18+) | [`node/`](node) | `@zapz-api/sdk` |
 | Python (3.8+) | [`python/`](python) | `zapz` |
-| PHP (8.1+) | [`php/`](php) | `zapz/zapz-php` |
-| Go (1.21+) | [`go/`](go) | `github.com/zapz/zapz-go` |
-| Java (17+) | [`java/`](java) | `com.zapz:zapz-java` |
+| PHP (8.1+) | [`php/`](php) | `zapz-api/zapz-php` |
+| Go (1.21+) | [`go/`](go) | `github.com/zapz-api/zapz-sdk/go` |
+| Java (17+) | [`java/`](java) | `dev.zapz:zapz-java` |
 | C# / .NET (8+) | [`csharp/`](csharp) | `ZapZ` (NuGet) |
 | Ruby (3.0+) | [`ruby/`](ruby) | `zapz` (gem) |
 
@@ -52,3 +52,22 @@ docker run --rm --network host -v "$PWD/ruby":/w -w /w -e ZAPZ_API_KEY -e ZAPZ_B
 ```
 
 Sem `ZAPZ_API_KEY`, só os testes offline (assinatura de webhook) rodam.
+
+## Publicação
+
+Cada SDK é publicado pelo GitHub Actions (`.github/workflows/release-*.yml`) quando uma tag `<sdk>/vX.Y.Z` é enviada. A versão da tag precisa ser igual à do manifesto.
+
+| Tag | Registro | Autenticação |
+|---|---|---|
+| `node/v*`, `mcp/v*`, `n8n/v*` | npm (`@zapz-api/sdk`, `@zapz-api/mcp`, `n8n-nodes-zapz`) e `ghcr.io/zapz-api/zapz-mcp` | Trusted Publishing (OIDC) |
+| `python/v*` | PyPI (`zapz`) | Trusted Publishing (OIDC), ambiente `pypi` |
+| `ruby/v*` | RubyGems (`zapz`) | Trusted Publishing (OIDC) |
+| `csharp/v*` | NuGet (`ZapZ`) | Trusted Publishing (OIDC), secret `NUGET_USER` |
+| `php/v*` | Packagist (`zapz-api/zapz-php`) via repo `zapz-api/zapz-php` | secret `PHP_SPLIT_DEPLOY_KEY` |
+| `go/v*` | proxy.golang.org (`github.com/zapz-api/zapz-sdk/go`) | nenhuma |
+| `java/v*` | Maven Central (`dev.zapz:zapz-java`) | secrets `CENTRAL_USERNAME`, `CENTRAL_PASSWORD`, `GPG_PRIVATE_KEY`, `GPG_PASSPHRASE` |
+| `postman/v*` | GitHub Release | `GITHUB_TOKEN` |
+
+```bash
+git tag node/v0.1.0 && git push origin node/v0.1.0
+```

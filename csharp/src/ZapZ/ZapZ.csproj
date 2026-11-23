@@ -9,7 +9,15 @@
     <Description>Official .NET SDK for the ZapZ WhatsApp API</Description>
     <PackageTags>whatsapp;api;zapz;sdk</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Authors>ZapZ</Authors>
+    <PackageProjectUrl>https://zapz.dev</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/zapz-api/zapz-sdk</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>CS1591;CS1573</NoWarn>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
 </Project>

@@ -3,6 +3,15 @@
   "version": "0.1.0",
   "description": "n8n nodes for the ZapZ WhatsApp API: send messages, manage instances, groups and webhooks, and trigger workflows on WhatsApp events",
   "license": "MIT",
+  "homepage": "https://zapz.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zapz-api/zapz-sdk.git",
+    "directory": "n8n"
+  },
+  "bugs": {
+    "url": "https://github.com/zapz-api/zapz-sdk/issues"
+  },
   "keywords": [
     "n8n-community-node-package",
     "whatsapp",
@@ -33,5 +42,9 @@
     "@types/node": "^20.19.43",
     "n8n-workflow": "^2.16.0",
     "typescript": "5.9.3"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }

@@ -1,9 +1,9 @@
-# zapz/zapz-php
+# zapz-api/zapz-php
 
 SDK oficial da API de WhatsApp da ZapZ para PHP 8.1+. Só precisa de `ext-curl`.
 
 ```bash
-composer require zapz/zapz-php
+composer require zapz-api/zapz-php
 ```
 
 ```php

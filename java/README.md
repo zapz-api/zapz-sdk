@@ -3,7 +3,7 @@
 SDK oficial da API de WhatsApp da ZapZ para Java 17+. Sem dependências (usa `java.net.http`).
 
 ```xml
-<dependency><groupId>com.zapz</groupId><artifactId>zapz-java</artifactId><version>0.1.0</version></dependency>
+<dependency><groupId>dev.zapz</groupId><artifactId>zapz-java</artifactId><version>0.1.0</version></dependency>
 ```
 
 ```java
