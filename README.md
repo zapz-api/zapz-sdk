@@ -4,7 +4,7 @@ SDKs oficiais da API de WhatsApp da ZapZ.
 
 | Linguagem | Pasta | Pacote (planejado) |
 |---|---|---|
-| Node.js / TypeScript (18+) | [`node/`](node) | `@zapz-api/sdk` |
+| Node.js / TypeScript (18+) | [`node/`](node) | `@zapz/sdk` |
 | Python (3.8+) | [`python/`](python) | `zapz` |
 | PHP (8.1+) | [`php/`](php) | `zapz-api/zapz-php` |
 | Go (1.21+) | [`go/`](go) | `github.com/zapz-api/zapz-sdk/go` |
@@ -59,7 +59,7 @@ Cada SDK é publicado pelo GitHub Actions (`.github/workflows/release-*.yml`) qu
 
 | Tag | Registro | Autenticação |
 |---|---|---|
-| `node/v*`, `mcp/v*`, `n8n/v*` | npm (`@zapz-api/sdk`, `@zapz-api/mcp`, `n8n-nodes-zapz`) e `ghcr.io/zapz-api/zapz-mcp` | Trusted Publishing (OIDC) |
+| `node/v*`, `mcp/v*`, `n8n/v*` | npm (`@zapz/sdk`, `@zapz/mcp`, `n8n-nodes-zapz`) e `ghcr.io/zapz-api/zapz-mcp` | Trusted Publishing (OIDC) |
 | `python/v*` | PyPI (`zapz`) | Trusted Publishing (OIDC), ambiente `pypi` |
 | `ruby/v*` | RubyGems (`zapz`) | Trusted Publishing (OIDC) |
 | `csharp/v*` | NuGet (`ZapZ`) | Trusted Publishing (OIDC), secret `NUGET_USER` |

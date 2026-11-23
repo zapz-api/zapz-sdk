@@ -1,5 +1,5 @@
 {
-  "name": "@zapz-api/mcp",
+  "name": "@zapz/mcp",
   "version": "0.1.0",
   "description": "MCP server for the ZapZ WhatsApp API: lets AI assistants send messages and manage instances, groups, contacts and webhooks",
   "license": "MIT",

@@ -6,7 +6,7 @@ import { verifyWebhook } from './webhooks';
  * ZapZ API client.
  *
  * ```ts
- * import ZapZ from '@zapz-api/sdk';
+ * import ZapZ from '@zapz/sdk';
  * const zapz = new ZapZ({ apiKey: process.env.ZAPZ_API_KEY });
  * await zapz.messages.sendText('INSTANCE_ID', { to: '5511999999999', text: 'Olá!' });
  * ```
