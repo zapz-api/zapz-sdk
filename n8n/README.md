@@ -1,10 +1,16 @@
 # n8n-nodes-zapz
 
-Nós do n8n para a API de WhatsApp da ZapZ.
+n8n nodes for the [ZapZ](https://zapz.dev) WhatsApp API.
 
-- **ZapZ**: todas as operações da API (instâncias, mensagens, contatos, grupos, webhooks, sandbox). O corpo de cada operação já vem preenchido com um exemplo; o `clientMessageId` é gerado sozinho nos envios.
-- **ZapZ Trigger**: dispara o workflow em eventos do WhatsApp (`new_message`, `message_read`, `disconnected`…). Ao ativar, cria o webhook na ZapZ com um segredo próprio e valida a assinatura de cada entrega; ao desativar, remove o webhook.
+Documentation: https://zapz.dev/#/docs
 
-Instalação: em **Settings → Community Nodes → Install**, use `n8n-nodes-zapz`. Credencial: API key (`sk_live_` ou `sk_test_`) e a URL da API.
+- **ZapZ**: every API operation (instances, messages, contacts, groups, webhooks, sandbox). The body of each operation comes filled in with an example; the `clientMessageId` is generated automatically on sends.
+- **ZapZ Trigger**: starts the workflow on WhatsApp events (`new_message`, `message_read`, `disconnected`…). When activated, it creates the webhook on ZapZ with its own secret and checks the signature of each delivery; when deactivated, it removes the webhook.
 
-As operações vêm de `nodes/ZapZ/operations.ts`, gerado de `openapi.json` (`python3 generator/generate.py`).
+Installation: in **Settings → Community Nodes → Install**, enter `n8n-nodes-zapz`. Credential: an API key (`sk_live_` or `sk_test_`) and the API URL.
+
+The operations come from `nodes/ZapZ/operations.ts`, generated from `openapi.json` (`python3 generator/generate.py`).
+
+## License
+
+MIT

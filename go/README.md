@@ -1,21 +1,29 @@
-# zapz-go
+# zapz (Go)
 
-SDK oficial da API de WhatsApp da ZapZ para Go 1.21+. Sem dependências.
+Official Go 1.21+ SDK for the [ZapZ](https://zapz.dev) WhatsApp API. No dependencies.
+
+Documentation: https://zapz.dev/#/docs · API reference: https://pkg.go.dev/github.com/zapz-api/zapz-sdk/go
 
 ```bash
 go get github.com/zapz-api/zapz-sdk/go
 ```
 
 ```go
-client := zapz.New("") // lê ZAPZ_API_KEY
+import zapz "github.com/zapz-api/zapz-sdk/go"
+
+client := zapz.New("") // reads ZAPZ_API_KEY
 msg, err := client.Messages.SendText(ctx, "INSTANCE_ID", zapz.SendTextParams{
 	To:   "5511999999999",
-	Text: "Olá!",
+	Text: "Hello!",
 })
-if zapz.IsRateLimited(err) { /* veja err.(*zapz.Error).RetryAfter */ }
+if zapz.IsRateLimited(err) { /* see err.(*zapz.Error).RetryAfter */ }
 ```
 
-- Parâmetros de envio são structs tipadas (`SendTextParams`, `SendMediaParams`…); campos opcionais numéricos/booleanos usam ponteiro (`zapz.Bool(true)`).
-- Opções: `zapz.WithBaseURL(...)`, `zapz.WithHTTPClient(...)`, `zapz.WithMaxRetries(n)`.
-- Erros: `*zapz.Error` com `Status`, `Code`, `RetryAfter`; helpers `IsNotFound`, `IsRateLimited`, `IsUnauthorized`…
+- Send parameters are typed structs (`SendTextParams`, `SendMediaParams`…); optional numeric/boolean fields are pointers (`zapz.Bool(true)`).
+- Options: `zapz.WithBaseURL(...)`, `zapz.WithHTTPClient(...)`, `zapz.WithMaxRetries(n)`.
+- Errors: `*zapz.Error` with `Status`, `Code`, `RetryAfter`; helpers `IsNotFound`, `IsRateLimited`, `IsUnauthorized`…
 - Webhooks: `zapz.VerifyWebhook(rawBody, r.Header, secret, 0)`.
+
+## License
+
+MIT

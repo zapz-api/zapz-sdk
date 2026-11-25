@@ -1,8 +1,10 @@
-# Coleção Postman / Insomnia
+# Postman / Insomnia collection
 
-`zapz.postman_collection.json` tem todas as rotas públicas, organizadas por recurso, com corpos de exemplo.
+`zapz.postman_collection.json` has every public route of the [ZapZ](https://zapz.dev) API, grouped by resource, with example bodies.
 
-1. Postman: **Import** → arquivo. Insomnia: **Import** → arquivo (aceita coleção Postman v2.1).
-2. Preencha as variáveis da coleção: `baseUrl`, `apiKey` e `instanceId`.
+1. Postman: **Import** → file. Insomnia: **Import** → file (it accepts Postman v2.1 collections).
+2. Fill in the collection variables: `baseUrl`, `apiKey` and `instanceId`.
 
-A coleção é gerada de `openapi.json`. O Insomnia e o Postman também importam a especificação direto de `GET /v1/openapi.json`.
+The collection is generated from `openapi.json`. Postman and Insomnia can also import the specification directly from `GET /v1/openapi.json`.
+
+Documentation: https://zapz.dev/#/docs
