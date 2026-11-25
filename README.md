@@ -17,7 +17,7 @@ None of them has runtime dependencies.
 Extras:
 
 - [`postman/`](postman): Postman / Insomnia collection with every route.
-- [`n8n/`](n8n): n8n nodes (actions + trigger on signed webhooks), [`n8n-nodes-zapz`](https://www.npmjs.com/package/n8n-nodes-zapz).
+- [`n8n/`](n8n): n8n nodes (actions + trigger on signed webhooks), [`@zapz/n8n-nodes-zapz`](https://www.npmjs.com/package/@zapz/n8n-nodes-zapz).
 - [`mcp/`](mcp): MCP server for AI assistants (stdio and HTTP), [`@zapz/mcp`](https://www.npmjs.com/package/@zapz/mcp).
 
 ## How it works
@@ -69,7 +69,7 @@ All SDKs share one version. GitHub Actions (`.github/workflows/release-*.yml`) p
 
 | Tag | Registry | Authentication |
 |---|---|---|
-| `node/v*`, `mcp/v*`, `n8n/v*` | npm (`@zapz/sdk`, `@zapz/mcp`, `n8n-nodes-zapz`) and `ghcr.io/zapz-api/zapz-mcp` | Trusted Publishing (OIDC) |
+| `node/v*`, `mcp/v*`, `n8n/v*` | npm (`@zapz/sdk`, `@zapz/mcp`, `@zapz/n8n-nodes-zapz`) and `ghcr.io/zapz-api/zapz-mcp` | Trusted Publishing (OIDC) |
 | `python/v*` | PyPI (`zapz`) | Trusted Publishing (OIDC), environment `pypi` |
 | `ruby/v*` | RubyGems (`zapz`) | Trusted Publishing (OIDC); variable `RUBYGEMS_OWNER_ID` for the first push only |
 | `csharp/v*` | NuGet (`ZapZ`) | Trusted Publishing (OIDC), secret `NUGET_USER` |
