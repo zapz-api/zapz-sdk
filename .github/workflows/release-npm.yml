@@ -1,5 +1,5 @@
 # Publishes the npm packages with npm Trusted Publishing (OIDC, no token) and provenance.
-# Tags: node/vX.Y.Z -> @zapz/sdk, mcp/vX.Y.Z -> @zapz/mcp (+ Docker image), n8n/vX.Y.Z -> n8n-nodes-zapz
+# Tags: node/vX.Y.Z -> @zapz/sdk, mcp/vX.Y.Z -> @zapz/mcp (+ Docker image), n8n/vX.Y.Z -> @zapz/n8n-nodes-zapz
 name: Release npm
 
 on:
