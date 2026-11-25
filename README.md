@@ -55,7 +55,17 @@ Without `ZAPZ_API_KEY`, only the offline tests (webhook signature) run.
 
 ## Releasing
 
-GitHub Actions (`.github/workflows/release-*.yml`) publishes each SDK when a `<sdk>/vX.Y.Z` tag is pushed. The tag version must match the version in the manifest.
+All SDKs share one version. GitHub Actions (`.github/workflows/release-*.yml`) publishes each SDK when a `<sdk>/vX.Y.Z` tag is pushed, and each workflow fails when the tag differs from its manifest.
+
+1. Set the version everywhere (manifests and the `VERSION` constant each client sends), then merge it to `main`:
+   ```bash
+   scripts/set-version.sh 0.1.4
+   ```
+2. On an up-to-date `main`, push every tag (`--dry-run` only checks and lists them):
+   ```bash
+   scripts/release.sh 0.1.4
+   ```
+   The script stops when a file has another version, when `main` differs from `origin/main` or when a tag already exists. It pushes the tags one by one, because GitHub starts no workflow for a push that creates more than 3 tags.
 
 | Tag | Registry | Authentication |
 |---|---|---|
@@ -68,9 +78,7 @@ GitHub Actions (`.github/workflows/release-*.yml`) publishes each SDK when a `<s
 | `java/v*` | Maven Central (`dev.zapz:zapz-java`) | secrets `CENTRAL_USERNAME`, `CENTRAL_PASSWORD`, `GPG_PRIVATE_KEY`, `GPG_PASSPHRASE` |
 | `postman/v*` | GitHub Release | `GITHUB_TOKEN` |
 
-```bash
-git tag node/v0.1.2 && git push origin node/v0.1.2
-```
+To release one SDK alone, push its tag: `git tag node/v0.1.4 && git push origin node/v0.1.4`.
 
 ## License
 

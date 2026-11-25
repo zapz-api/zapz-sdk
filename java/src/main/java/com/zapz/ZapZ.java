@@ -24,7 +24,7 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public final class ZapZ {
     public static final String DEFAULT_BASE_URL = "https://api.zapz.dev";
-    public static final String VERSION = "0.1.0";
+    public static final String VERSION = "0.1.3";
 
     public final InstancesResource instances = new InstancesResource(this);
     public final MessagesResource messages = new MessagesResource(this);
