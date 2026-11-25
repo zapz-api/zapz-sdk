@@ -93,5 +93,15 @@ jobs:
         run: |
           version="${GITHUB_REF_NAME#mcp/v}"
           jq --arg v "$version" '.version = $v | .packages[0].version = $v' server.json > server.tmp && mv server.tmp server.json
+      # The registry reads mcpName from npm, which can take a few minutes to serve a new version.
+      - name: Wait for the npm version
+        run: |
+          version="${GITHUB_REF_NAME#mcp/v}"
+          for _ in $(seq 1 30); do
+            [ "$(npm view "@zapz/mcp@$version" mcpName 2>/dev/null)" = "io.github.zapz-api/zapz-mcp" ] && exit 0
+            sleep 10
+          done
+          echo "::error::@zapz/mcp@$version is not on npm after 5 minutes"
+          exit 1
       - run: ./mcp-publisher login github-oidc
       - run: ./mcp-publisher publish
