@@ -6,7 +6,7 @@ Official SDKs for the [ZapZ](https://zapz.dev) WhatsApp API. Documentation: http
 |---|---|---|
 | Node.js / TypeScript (18+) | [`node/`](node) | [`@zapz/sdk`](https://www.npmjs.com/package/@zapz/sdk) |
 | Python (3.8+) | [`python/`](python) | [`zapz`](https://pypi.org/project/zapz/) |
-| PHP (8.1+) | [`php/`](php) | [`zapz-api/zapz-php`](https://packagist.org/packages/zapz-api/zapz-php) |
+| PHP (8.1+) | [`php/`](php) | [`zapz/sdk`](https://packagist.org/packages/zapz/sdk) |
 | Go (1.21+) | [`go/`](go) | [`github.com/zapz-api/zapz-sdk/go`](https://pkg.go.dev/github.com/zapz-api/zapz-sdk/go) |
 | Java (17+) | [`java/`](java) | [`dev.zapz:zapz-java`](https://central.sonatype.com/artifact/dev.zapz/zapz-java) |
 | C# / .NET (8+) | [`csharp/`](csharp) | [`ZapZ`](https://www.nuget.org/packages/ZapZ) |
@@ -63,7 +63,7 @@ GitHub Actions (`.github/workflows/release-*.yml`) publishes each SDK when a `<s
 | `python/v*` | PyPI (`zapz`) | Trusted Publishing (OIDC), environment `pypi` |
 | `ruby/v*` | RubyGems (`zapz`) | Trusted Publishing (OIDC); variable `RUBYGEMS_OWNER_ID` for the first push only |
 | `csharp/v*` | NuGet (`ZapZ`) | Trusted Publishing (OIDC), secret `NUGET_USER` |
-| `php/v*` | Packagist (`zapz-api/zapz-php`) through the `zapz-api/zapz-php` repository | secret `PHP_SPLIT_DEPLOY_KEY` |
+| `php/v*` | Packagist (`zapz/sdk`) through the `zapz-api/zapz-php` repository | secret `PHP_SPLIT_DEPLOY_KEY` |
 | `go/v*` | proxy.golang.org (`github.com/zapz-api/zapz-sdk/go`) | none |
 | `java/v*` | Maven Central (`dev.zapz:zapz-java`) | secrets `CENTRAL_USERNAME`, `CENTRAL_PASSWORD`, `GPG_PRIVATE_KEY`, `GPG_PASSPHRASE` |
 | `postman/v*` | GitHub Release | `GITHUB_TOKEN` |

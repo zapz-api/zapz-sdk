@@ -1,5 +1,5 @@
 {
-    "name": "zapz-api/zapz-php",
+    "name": "zapz/sdk",
     "description": "Official PHP SDK for the ZapZ WhatsApp API",
     "type": "library",
     "license": "MIT",
