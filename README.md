@@ -55,17 +55,17 @@ Without `ZAPZ_API_KEY`, only the offline tests (webhook signature) run.
 
 ## Releasing
 
-All SDKs share one version. GitHub Actions (`.github/workflows/release-*.yml`) publishes each SDK when a `<sdk>/vX.Y.Z` tag is pushed, and each workflow fails when the tag differs from its manifest.
+Each SDK has its own version and is released only when it changes. GitHub Actions (`.github/workflows/release-*.yml`) publishes an SDK when its `<sdk>/vX.Y.Z` tag is pushed, and each workflow fails when the tag differs from its manifest.
 
-1. Set the version everywhere (manifests and the `VERSION` constant each client sends), then merge it to `main`:
+1. Bump the SDKs you changed (manifests and the `VERSION` constant each client sends), then merge it to `main`:
    ```bash
-   scripts/set-version.sh 0.1.4
+   scripts/set-version.sh 0.1.6 node mcp
    ```
-2. On an up-to-date `main`, push every tag (`--dry-run` only checks and lists them):
+2. On an up-to-date `main`, tag what changed (`--dry-run` only lists it):
    ```bash
-   scripts/release.sh 0.1.4
+   scripts/release.sh
    ```
-   The script stops when a file has another version, when `main` differs from `origin/main` or when a tag already exists. It pushes the tags one by one, because GitHub starts no workflow for a push that creates more than 3 tags.
+   For each SDK whose folder changed since its last tag, the script pushes `<sdk>/v<version in its files>`. It skips SDKs with no change, and SDKs that changed but keep their version (a README fix, say). It stops when one SDK's files hold different versions or when `main` differs from `origin/main`, and pushes the tags one by one, because GitHub starts no workflow for a push that creates more than 3 tags.
 
 | Tag | Registry | Authentication |
 |---|---|---|
@@ -78,7 +78,6 @@ All SDKs share one version. GitHub Actions (`.github/workflows/release-*.yml`) p
 | `java/v*` | Maven Central (`dev.zapz:zapz-java`) | secrets `CENTRAL_USERNAME`, `CENTRAL_PASSWORD`, `GPG_PRIVATE_KEY`, `GPG_PASSPHRASE` |
 | `postman/v*` | GitHub Release | `GITHUB_TOKEN` |
 
-To release one SDK alone, push its tag: `git tag node/v0.1.4 && git push origin node/v0.1.4`.
 
 ## License
 
