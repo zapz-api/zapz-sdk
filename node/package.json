@@ -1,6 +1,6 @@
 {
   "name": "@zapz/sdk",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Official Node.js / TypeScript SDK for the ZapZ WhatsApp API",
   "license": "MIT",
   "homepage": "https://zapz.dev",
@@ -15,8 +15,22 @@
   "type": "commonjs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./esm/index.d.mts",
+        "default": "./esm/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
     "dist",
+    "esm",
     "README.md"
   ],
   "engines": {

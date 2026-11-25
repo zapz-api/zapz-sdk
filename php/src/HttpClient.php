@@ -11,7 +11,7 @@ use ZapZ\Exception\ZapZException;
 class HttpClient
 {
     public const DEFAULT_BASE_URL = 'https://api.zapz.dev';
-    public const VERSION = '0.1.3';
+    public const VERSION = '0.1.4';
 
     public readonly string $baseUrl;
 
@@ -94,7 +94,6 @@ class HttpClient
             $raw = curl_exec($ch);
             $status = (int) curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
             $curlError = curl_error($ch);
-            curl_close($ch);
 
             if ($raw === false) {
                 if ($idempotent && $attempt < $maxRetries) {
