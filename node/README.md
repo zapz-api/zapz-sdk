@@ -1,6 +1,8 @@
 # @zapz/sdk
 
-SDK oficial da API de WhatsApp da ZapZ para Node.js 18+ e TypeScript. Sem dependências.
+Official Node.js 18+ and TypeScript SDK for the [ZapZ](https://zapz.dev) WhatsApp API. No dependencies.
+
+Documentation: https://zapz.dev/#/docs
 
 ```bash
 npm install @zapz/sdk
@@ -11,24 +13,24 @@ import ZapZ from '@zapz/sdk';
 
 const zapz = new ZapZ({ apiKey: process.env.ZAPZ_API_KEY });
 
-const msg = await zapz.messages.sendText('INSTANCE_ID', { to: '5511999999999', text: 'Olá!' });
+const msg = await zapz.messages.sendText('INSTANCE_ID', { to: '5511999999999', text: 'Hello!' });
 console.log(msg.id, msg.status);
 ```
 
-Recursos: `instances`, `messages`, `contacts`, `groups`, `webhooks`, `sandbox`.
+Resources: `instances`, `messages`, `contacts`, `groups`, `webhooks`, `sandbox`.
 
-## Opções
+## Options
 
-| Opção | Padrão | |
+| Option | Default | |
 |---|---|---|
-| `apiKey` | `ZAPZ_API_KEY` | `sk_live_…` ou `sk_test_…` |
-| `baseUrl` | `ZAPZ_BASE_URL` ou produção | use a URL do sandbox com chave de teste |
-| `timeout` | `30000` | ms por tentativa |
-| `maxRetries` | `2` | em 429/503 e falhas de rede seguras |
+| `apiKey` | `ZAPZ_API_KEY` | `sk_live_…` or `sk_test_…` |
+| `baseUrl` | `ZAPZ_BASE_URL` or production | use the sandbox URL with a test key |
+| `timeout` | `30000` | ms per attempt |
+| `maxRetries` | `2` | on 429/503 and safe network failures |
 
-## Erros
+## Errors
 
-Todas as exceções herdam de `ZapZError` (`status`, `code`, `retryAfter`, `body`):
+Every exception extends `ZapZError` (`status`, `code`, `retryAfter`, `body`):
 `ValidationError`, `AuthenticationError`, `PermissionDeniedError`, `NotFoundError`, `ConflictError`, `RateLimitError`, `InternalServerError`, `APIConnectionError`.
 
 ## Webhooks
@@ -39,3 +41,7 @@ app.post('/zapz', express.raw({ type: 'application/json' }), (req, res) => {
   res.sendStatus(200);
 });
 ```
+
+## License
+
+MIT

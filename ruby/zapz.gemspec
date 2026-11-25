@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.homepage = "https://zapz.dev"
   s.metadata = {
+    "documentation_uri" => "https://zapz.dev/#/docs",
     "source_code_uri" => "https://github.com/zapz-api/zapz-sdk/tree/main/ruby",
     "bug_tracker_uri" => "https://github.com/zapz-api/zapz-sdk/issues"
   }

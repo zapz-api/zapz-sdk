@@ -19,6 +19,7 @@ classifiers = [
 
 [project.urls]
 Homepage = "https://zapz.dev"
+Documentation = "https://zapz.dev/#/docs"
 Source = "https://github.com/zapz-api/zapz-sdk"
 Issues = "https://github.com/zapz-api/zapz-sdk/issues"
 

@@ -22,6 +22,7 @@
     "homepage": "https://zapz.dev",
     "support": {
         "issues": "https://github.com/zapz-api/zapz-sdk/issues",
-        "source": "https://github.com/zapz-api/zapz-php"
+        "source": "https://github.com/zapz-api/zapz-php",
+        "docs": "https://zapz.dev/#/docs"
     }
 }
