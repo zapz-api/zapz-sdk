@@ -1,10 +1,12 @@
 # Publishes the `ZapZ` package to NuGet with Trusted Publishing (OIDC). Tag: csharp/vX.Y.Z
 # Secret NUGET_USER: the nuget.org account name (not a key) that owns the trusted publishing policy.
+# Manual run (workflow_dispatch): packs and gets a NuGet key through OIDC, but does not push.
 name: Release NuGet
 
 on:
   push:
     tags: ['csharp/v*']
+  workflow_dispatch:
 
 jobs:
   publish:
@@ -20,10 +22,12 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
-      - run: ../../../.github/scripts/check-version.sh "$(grep -oP '(?<=<Version>)[^<]+' ZapZ.csproj)"
+      - if: github.event_name == 'push'
+        run: ../../../.github/scripts/check-version.sh "$(grep -oP '(?<=<Version>)[^<]+' ZapZ.csproj)"
       - run: dotnet pack -c Release -o out
       - uses: NuGet/login@v1
         id: login
         with:
           user: ${{ secrets.NUGET_USER }}
-      - run: dotnet nuget push "out/*.nupkg" --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json
+      - if: github.event_name == 'push'
+        run: dotnet nuget push "out/*.nupkg" --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json
