@@ -11,7 +11,7 @@ use ZapZ\Exception\ZapZException;
 class HttpClient
 {
     public const DEFAULT_BASE_URL = 'https://api.zapz.dev';
-    public const VERSION = '0.1.4';
+    public const VERSION = '0.1.5';
 
     public readonly string $baseUrl;
 

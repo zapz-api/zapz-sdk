@@ -7,6 +7,7 @@ import type {
   IWebhookFunctions,
   IWebhookResponseData,
 } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'n8n-workflow';
 
 const EVENTS = [
   'new_message', 'message_sent', 'message_delivered', 'message_read', 'message_failed',
@@ -28,14 +29,14 @@ export class ZapZTrigger implements INodeType {
   description: INodeTypeDescription = {
     displayName: 'ZapZ Trigger',
     name: 'zapZTrigger',
-    icon: 'file:zapz.svg',
+    icon: { light: 'file:zapz.svg', dark: 'file:zapz.dark.svg' },
     group: ['trigger'],
     version: 1,
     subtitle: '={{$parameter["events"].join(", ")}}',
     description: 'Starts the workflow on ZapZ WhatsApp events (signed webhooks)',
     defaults: { name: 'ZapZ Trigger' },
     inputs: [],
-    outputs: ['main'],
+    outputs: [NodeConnectionTypes.Main],
     credentials: [{ name: 'zapZApi', required: true }],
     webhooks: [{ name: 'default', httpMethod: 'POST', responseMode: 'onReceived', path: 'webhook' }],
     properties: [
@@ -85,8 +86,8 @@ export class ZapZTrigger implements INodeType {
         if (data.webhookId) {
           try {
             await api(this, 'DELETE', `/webhooks/${encodeURIComponent(String(data.webhookId))}`);
-          } catch {
-            // already gone
+          } catch (error) {
+            this.logger.warn(`ZapZ Trigger: could not delete webhook ${String(data.webhookId)}: ${(error as Error).message}`);
           }
         }
         delete data.webhookId;

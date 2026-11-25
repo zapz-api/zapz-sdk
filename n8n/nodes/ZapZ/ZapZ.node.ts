@@ -8,7 +8,7 @@ import type {
   INodeType,
   INodeTypeDescription,
 } from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+import { NodeApiError, NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
 import { OPERATIONS, RESOURCES } from './operations';
 
 const PARAM_LABEL: Record<string, string> = {
@@ -40,7 +40,7 @@ function buildProperties(): INodeProperties[] {
       noDataExpression: true,
       displayOptions: { show: { resource: [r.value] } },
       options: ops.map((o) => ({ name: o.name, value: o.operation, action: o.name })),
-      default: ops[0].operation,
+      default: String(ops[0].operation),
     });
   }
   const paramOps = new Map<string, Map<string, string[]>>();
@@ -70,7 +70,7 @@ function buildProperties(): INodeProperties[] {
         displayName: 'Body (JSON)',
         name: 'body',
         type: 'json',
-        default: JSON.stringify(o.bodyExample ?? {}, null, 2),
+        default: String(o.bodyJson ?? '{}'),
         displayOptions: { show },
         description: o.autoClientMessageId ? 'clientMessageId is generated when missing, so retries never send twice' : undefined,
       });
@@ -94,14 +94,15 @@ export class ZapZ implements INodeType {
   description: INodeTypeDescription = {
     displayName: 'ZapZ',
     name: 'zapZ',
-    icon: 'file:zapz.svg',
+    icon: { light: 'file:zapz.svg', dark: 'file:zapz.dark.svg' },
     group: ['output'],
     version: 1,
     subtitle: '={{$parameter["resource"] + ": " + $parameter["operation"]}}',
     description: 'WhatsApp API with anti-ban protection',
     defaults: { name: 'ZapZ' },
-    inputs: ['main'],
-    outputs: ['main'],
+    inputs: [NodeConnectionTypes.Main],
+    outputs: [NodeConnectionTypes.Main],
+    usableAsTool: true,
     credentials: [{ name: 'zapZApi', required: true }],
     properties: buildProperties(),
   };
@@ -147,7 +148,7 @@ export class ZapZ implements INodeType {
           out.push({ json: { error: (error as Error).message }, pairedItem: { item: i } });
           continue;
         }
-        if (error instanceof NodeOperationError) throw error;
+        if (error instanceof NodeOperationError) throw new NodeOperationError(this.getNode(), error, { itemIndex: i });
         throw new NodeApiError(this.getNode(), error as never, { itemIndex: i });
       }
     }

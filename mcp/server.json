@@ -1,0 +1,44 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.zapz-api/zapz-mcp",
+  "title": "ZapZ WhatsApp API",
+  "description": "Send WhatsApp messages and manage instances, contacts, groups and webhooks with ZapZ.",
+  "websiteUrl": "https://zapz.dev/#/docs",
+  "repository": {
+    "url": "https://github.com/zapz-api/zapz-sdk",
+    "source": "github",
+    "subfolder": "mcp"
+  },
+  "version": "0.1.5",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@zapz/mcp",
+      "version": "0.1.5",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "ZAPZ_API_KEY",
+          "description": "ZapZ API key: sk_live_... or sk_test_... (sandbox)",
+          "isRequired": true,
+          "isSecret": true,
+          "format": "string"
+        },
+        {
+          "name": "ZAPZ_BASE_URL",
+          "description": "API base URL (default https://api.zapz.dev)",
+          "isRequired": false,
+          "format": "string"
+        },
+        {
+          "name": "ZAPZ_MCP_READ_ONLY",
+          "description": "true to expose only read tools",
+          "isRequired": false,
+          "format": "string"
+        }
+      ]
+    }
+  ]
+}

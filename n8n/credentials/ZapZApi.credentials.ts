@@ -1,8 +1,9 @@
-import type { IAuthenticateGeneric, ICredentialTestRequest, ICredentialType, INodeProperties } from 'n8n-workflow';
+import type { IAuthenticateGeneric, ICredentialTestRequest, ICredentialType, Icon, INodeProperties } from 'n8n-workflow';
 
 export class ZapZApi implements ICredentialType {
   name = 'zapZApi';
   displayName = 'ZapZ API';
+  icon: Icon = { light: 'file:zapz.svg', dark: 'file:zapz.dark.svg' };
   documentationUrl = 'https://api.zapz.dev/v1/openapi.json';
   properties: INodeProperties[] = [
     {

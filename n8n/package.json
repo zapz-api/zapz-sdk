@@ -1,8 +1,13 @@
 {
   "name": "@zapz/n8n-nodes-zapz",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "n8n nodes for the ZapZ WhatsApp API: send messages, manage instances, groups and webhooks, and trigger workflows on WhatsApp events",
   "license": "MIT",
+  "author": {
+    "name": "ZapZ",
+    "email": "admin@zapz.dev",
+    "url": "https://zapz.dev"
+  },
   "homepage": "https://zapz.dev",
   "repository": {
     "type": "git",
@@ -22,7 +27,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc && cp nodes/ZapZ/zapz.svg dist/nodes/ZapZ/ && cp nodes/ZapZ/zapz.svg dist/nodes/ZapZTrigger/",
+    "build": "tsc && node -e \"const fs=require('fs');for(const d of ['nodes/ZapZ','nodes/ZapZTrigger','credentials'])for(const f of ['zapz.svg','zapz.dark.svg'])fs.copyFileSync(d+'/'+f,'dist/'+d+'/'+f)\"",
     "test": "node --test test/*.test.js"
   },
   "n8n": {
