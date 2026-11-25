@@ -1,4 +1,6 @@
 # Publishes the `zapz` gem with RubyGems Trusted Publishing (OIDC). Tag: ruby/vX.Y.Z
+# Repository variable RUBYGEMS_OWNER_ID: the RubyGems.org account ID shown on its Pending
+# Trusted Publishers page. Only the first push (gem does not exist yet) needs it.
 name: Release Ruby
 
 on:
@@ -20,5 +22,7 @@ jobs:
         with:
           ruby-version: '3.3'
       - run: ../.github/scripts/check-version.sh "$(ruby -e 'puts Gem::Specification.load("zapz.gemspec").version')"
-      - uses: rubygems/configure-rubygems-credentials@v1.0.0
+      - uses: rubygems/configure-rubygems-credentials@v2.2.0
+        with:
+          owner: ${{ vars.RUBYGEMS_OWNER_ID }}
       - run: gem build zapz.gemspec && gem push zapz-*.gem
