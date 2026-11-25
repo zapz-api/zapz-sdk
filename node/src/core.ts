@@ -1,7 +1,7 @@
 import { APIConnectionError, ZapZError, errorFromResponse } from './errors';
 
 export const DEFAULT_BASE_URL = 'https://api.zapz.dev';
-export const VERSION = '0.1.4';
+export const VERSION = '0.1.5';
 
 export interface ClientOptions {
   /** `sk_live_...` or `sk_test_...`. Defaults to the ZAPZ_API_KEY environment variable. */

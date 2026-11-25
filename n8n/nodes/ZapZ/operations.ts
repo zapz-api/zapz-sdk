@@ -9,7 +9,7 @@ export interface ZapZOperation {
   pathParams: { name: string; arg: string }[];
   query: string[];
   body: boolean;
-  bodyExample: unknown;
+  bodyJson: string | null;
   autoClientMessageId: boolean;
 }
 
@@ -53,7 +53,7 @@ export const OPERATIONS: ZapZOperation[] = [
       "status"
     ],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -65,9 +65,7 @@ export const OPERATIONS: ZapZOperation[] = [
     "pathParams": [],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "name": "Atendimento"
-    },
+    "bodyJson": "{\n  \"name\": \"Atendimento\"\n}",
     "autoClientMessageId": false
   },
   {
@@ -84,7 +82,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -101,7 +99,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {},
+    "bodyJson": "{}",
     "autoClientMessageId": false
   },
   {
@@ -118,7 +116,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -135,7 +133,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -152,7 +150,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -169,9 +167,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "phone": "5511999999999"
-    },
+    "bodyJson": "{\n  \"phone\": \"5511999999999\"\n}",
     "autoClientMessageId": false
   },
   {
@@ -188,7 +184,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -205,7 +201,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -226,7 +222,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {},
+    "bodyJson": "{}",
     "autoClientMessageId": false
   },
   {
@@ -247,7 +243,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -264,11 +260,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "phones": [
-        "5511999999999"
-      ]
-    },
+    "bodyJson": "{\n  \"phones\": [\n    \"5511999999999\"\n  ]\n}",
     "autoClientMessageId": false
   },
   {
@@ -289,7 +281,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -310,7 +302,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -322,7 +314,7 @@ export const OPERATIONS: ZapZOperation[] = [
     "pathParams": [],
     "query": [],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -334,13 +326,7 @@ export const OPERATIONS: ZapZOperation[] = [
     "pathParams": [],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "url": "https://exemplo.com/webhook",
-      "events": [
-        "event"
-      ],
-      "secret": "um-segredo-com-16-chars"
-    },
+    "bodyJson": "{\n  \"url\": \"https://exemplo.com/webhook\",\n  \"events\": [\n    \"event\"\n  ],\n  \"secret\": \"um-segredo-com-16-chars\"\n}",
     "autoClientMessageId": false
   },
   {
@@ -357,7 +343,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {},
+    "bodyJson": "{}",
     "autoClientMessageId": false
   },
   {
@@ -374,7 +360,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -391,7 +377,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -408,7 +394,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {},
+    "bodyJson": "{}",
     "autoClientMessageId": false
   },
   {
@@ -425,10 +411,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "to": "5511999999999",
-      "text": "Olá! Mensagem enviada pela ZapZ."
-    },
+    "bodyJson": "{\n  \"to\": \"5511999999999\",\n  \"text\": \"Olá! Mensagem enviada pela ZapZ.\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -445,11 +428,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "to": "5511999999999",
-      "mediaType": "image",
-      "mediaUrl": "https://exemplo.com/imagem.jpg"
-    },
+    "bodyJson": "{\n  \"to\": \"5511999999999\",\n  \"mediaType\": \"image\",\n  \"mediaUrl\": \"https://exemplo.com/imagem.jpg\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -466,16 +445,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "text": "Olá! Mensagem enviada pela ZapZ.",
-      "buttonText": "Ver opções",
-      "sections": [
-        {
-          "rows": []
-        }
-      ],
-      "to": "5511999999999"
-    },
+    "bodyJson": "{\n  \"text\": \"Olá! Mensagem enviada pela ZapZ.\",\n  \"buttonText\": \"Ver opções\",\n  \"sections\": [\n    {\n      \"rows\": []\n    }\n  ],\n  \"to\": \"5511999999999\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -492,16 +462,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "text": "Olá! Mensagem enviada pela ZapZ.",
-      "buttons": [
-        {
-          "type": "quick_reply",
-          "displayText": "Abrir"
-        }
-      ],
-      "to": "5511999999999"
-    },
+    "bodyJson": "{\n  \"text\": \"Olá! Mensagem enviada pela ZapZ.\",\n  \"buttons\": [\n    {\n      \"type\": \"quick_reply\",\n      \"displayText\": \"Abrir\"\n    }\n  ],\n  \"to\": \"5511999999999\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -518,10 +479,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "stickerUrl": "https://exemplo.com/sticker.webp",
-      "to": "5511999999999"
-    },
+    "bodyJson": "{\n  \"stickerUrl\": \"https://exemplo.com/sticker.webp\",\n  \"to\": \"5511999999999\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -538,11 +496,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "latitude": 0,
-      "longitude": 0,
-      "to": "5511999999999"
-    },
+    "bodyJson": "{\n  \"latitude\": 0,\n  \"longitude\": 0,\n  \"to\": \"5511999999999\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -559,11 +513,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "displayName": "displayName",
-      "vcard": "vcard",
-      "to": "5511999999999"
-    },
+    "bodyJson": "{\n  \"displayName\": \"displayName\",\n  \"vcard\": \"vcard\",\n  \"to\": \"5511999999999\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -580,11 +530,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "messageId": "MESSAGE_ID",
-      "emoji": "👍",
-      "to": "5511999999999"
-    },
+    "bodyJson": "{\n  \"messageId\": \"MESSAGE_ID\",\n  \"emoji\": \"👍\",\n  \"to\": \"5511999999999\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -601,13 +547,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "name": "Atendimento",
-      "options": [
-        "option"
-      ],
-      "to": "5511999999999"
-    },
+    "bodyJson": "{\n  \"name\": \"Atendimento\",\n  \"options\": [\n    \"option\"\n  ],\n  \"to\": \"5511999999999\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -624,12 +564,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "merchantName": "merchantName",
-      "key": "key",
-      "keyType": "CPF",
-      "to": "5511999999999"
-    },
+    "bodyJson": "{\n  \"merchantName\": \"merchantName\",\n  \"key\": \"key\",\n  \"keyType\": \"CPF\",\n  \"to\": \"5511999999999\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -646,16 +581,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "referenceId": "referenceId",
-      "items": [
-        {
-          "name": "Atendimento",
-          "amount": 0
-        }
-      ],
-      "to": "5511999999999"
-    },
+    "bodyJson": "{\n  \"referenceId\": \"referenceId\",\n  \"items\": [\n    {\n      \"name\": \"Atendimento\",\n      \"amount\": 0\n    }\n  ],\n  \"to\": \"5511999999999\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -672,17 +598,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "text": "Olá! Mensagem enviada pela ZapZ.",
-      "cards": [
-        {
-          "title": "Título",
-          "body": "body",
-          "buttons": []
-        }
-      ],
-      "to": "5511999999999"
-    },
+    "bodyJson": "{\n  \"text\": \"Olá! Mensagem enviada pela ZapZ.\",\n  \"cards\": [\n    {\n      \"title\": \"Título\",\n      \"body\": \"body\",\n      \"buttons\": []\n    }\n  ],\n  \"to\": \"5511999999999\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -699,15 +615,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "items": [
-        {
-          "type": "image",
-          "url": "https://exemplo.com/webhook"
-        }
-      ],
-      "to": "5511999999999"
-    },
+    "bodyJson": "{\n  \"items\": [\n    {\n      \"type\": \"image\",\n      \"url\": \"https://exemplo.com/webhook\"\n    }\n  ],\n  \"to\": \"5511999999999\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -724,11 +632,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "name": "Atendimento",
-      "startTime": "startTime",
-      "to": "5511999999999"
-    },
+    "bodyJson": "{\n  \"name\": \"Atendimento\",\n  \"startTime\": \"startTime\",\n  \"to\": \"5511999999999\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -745,12 +649,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "groupJid": "5511999999999@s.whatsapp.net",
-      "inviteCode": "inviteCode",
-      "groupName": "groupName",
-      "to": "5511999999999"
-    },
+    "bodyJson": "{\n  \"groupJid\": \"5511999999999@s.whatsapp.net\",\n  \"inviteCode\": \"inviteCode\",\n  \"groupName\": \"groupName\",\n  \"to\": \"5511999999999\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -767,9 +666,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "to": "5511999999999"
-    },
+    "bodyJson": "{\n  \"to\": \"5511999999999\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -786,9 +683,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "to": "5511999999999"
-    },
+    "bodyJson": "{\n  \"to\": \"5511999999999\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -805,14 +700,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "imageUrl": "https://exemplo.com/imagem.jpg",
-      "productId": "productId",
-      "title": "Título",
-      "price": 0,
-      "businessOwnerJid": "5511999999999@s.whatsapp.net",
-      "to": "5511999999999"
-    },
+    "bodyJson": "{\n  \"imageUrl\": \"https://exemplo.com/imagem.jpg\",\n  \"productId\": \"productId\",\n  \"title\": \"Título\",\n  \"price\": 0,\n  \"businessOwnerJid\": \"5511999999999@s.whatsapp.net\",\n  \"to\": \"5511999999999\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -829,12 +717,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "orderId": "orderId",
-      "token": "token",
-      "sellerJid": "5511999999999@s.whatsapp.net",
-      "to": "5511999999999"
-    },
+    "bodyJson": "{\n  \"orderId\": \"orderId\",\n  \"token\": \"token\",\n  \"sellerJid\": \"5511999999999@s.whatsapp.net\",\n  \"to\": \"5511999999999\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -851,9 +734,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "to": "5511999999999"
-    },
+    "bodyJson": "{\n  \"to\": \"5511999999999\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -870,10 +751,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "messageId": "MESSAGE_ID",
-      "to": "5511999999999"
-    },
+    "bodyJson": "{\n  \"messageId\": \"MESSAGE_ID\",\n  \"to\": \"5511999999999\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -890,10 +768,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "messageId": "MESSAGE_ID",
-      "to": "5511999999999"
-    },
+    "bodyJson": "{\n  \"messageId\": \"MESSAGE_ID\",\n  \"to\": \"5511999999999\"\n}",
     "autoClientMessageId": true
   },
   {
@@ -910,12 +785,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "type": "text",
-      "audience": [
-        "audience"
-      ]
-    },
+    "bodyJson": "{\n  \"type\": \"text\",\n  \"audience\": [\n    \"audience\"\n  ]\n}",
     "autoClientMessageId": true
   },
   {
@@ -934,7 +804,7 @@ export const OPERATIONS: ZapZOperation[] = [
       "limit"
     ],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -957,7 +827,7 @@ export const OPERATIONS: ZapZOperation[] = [
       "q"
     ],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -978,7 +848,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -999,9 +869,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "text": "Olá! Mensagem enviada pela ZapZ."
-    },
+    "bodyJson": "{\n  \"text\": \"Olá! Mensagem enviada pela ZapZ.\"\n}",
     "autoClientMessageId": false
   },
   {
@@ -1022,7 +890,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -1039,12 +907,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "chatId": "chatId",
-      "messageIds": [
-        "MESSAGE_ID"
-      ]
-    },
+    "bodyJson": "{\n  \"chatId\": \"chatId\",\n  \"messageIds\": [\n    \"MESSAGE_ID\"\n  ]\n}",
     "autoClientMessageId": false
   },
   {
@@ -1061,10 +924,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "to": "5511999999999",
-      "presence": "composing"
-    },
+    "bodyJson": "{\n  \"to\": \"5511999999999\",\n  \"presence\": \"composing\"\n}",
     "autoClientMessageId": false
   },
   {
@@ -1081,7 +941,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -1098,7 +958,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -1110,7 +970,7 @@ export const OPERATIONS: ZapZOperation[] = [
     "pathParams": [],
     "query": [],
     "body": true,
-    "bodyExample": {},
+    "bodyJson": "{}",
     "autoClientMessageId": false
   },
   {
@@ -1122,7 +982,7 @@ export const OPERATIONS: ZapZOperation[] = [
     "pathParams": [],
     "query": [],
     "body": true,
-    "bodyExample": {},
+    "bodyJson": "{}",
     "autoClientMessageId": false
   },
   {
@@ -1139,7 +999,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {},
+    "bodyJson": "{}",
     "autoClientMessageId": false
   },
   {
@@ -1158,7 +1018,7 @@ export const OPERATIONS: ZapZOperation[] = [
       "participants"
     ],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -1175,9 +1035,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "subject": "Grupo de clientes"
-    },
+    "bodyJson": "{\n  \"subject\": \"Grupo de clientes\"\n}",
     "autoClientMessageId": false
   },
   {
@@ -1196,7 +1054,7 @@ export const OPERATIONS: ZapZOperation[] = [
       "code"
     ],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -1213,9 +1071,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "code": "CODIGO_DO_CONVITE"
-    },
+    "bodyJson": "{\n  \"code\": \"CODIGO_DO_CONVITE\"\n}",
     "autoClientMessageId": false
   },
   {
@@ -1236,7 +1092,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -1257,7 +1113,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {},
+    "bodyJson": "{}",
     "autoClientMessageId": false
   },
   {
@@ -1278,12 +1134,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": true,
-    "bodyExample": {
-      "action": "add",
-      "participants": [
-        "participant"
-      ]
-    },
+    "bodyJson": "{\n  \"action\": \"add\",\n  \"participants\": [\n    \"participant\"\n  ]\n}",
     "autoClientMessageId": false
   },
   {
@@ -1304,7 +1155,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -1325,7 +1176,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   },
   {
@@ -1346,7 +1197,7 @@ export const OPERATIONS: ZapZOperation[] = [
     ],
     "query": [],
     "body": false,
-    "bodyExample": null,
+    "bodyJson": null,
     "autoClientMessageId": false
   }
 ];
