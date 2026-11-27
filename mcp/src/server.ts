@@ -3,7 +3,7 @@ import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import { TOOLS, type ToolDef } from './tools.generated.js';
 
-export const VERSION = '0.1.5';
+export const VERSION = '0.2.0';
 export const DEFAULT_BASE_URL = 'https://api.zapz.dev';
 /** Responses larger than this are cut, so one big list does not flood the model's context. */
 const MAX_RESULT_CHARS = 60_000;

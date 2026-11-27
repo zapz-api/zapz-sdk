@@ -48,6 +48,7 @@ METHODS = {
     "listMessages": "list",
     "listReceivedMessages": "listReceived",
     "getMessage": "get",
+    "getMessageMedia": "media",
     "editMessage": "edit",
     "deleteMessage": "delete",
     "markRead": "markRead",

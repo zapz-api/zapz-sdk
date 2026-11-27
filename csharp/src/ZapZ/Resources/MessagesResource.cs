@@ -40,7 +40,7 @@ public sealed class MessagesResource
         => _client.RequestAsync("POST", "/instances/" + ZapZClient.Encode(instanceId) + "/send/sticker", body, null, true, cancellationToken);
 
     /// <summary>Send a location (POST /v1/instances/{id}/send/location).</summary>
-    /// <remarks>Body fields (anonymous object or dictionary):<list type="bullet"><item>latitude (number, required)</item><item>longitude (number, required)</item><item>name (string)</item><item>address (string)</item><item>live (boolean): Live location (shown as "sharing live location")</item><item>caption (string)</item><item>to (string, required)</item><item>clientMessageId (string): Optional id chosen by the client — idempotency key and correlation id in webhooks.</item><item>replyTo (string): WhatsApp id of a message (sent or received in the last 3 days) to reply to.</item><item>mentions (list of string): Phones to @mention (country code + number). Put "@&lt;phone>" in the text where it should appear.</item></list></remarks>
+    /// <remarks>Body fields (anonymous object or dictionary):<list type="bullet"><item>latitude (number, required)</item><item>longitude (number, required)</item><item>name (string)</item><item>address (string)</item><item>to (string, required)</item><item>clientMessageId (string): Optional id chosen by the client — idempotency key and correlation id in webhooks.</item><item>replyTo (string): WhatsApp id of a message (sent or received in the last 3 days) to reply to.</item><item>mentions (list of string): Phones to @mention (country code + number). Put "@&lt;phone>" in the text where it should appear.</item></list></remarks>
     public Task<JsonElement> SendLocationAsync(string instanceId, object body, CancellationToken cancellationToken = default)
         => _client.RequestAsync("POST", "/instances/" + ZapZClient.Encode(instanceId) + "/send/location", body, null, true, cancellationToken);
 
@@ -60,7 +60,7 @@ public sealed class MessagesResource
         => _client.RequestAsync("POST", "/instances/" + ZapZClient.Encode(instanceId) + "/send/poll", body, null, true, cancellationToken);
 
     /// <summary>Send a Pix charge (POST /v1/instances/{id}/send/pix).</summary>
-    /// <remarks>Body fields (anonymous object or dictionary):<list type="bullet"><item>text (string)</item><item>title (string)</item><item>footer (string)</item><item>merchantName (string, required): Name shown as the receiver</item><item>key (string, required): Pix key</item><item>keyType (CPF | CNPJ | EMAIL | PHONE | EVP, required): EVP = random key</item><item>amount (number): Amount in BRL shown on the card (optional)</item><item>description (string)</item><item>referenceId (string)</item><item>to (string, required)</item><item>clientMessageId (string): Optional id chosen by the client — idempotency key and correlation id in webhooks.</item><item>replyTo (string): WhatsApp id of a message (sent or received in the last 3 days) to reply to.</item><item>mentions (list of string): Phones to @mention (country code + number). Put "@&lt;phone>" in the text where it should appear.</item></list></remarks>
+    /// <remarks>Body fields (anonymous object or dictionary):<list type="bullet"><item>text (string)</item><item>title (string)</item><item>footer (string)</item><item>merchantName (string, required): Name shown as the receiver</item><item>key (string, required): Pix key</item><item>keyType (CPF | CNPJ | EMAIL | PHONE | EVP, required): EVP = random key</item><item>amount (number): Amount in BRL shown on the card (optional)</item><item>description (string)</item><item>referenceId (string)</item><item>merchantCity (string): City of the receiver in the Pix code (default BRASIL).</item><item>to (string, required)</item><item>clientMessageId (string): Optional id chosen by the client — idempotency key and correlation id in webhooks.</item><item>replyTo (string): WhatsApp id of a message (sent or received in the last 3 days) to reply to.</item><item>mentions (list of string): Phones to @mention (country code + number). Put "@&lt;phone>" in the text where it should appear.</item></list></remarks>
     public Task<JsonElement> SendPixAsync(string instanceId, object body, CancellationToken cancellationToken = default)
         => _client.RequestAsync("POST", "/instances/" + ZapZClient.Encode(instanceId) + "/send/pix", body, null, true, cancellationToken);
 
@@ -110,7 +110,7 @@ public sealed class MessagesResource
         => _client.RequestAsync("POST", "/instances/" + ZapZClient.Encode(instanceId) + "/send/order", body, null, true, cancellationToken);
 
     /// <summary>Send the catalog link (POST /v1/instances/{id}/send/catalog).</summary>
-    /// <remarks>Body fields (anonymous object or dictionary):<list type="bullet"><item>text (string)</item><item>title (string)</item><item>subtitle (string)</item><item>footer (string)</item><item>imageUrl (string)</item><item>shopId (string): Storefront id (shop) — or use collection</item><item>surface (number)</item><item>collection (CollectionRef)</item><item>to (string, required)</item><item>clientMessageId (string): Optional id chosen by the client — idempotency key and correlation id in webhooks.</item><item>replyTo (string): WhatsApp id of a message (sent or received in the last 3 days) to reply to.</item><item>mentions (list of string): Phones to @mention (country code + number). Put "@&lt;phone>" in the text where it should appear.</item></list></remarks>
+    /// <remarks>Body fields (anonymous object or dictionary):<list type="bullet"><item>text (string)</item><item>title (string)</item><item>subtitle (string)</item><item>footer (string)</item><item>imageUrl (string)</item><item>shopId (string): Storefront id (shop); required unless collection is set</item><item>surface (number)</item><item>collection (CollectionRef)</item><item>to (string, required)</item><item>clientMessageId (string): Optional id chosen by the client — idempotency key and correlation id in webhooks.</item><item>replyTo (string): WhatsApp id of a message (sent or received in the last 3 days) to reply to.</item><item>mentions (list of string): Phones to @mention (country code + number). Put "@&lt;phone>" in the text where it should appear.</item></list></remarks>
     public Task<JsonElement> SendCatalogAsync(string instanceId, object body, CancellationToken cancellationToken = default)
         => _client.RequestAsync("POST", "/instances/" + ZapZClient.Encode(instanceId) + "/send/catalog", body, null, true, cancellationToken);
 
@@ -137,6 +137,10 @@ public sealed class MessagesResource
     public Task<JsonElement> ListReceivedAsync(string instanceId, IDictionary<string, object?>? query = null, CancellationToken cancellationToken = default)
         => _client.RequestAsync("GET", "/instances/" + ZapZClient.Encode(instanceId) + "/messages/received", null, query, false, cancellationToken);
 
+    /// <summary>Download link for the media of a received message (GET /v1/instances/{id}/messages/{messageId}/media).</summary>
+    public Task<JsonElement> MediaAsync(string instanceId, string messageId, CancellationToken cancellationToken = default)
+        => _client.RequestAsync("GET", "/instances/" + ZapZClient.Encode(instanceId) + "/messages/" + ZapZClient.Encode(messageId) + "/media", null, null, false, cancellationToken);
+
     /// <summary>Get a message and its status (GET /v1/instances/{id}/messages/{messageId}).</summary>
     public Task<JsonElement> GetAsync(string instanceId, string messageId, CancellationToken cancellationToken = default)
         => _client.RequestAsync("GET", "/instances/" + ZapZClient.Encode(instanceId) + "/messages/" + ZapZClient.Encode(messageId), null, null, false, cancellationToken);
@@ -151,7 +155,7 @@ public sealed class MessagesResource
         => _client.RequestAsync("DELETE", "/instances/" + ZapZClient.Encode(instanceId) + "/messages/" + ZapZClient.Encode(messageId), null, null, false, cancellationToken);
 
     /// <summary>Mark messages as read (POST /v1/instances/{id}/messages/read).</summary>
-    /// <remarks>Body fields (anonymous object or dictionary):<list type="bullet"><item>chatId (string, required): Chat the messages belong to: phone (country code + number) or group jid.</item><item>messageIds (list of string, required): WhatsApp ids of the received messages (`data.id` / `key.id` of the incoming webhook).</item><item>participant (string): In groups: who sent the messages (phone).</item></list></remarks>
+    /// <remarks>Body fields (anonymous object or dictionary):<list type="bullet"><item>chatId (string, required): Chat the messages belong to: phone (country code + number) or group jid.</item><item>messageIds (list of string, required): WhatsApp ids of the received messages (`data.messageId` of the new_message webhook).</item><item>participant (string): In groups: who sent the messages (phone).</item></list></remarks>
     public Task<JsonElement> MarkReadAsync(string instanceId, object body, CancellationToken cancellationToken = default)
         => _client.RequestAsync("POST", "/instances/" + ZapZClient.Encode(instanceId) + "/messages/read", body, null, false, cancellationToken);
 

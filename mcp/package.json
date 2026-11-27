@@ -1,6 +1,6 @@
 {
   "name": "@zapz/mcp",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "mcpName": "io.github.zapz-api/zapz-mcp",
   "description": "MCP server for the ZapZ WhatsApp API: lets AI assistants send messages and manage instances, groups, contacts and webhooks",
   "license": "MIT",

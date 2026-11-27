@@ -832,6 +832,27 @@ export const OPERATIONS: ZapZOperation[] = [
   },
   {
     "resource": "messages",
+    "operation": "media",
+    "name": "Download link for the media of a received message",
+    "method": "GET",
+    "path": "/instances/{id}/messages/{messageId}/media",
+    "pathParams": [
+      {
+        "name": "id",
+        "arg": "instanceId"
+      },
+      {
+        "name": "messageId",
+        "arg": "messageId"
+      }
+    ],
+    "query": [],
+    "body": false,
+    "bodyJson": null,
+    "autoClientMessageId": false
+  },
+  {
+    "resource": "messages",
     "operation": "get",
     "name": "Get a message and its status",
     "method": "GET",

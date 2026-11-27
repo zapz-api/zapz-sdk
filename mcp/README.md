@@ -4,7 +4,7 @@ MCP (Model Context Protocol) server for the [ZapZ](https://zapz.dev) WhatsApp AP
 
 Documentation: https://zapz.dev/#/docs
 
-- 66 tools generated from `openapi.json` (`instances_list`, `messages_send_text`, `groups_update_participants`…), with a JSON Schema for the parameters and annotations (`readOnlyHint`, `destructiveHint`) so the client asks for confirmation before anything that changes or deletes data.
+- 67 tools generated from `openapi.json` (`instances_list`, `messages_send_text`, `groups_update_participants`…), with a JSON Schema for the parameters and annotations (`readOnlyHint`, `destructiveHint`) so the client asks for confirmation before anything that changes or deletes data.
 - A `clientMessageId` is generated for each send: repeating a call never sends the message twice.
 - `--read-only`: read tools only.
 - With an `sk_test_` key everything runs in the sandbox.

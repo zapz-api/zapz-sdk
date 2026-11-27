@@ -172,6 +172,10 @@ class MessagesResource:
         """List received messages (newest first) (``GET /v1/instances/{id}/messages/received``)."""
         return self._client.request("GET", f"/instances/{_q(instance_id)}/messages/received", query={"limit": limit, "before": before, "since": since, "chat": chat, "q": q}, timeout=timeout)
 
+    def media(self, instance_id: str, message_id: str, *, timeout: Optional[float] = None) -> Dict[str, Any]:
+        """Download link for the media of a received message (``GET /v1/instances/{id}/messages/{messageId}/media``)."""
+        return self._client.request("GET", f"/instances/{_q(instance_id)}/messages/{_q(message_id)}/media", timeout=timeout)
+
     def get(self, instance_id: str, message_id: str, *, timeout: Optional[float] = None) -> "Message":
         """Get a message and its status (``GET /v1/instances/{id}/messages/{messageId}``)."""
         return self._client.request("GET", f"/instances/{_q(instance_id)}/messages/{_q(message_id)}", timeout=timeout)

@@ -84,7 +84,7 @@ final class MessagesResource
      * Send a location (`POST /v1/instances/{id}/send/location`)
      *
      * @param string $instanceId
-     * @param array{latitude: float, longitude: float, name?: string, address?: string, live?: bool, caption?: string, to: string, clientMessageId?: string, replyTo?: string, mentions?: list<string>} $params
+     * @param array{latitude: float, longitude: float, name?: string, address?: string, to: string, clientMessageId?: string, replyTo?: string, mentions?: list<string>} $params
      * @param array{timeout?: float} $options
      * @return array<string, mixed>|list<mixed>
      */
@@ -136,7 +136,7 @@ final class MessagesResource
      * Send a Pix charge (`POST /v1/instances/{id}/send/pix`)
      *
      * @param string $instanceId
-     * @param array{text?: string, title?: string, footer?: string, merchantName: string, key: string, keyType: 'CPF'|'CNPJ'|'EMAIL'|'PHONE'|'EVP', amount?: float, description?: string, referenceId?: string, to: string, clientMessageId?: string, replyTo?: string, mentions?: list<string>} $params
+     * @param array{text?: string, title?: string, footer?: string, merchantName: string, key: string, keyType: 'CPF'|'CNPJ'|'EMAIL'|'PHONE'|'EVP', amount?: float, description?: string, referenceId?: string, merchantCity?: string, to: string, clientMessageId?: string, replyTo?: string, mentions?: list<string>} $params
      * @param array{timeout?: float} $options
      * @return array<string, mixed>|list<mixed>
      */
@@ -338,6 +338,19 @@ final class MessagesResource
     public function listReceived(string $instanceId, array $query = [], array $options = []): array
     {
         return $this->client->request('GET', '/instances/' . rawurlencode($instanceId) . '/messages/received', null, $query, $options, false);
+    }
+
+    /**
+     * Download link for the media of a received message (`GET /v1/instances/{id}/messages/{messageId}/media`)
+     *
+     * @param string $instanceId
+     * @param string $messageId
+     * @param array{timeout?: float} $options
+     * @return array<string, mixed>|list<mixed>
+     */
+    public function media(string $instanceId, string $messageId, array $options = []): array
+    {
+        return $this->client->request('GET', '/instances/' . rawurlencode($instanceId) . '/messages/' . rawurlencode($messageId) . '/media', null, [], $options, false);
     }
 
     /**

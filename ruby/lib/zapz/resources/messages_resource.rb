@@ -79,8 +79,6 @@ module ZapZ
     # - longitude (number, required)
     # - name (string)
     # - address (string)
-    # - live (boolean): Live location (shown as "sharing live location")
-    # - caption (string)
     # - to (string, required)
     # - clientMessageId (string): Optional id chosen by the client — idempotency key and correlation id in webhooks.
     # - replyTo (string): WhatsApp id of a message (sent or received in the last 3 days) to reply to.
@@ -134,6 +132,7 @@ module ZapZ
     # - amount (number): Amount in BRL shown on the card (optional)
     # - description (string)
     # - referenceId (string)
+    # - merchantCity (string): City of the receiver in the Pix code (default BRASIL).
     # - to (string, required)
     # - clientMessageId (string): Optional id chosen by the client — idempotency key and correlation id in webhooks.
     # - replyTo (string): WhatsApp id of a message (sent or received in the last 3 days) to reply to.
@@ -275,7 +274,7 @@ module ZapZ
     # - subtitle (string)
     # - footer (string)
     # - imageUrl (string)
-    # - shopId (string): Storefront id (shop) — or use collection
+    # - shopId (string): Storefront id (shop); required unless collection is set
     # - surface (number)
     # - collection (CollectionRef)
     # - to (string, required)
@@ -331,6 +330,11 @@ module ZapZ
       @client.request(:get, "/instances/#{ZapZ.escape(instance_id)}/messages/received", body: nil, query: {limit: limit, before: before, since: since, chat: chat, q: q}, auto_client_message_id: false)
     end
 
+    # Download link for the media of a received message (+GET /v1/instances/{id}/messages/{messageId}/media+).
+    def media(instance_id, message_id)
+      @client.request(:get, "/instances/#{ZapZ.escape(instance_id)}/messages/#{ZapZ.escape(message_id)}/media", body: nil, query: nil, auto_client_message_id: false)
+    end
+
     # Get a message and its status (+GET /v1/instances/{id}/messages/{messageId}+).
     def get(instance_id, message_id)
       @client.request(:get, "/instances/#{ZapZ.escape(instance_id)}/messages/#{ZapZ.escape(message_id)}", body: nil, query: nil, auto_client_message_id: false)
@@ -349,7 +353,7 @@ module ZapZ
 
     # Mark messages as read (+POST /v1/instances/{id}/messages/read+).
     # - chatId (string, required): Chat the messages belong to: phone (country code + number) or group jid.
-    # - messageIds (list of string, required): WhatsApp ids of the received messages (`data.id` / `key.id` of the incoming webhook).
+    # - messageIds (list of string, required): WhatsApp ids of the received messages (`data.messageId` of the new_message webhook).
     # - participant (string): In groups: who sent the messages (phone).
     def mark_read(instance_id, params)
       @client.request(:post, "/instances/#{ZapZ.escape(instance_id)}/messages/read", body: params, query: nil, auto_client_message_id: false)

@@ -11,7 +11,7 @@ require "uri"
 #   zapz = ZapZ::Client.new(api_key: "sk_live_...")
 #   zapz.messages.send_text("INSTANCE_ID", { to: "5511999999999", text: "Olá!" })
 module ZapZ
-  VERSION = "0.1.5"
+  VERSION = "0.2.0"
   DEFAULT_BASE_URL = "https://api.zapz.dev"
 
   def self.escape(value)

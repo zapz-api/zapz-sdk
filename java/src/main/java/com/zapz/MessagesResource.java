@@ -59,7 +59,7 @@ public final class MessagesResource {
 
     /**
      * Send a location (POST /v1/instances/{id}/send/location).
-     * <p>Body fields:</p><ul><li>latitude (number, required)</li><li>longitude (number, required)</li><li>name (string)</li><li>address (string)</li><li>live (boolean): Live location (shown as "sharing live location")</li><li>caption (string)</li><li>to (string, required)</li><li>clientMessageId (string): Optional id chosen by the client — idempotency key and correlation id in webhooks.</li><li>replyTo (string): WhatsApp id of a message (sent or received in the last 3 days) to reply to.</li><li>mentions (list of string): Phones to @mention (country code + number). Put "@&lt;phone>" in the text where it should appear.</li></ul>
+     * <p>Body fields:</p><ul><li>latitude (number, required)</li><li>longitude (number, required)</li><li>name (string)</li><li>address (string)</li><li>to (string, required)</li><li>clientMessageId (string): Optional id chosen by the client — idempotency key and correlation id in webhooks.</li><li>replyTo (string): WhatsApp id of a message (sent or received in the last 3 days) to reply to.</li><li>mentions (list of string): Phones to @mention (country code + number). Put "@&lt;phone>" in the text where it should appear.</li></ul>
      */
     @SuppressWarnings("unchecked")
     public Map<String, Object> sendLocation(String instanceId, Map<String, Object> params) {
@@ -95,7 +95,7 @@ public final class MessagesResource {
 
     /**
      * Send a Pix charge (POST /v1/instances/{id}/send/pix).
-     * <p>Body fields:</p><ul><li>text (string)</li><li>title (string)</li><li>footer (string)</li><li>merchantName (string, required): Name shown as the receiver</li><li>key (string, required): Pix key</li><li>keyType (CPF | CNPJ | EMAIL | PHONE | EVP, required): EVP = random key</li><li>amount (number): Amount in BRL shown on the card (optional)</li><li>description (string)</li><li>referenceId (string)</li><li>to (string, required)</li><li>clientMessageId (string): Optional id chosen by the client — idempotency key and correlation id in webhooks.</li><li>replyTo (string): WhatsApp id of a message (sent or received in the last 3 days) to reply to.</li><li>mentions (list of string): Phones to @mention (country code + number). Put "@&lt;phone>" in the text where it should appear.</li></ul>
+     * <p>Body fields:</p><ul><li>text (string)</li><li>title (string)</li><li>footer (string)</li><li>merchantName (string, required): Name shown as the receiver</li><li>key (string, required): Pix key</li><li>keyType (CPF | CNPJ | EMAIL | PHONE | EVP, required): EVP = random key</li><li>amount (number): Amount in BRL shown on the card (optional)</li><li>description (string)</li><li>referenceId (string)</li><li>merchantCity (string): City of the receiver in the Pix code (default BRASIL).</li><li>to (string, required)</li><li>clientMessageId (string): Optional id chosen by the client — idempotency key and correlation id in webhooks.</li><li>replyTo (string): WhatsApp id of a message (sent or received in the last 3 days) to reply to.</li><li>mentions (list of string): Phones to @mention (country code + number). Put "@&lt;phone>" in the text where it should appear.</li></ul>
      */
     @SuppressWarnings("unchecked")
     public Map<String, Object> sendPix(String instanceId, Map<String, Object> params) {
@@ -185,7 +185,7 @@ public final class MessagesResource {
 
     /**
      * Send the catalog link (POST /v1/instances/{id}/send/catalog).
-     * <p>Body fields:</p><ul><li>text (string)</li><li>title (string)</li><li>subtitle (string)</li><li>footer (string)</li><li>imageUrl (string)</li><li>shopId (string): Storefront id (shop) — or use collection</li><li>surface (number)</li><li>collection (CollectionRef)</li><li>to (string, required)</li><li>clientMessageId (string): Optional id chosen by the client — idempotency key and correlation id in webhooks.</li><li>replyTo (string): WhatsApp id of a message (sent or received in the last 3 days) to reply to.</li><li>mentions (list of string): Phones to @mention (country code + number). Put "@&lt;phone>" in the text where it should appear.</li></ul>
+     * <p>Body fields:</p><ul><li>text (string)</li><li>title (string)</li><li>subtitle (string)</li><li>footer (string)</li><li>imageUrl (string)</li><li>shopId (string): Storefront id (shop); required unless collection is set</li><li>surface (number)</li><li>collection (CollectionRef)</li><li>to (string, required)</li><li>clientMessageId (string): Optional id chosen by the client — idempotency key and correlation id in webhooks.</li><li>replyTo (string): WhatsApp id of a message (sent or received in the last 3 days) to reply to.</li><li>mentions (list of string): Phones to @mention (country code + number). Put "@&lt;phone>" in the text where it should appear.</li></ul>
      */
     @SuppressWarnings("unchecked")
     public Map<String, Object> sendCatalog(String instanceId, Map<String, Object> params) {
@@ -245,6 +245,14 @@ public final class MessagesResource {
     }
 
     /**
+     * Download link for the media of a received message (GET /v1/instances/{id}/messages/{messageId}/media).
+     */
+    @SuppressWarnings("unchecked")
+    public Map<String, Object> media(String instanceId, String messageId) {
+        return (Map<String, Object>) client.request("GET", "/instances/" + ZapZ.encode(instanceId) + "/messages/" + ZapZ.encode(messageId) + "/media", null, null, false);
+    }
+
+    /**
      * Get a message and its status (GET /v1/instances/{id}/messages/{messageId}).
      */
     @SuppressWarnings("unchecked")
@@ -271,7 +279,7 @@ public final class MessagesResource {
 
     /**
      * Mark messages as read (POST /v1/instances/{id}/messages/read).
-     * <p>Body fields:</p><ul><li>chatId (string, required): Chat the messages belong to: phone (country code + number) or group jid.</li><li>messageIds (list of string, required): WhatsApp ids of the received messages (`data.id` / `key.id` of the incoming webhook).</li><li>participant (string): In groups: who sent the messages (phone).</li></ul>
+     * <p>Body fields:</p><ul><li>chatId (string, required): Chat the messages belong to: phone (country code + number) or group jid.</li><li>messageIds (list of string, required): WhatsApp ids of the received messages (`data.messageId` of the new_message webhook).</li><li>participant (string): In groups: who sent the messages (phone).</li></ul>
      */
     public Object markRead(String instanceId, Map<String, Object> params) {
         return client.request("POST", "/instances/" + ZapZ.encode(instanceId) + "/messages/read", params, null, false);

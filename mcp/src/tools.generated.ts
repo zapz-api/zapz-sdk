@@ -1433,8 +1433,6 @@ export const TOOLS: ToolDef[] = [
       "longitude",
       "name",
       "address",
-      "live",
-      "caption",
       "to",
       "clientMessageId",
       "replyTo",
@@ -1470,14 +1468,6 @@ export const TOOLS: ToolDef[] = [
           "maxLength": 100
         },
         "address": {
-          "type": "string",
-          "maxLength": 200
-        },
-        "live": {
-          "type": "boolean",
-          "description": "Live location (shown as \"sharing live location\")"
-        },
-        "caption": {
           "type": "string",
           "maxLength": 200
         },
@@ -1783,6 +1773,7 @@ export const TOOLS: ToolDef[] = [
       "amount",
       "description",
       "referenceId",
+      "merchantCity",
       "to",
       "clientMessageId",
       "replyTo",
@@ -1848,6 +1839,11 @@ export const TOOLS: ToolDef[] = [
         "referenceId": {
           "type": "string",
           "maxLength": 64
+        },
+        "merchantCity": {
+          "type": "string",
+          "description": "City of the receiver in the Pix code (default BRASIL).",
+          "maxLength": 15
         },
         "to": {
           "type": "string",
@@ -2927,7 +2923,7 @@ export const TOOLS: ToolDef[] = [
         },
         "shopId": {
           "type": "string",
-          "description": "Storefront id (shop) — or use collection",
+          "description": "Storefront id (shop); required unless collection is set",
           "maxLength": 256
         },
         "surface": {
@@ -3337,6 +3333,50 @@ export const TOOLS: ToolDef[] = [
     }
   },
   {
+    "name": "messages_media",
+    "description": "Download link for the media of a received message. (GET /v1/instances/{id}/messages/{messageId}/media)",
+    "method": "GET",
+    "path": "/instances/{id}/messages/{messageId}/media",
+    "pathParams": [
+      {
+        "name": "id",
+        "arg": "instance_id"
+      },
+      {
+        "name": "messageId",
+        "arg": "message_id"
+      }
+    ],
+    "query": [],
+    "bodyKeys": null,
+    "autoClientMessageId": false,
+    "annotations": {
+      "title": "Download link for the media of a received message",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    },
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "instance_id": {
+          "type": "string",
+          "description": "Instance id (from instances_list)"
+        },
+        "message_id": {
+          "type": "string",
+          "description": "Message id: the clientMessageId returned by a send, or the WhatsApp id"
+        }
+      },
+      "required": [
+        "instance_id",
+        "message_id"
+      ],
+      "additionalProperties": false
+    }
+  },
+  {
     "name": "messages_get",
     "description": "Get a message and its status. (GET /v1/instances/{id}/messages/{messageId})",
     "method": "GET",
@@ -3513,7 +3553,7 @@ export const TOOLS: ToolDef[] = [
           "pattern": "^(\\d{10,15}|[\\d-]{10,40}@g\\.us)$"
         },
         "messageIds": {
-          "description": "WhatsApp ids of the received messages (`data.id` / `key.id` of the incoming webhook).",
+          "description": "WhatsApp ids of the received messages (`data.messageId` of the new_message webhook).",
           "minItems": 1,
           "maxItems": 100,
           "type": "array",
