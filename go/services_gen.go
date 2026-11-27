@@ -463,6 +463,15 @@ func (q *ListReceivedQuery) values() url.Values {
 	return v
 }
 
+// Media: Download link for the media of a received message (GET /v1/instances/{id}/messages/{messageId}/media).
+func (s *MessagesService) Media(ctx context.Context, instanceId string, messageId string) (map[string]any, error) {
+	var out map[string]any
+	if err := s.c.do(ctx, "GET", "/instances/"+url.PathEscape(instanceId)+"/messages/"+url.PathEscape(messageId)+"/media", nil, nil, &out); err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // Get: Get a message and its status (GET /v1/instances/{id}/messages/{messageId}).
 func (s *MessagesService) Get(ctx context.Context, instanceId string, messageId string) (*Message, error) {
 	out := new(Message)

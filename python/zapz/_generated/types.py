@@ -173,9 +173,6 @@ class _SendLocationParamsRequired(TypedDict):
 class SendLocationParams(_SendLocationParamsRequired, total=False):
     name: str
     address: str
-    # Live location (shown as "sharing live location")
-    live: bool
-    caption: str
     # Optional id chosen by the client — idempotency key and correlation id in webhooks.
     clientMessageId: str
     # WhatsApp id of a message (sent or received in the last 3 days) to reply to.
@@ -252,6 +249,8 @@ class SendPixParams(_SendPixParamsRequired, total=False):
     amount: float
     description: str
     referenceId: str
+    # City of the receiver in the Pix code (default BRASIL).
+    merchantCity: str
     # Optional id chosen by the client — idempotency key and correlation id in webhooks.
     clientMessageId: str
     # WhatsApp id of a message (sent or received in the last 3 days) to reply to.
@@ -486,7 +485,7 @@ class SendCatalogParams(_SendCatalogParamsRequired, total=False):
     subtitle: str
     footer: str
     imageUrl: str
-    # Storefront id (shop) — or use collection
+    # Storefront id (shop); required unless collection is set
     shopId: str
     surface: float
     collection: "CollectionRef"
@@ -556,7 +555,7 @@ class EditMessageParams(_EditMessageParamsRequired, total=False):
 class _MarkReadParamsRequired(TypedDict):
     # Chat the messages belong to: phone (country code + number) or group jid.
     chatId: str
-    # WhatsApp ids of the received messages (`data.id` / `key.id` of the incoming webhook).
+    # WhatsApp ids of the received messages (`data.messageId` of the new_message webhook).
     messageIds: List[str]
 
 

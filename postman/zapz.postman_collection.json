@@ -1202,6 +1202,28 @@
           }
         },
         {
+          "name": "Download link for the media of a received message",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/instances/{{instanceId}}/messages/{{messageId}}/media",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "instances",
+                "{{instanceId}}",
+                "messages",
+                "{{messageId}}",
+                "media"
+              ]
+            },
+            "description": "Download link for the media of a received message"
+          }
+        },
+        {
           "name": "Get a message and its status",
           "request": {
             "method": "GET",

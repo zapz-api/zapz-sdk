@@ -128,9 +128,6 @@ export interface SendLocationParams {
   longitude: number;
   name?: string;
   address?: string;
-  /** Live location (shown as "sharing live location") */
-  live?: boolean;
-  caption?: string;
   to: string;
   /** Optional id chosen by the client — idempotency key and correlation id in webhooks. */
   clientMessageId?: string;
@@ -195,6 +192,8 @@ export interface SendPixParams {
   amount?: number;
   description?: string;
   referenceId?: string;
+  /** City of the receiver in the Pix code (default BRASIL). */
+  merchantCity?: string;
   to: string;
   /** Optional id chosen by the client — idempotency key and correlation id in webhooks. */
   clientMessageId?: string;
@@ -384,7 +383,7 @@ export interface SendCatalogParams {
   subtitle?: string;
   footer?: string;
   imageUrl?: string;
-  /** Storefront id (shop) — or use collection */
+  /** Storefront id (shop); required unless collection is set */
   shopId?: string;
   surface?: number;
   collection?: CollectionRef;
@@ -442,7 +441,7 @@ export interface EditMessageParams {
 export interface MarkReadParams {
   /** Chat the messages belong to: phone (country code + number) or group jid. */
   chatId: string;
-  /** WhatsApp ids of the received messages (`data.id` / `key.id` of the incoming webhook). */
+  /** WhatsApp ids of the received messages (`data.messageId` of the new_message webhook). */
   messageIds: Array<string>;
   /** In groups: who sent the messages (phone). */
   participant?: string;

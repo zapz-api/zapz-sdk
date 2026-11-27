@@ -925,6 +925,26 @@
       "cs": "ListReceivedAsync",
       "rb": "list_received"
     },
+    "GET /v1/instances/{}/messages/{}/media": {
+      "resource": "messages",
+      "js": "media",
+      "py": "media",
+      "php": "media",
+      "params": [
+        "instanceId",
+        "messageId"
+      ],
+      "body": false,
+      "bodyRequired": false,
+      "query": [],
+      "go": "Media",
+      "goResource": "Messages",
+      "goBody": null,
+      "goQuery": null,
+      "java": "media",
+      "cs": "MediaAsync",
+      "rb": "media"
+    },
     "GET /v1/instances/{}/messages/{}": {
       "resource": "messages",
       "js": "get",
@@ -1628,14 +1648,6 @@
         "name": "Address",
         "type": "string"
       },
-      "live": {
-        "name": "Live",
-        "type": "*bool"
-      },
-      "caption": {
-        "name": "Caption",
-        "type": "string"
-      },
       "to": {
         "name": "To",
         "type": "string"
@@ -1774,6 +1786,10 @@
       },
       "referenceId": {
         "name": "ReferenceID",
+        "type": "string"
+      },
+      "merchantCity": {
+        "name": "MerchantCity",
         "type": "string"
       },
       "to": {

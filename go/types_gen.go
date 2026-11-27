@@ -130,10 +130,7 @@ type SendLocationParams struct {
 	Longitude float64 `json:"longitude"`
 	Name      string  `json:"name,omitempty"`
 	Address   string  `json:"address,omitempty"`
-	// Live location (shown as "sharing live location")
-	Live    *bool  `json:"live,omitempty"`
-	Caption string `json:"caption,omitempty"`
-	To      string `json:"to"`
+	To        string  `json:"to"`
 	// Optional id chosen by the client — idempotency key and correlation id in webhooks.
 	ClientMessageID string `json:"clientMessageId,omitempty"`
 	// WhatsApp id of a message (sent or received in the last 3 days) to reply to.
@@ -197,7 +194,9 @@ type SendPixParams struct {
 	Amount      *float64 `json:"amount,omitempty"`
 	Description string   `json:"description,omitempty"`
 	ReferenceID string   `json:"referenceId,omitempty"`
-	To          string   `json:"to"`
+	// City of the receiver in the Pix code (default BRASIL).
+	MerchantCity string `json:"merchantCity,omitempty"`
+	To           string `json:"to"`
 	// Optional id chosen by the client — idempotency key and correlation id in webhooks.
 	ClientMessageID string `json:"clientMessageId,omitempty"`
 	// WhatsApp id of a message (sent or received in the last 3 days) to reply to.
@@ -386,7 +385,7 @@ type SendCatalogParams struct {
 	Subtitle string `json:"subtitle,omitempty"`
 	Footer   string `json:"footer,omitempty"`
 	ImageURL string `json:"imageUrl,omitempty"`
-	// Storefront id (shop) — or use collection
+	// Storefront id (shop); required unless collection is set
 	ShopID     string         `json:"shopId,omitempty"`
 	Surface    *float64       `json:"surface,omitempty"`
 	Collection *CollectionRef `json:"collection,omitempty"`
@@ -444,7 +443,7 @@ type EditMessageParams struct {
 type MarkReadParams struct {
 	// Chat the messages belong to: phone (country code + number) or group jid.
 	ChatID string `json:"chatId"`
-	// WhatsApp ids of the received messages (`data.id` / `key.id` of the incoming webhook).
+	// WhatsApp ids of the received messages (`data.messageId` of the new_message webhook).
 	MessageIDs []string `json:"messageIds"`
 	// In groups: who sent the messages (phone).
 	Participant string `json:"participant,omitempty"`

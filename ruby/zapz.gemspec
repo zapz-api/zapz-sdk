@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = "zapz"
-  s.version = "0.1.5"
+  s.version = "0.2.0"
   s.summary = "Official Ruby SDK for the ZapZ WhatsApp API"
   s.authors = ["ZapZ"]
   s.license = "MIT"

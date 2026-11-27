@@ -228,6 +228,11 @@ export class MessagesResource {
     return this.client.request({ method: 'GET', path: `/instances/${encodeURIComponent(instanceId)}/messages/received`, query }, options);
   }
 
+  /** Download link for the media of a received message (`GET /v1/instances/{id}/messages/{messageId}/media`) */
+  media(instanceId: string, messageId: string, options?: RequestOptions): Promise<Record<string, any>> {
+    return this.client.request({ method: 'GET', path: `/instances/${encodeURIComponent(instanceId)}/messages/${encodeURIComponent(messageId)}/media` }, options);
+  }
+
   /** Get a message and its status (`GET /v1/instances/{id}/messages/{messageId}`) */
   get(instanceId: string, messageId: string, options?: RequestOptions): Promise<Message> {
     return this.client.request({ method: 'GET', path: `/instances/${encodeURIComponent(instanceId)}/messages/${encodeURIComponent(messageId)}` }, options);

@@ -27,7 +27,7 @@ const (
 	// DefaultBaseURL is the production API.
 	DefaultBaseURL = "https://api.zapz.dev"
 	// Version of this SDK.
-	Version = "0.1.5"
+	Version = "0.2.0"
 )
 
 // Client talks to the ZapZ API. Create it with New.
